@@ -1,72 +1,71 @@
-import { useState } from 'react'
-import axios from 'axios'
+// src/pages/Chat.tsx
+import { useState } from "react";
 
-type Message = {
-  from: 'user' | 'bot',
-  text: string
-}
+export default function Chat() {
+  const [messages, setMessages] = useState<{ text: string; sender: string }[]>([]);
+  const [input, setInput] = useState("");
 
-export default function Chat(){
-  const [messages, setMessages] = useState<Message[]>([])
-  const [input, setInput] = useState('')
-  const [model, setModel] = useState<'GRU' | 'LSTM'>('GRU')
-  const [loading, setLoading] = useState(false)
+  const sendMessage = () => {
+    if (!input.trim()) return;
+    setMessages([...messages, { text: input, sender: "user" }]);
+    setInput("");
 
-  const send = async () => {
-    if (!input.trim()) return
-    const userMsg: Message = { from: 'user', text: input }
-    setMessages(prev => [...prev, userMsg])
-    setInput('')
-    setLoading(true)
-    try {
-      const res = await axios.post('http://localhost:8000/api/chat', { message: userMsg.text, model })
-      const reply = res.data?.reply ?? "Sorry, something went wrong."
-      setMessages(prev => [...prev, { from: 'bot', text: reply }])
-    } catch (err) {
-      setMessages(prev => [...prev, { from: 'bot', text: "Couldn't reach server. Try again later." }])
-      console.error(err)
-    } finally {
-      setLoading(false)
-    }
-  }
+    // Mock bot response
+    setTimeout(() => {
+      setMessages((prev) => [
+        ...prev,
+        { text: "Thanks for sharing. I'm here to listen. 💛", sender: "bot" }
+      ]);
+    }, 1000);
+  };
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-2xl font-bold mb-4">Chat with MindEase</h1>
+    <div className="bg-[#f5f0e8] min-h-screen flex flex-col">
+      {/* Hero */}
+      <section className="px-6 md:px-12 py-10 bg-[#fcf9f4] text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-amber-900">Chat with MindEase</h1>
+        <p className="text-gray-700 mt-2">Your safe space to express yourself.</p>
+      </section>
 
-      <div className="mb-4 flex items-center gap-4">
-        <label className="text-sm">Model:</label>
-        <select value={model} onChange={e => setModel(e.target.value as 'GRU'|'LSTM')} className="border px-3 py-1 rounded">
-          <option value="GRU">GRU</option>
-          <option value="LSTM">LSTM</option>
-        </select>
-      </div>
-
-      <div className="border rounded-lg p-4 max-w-3xl mx-auto shadow bg-white">
-        <div className="space-y-3 h-64 overflow-auto mb-4">
-          {messages.length === 0 && <div className="text-gray-500">Say hi — the bot is listening.</div>}
+      {/* Chat Box */}
+      <div className="flex-1 flex flex-col px-4 md:px-12 py-6">
+        <div className="flex-1 overflow-y-auto bg-white rounded-xl shadow p-4 space-y-3">
+          {messages.length === 0 && (
+            <p className="text-gray-500 text-center mt-10">
+              Say hello to start chatting 💬
+            </p>
+          )}
           {messages.map((m, i) => (
-            <div key={i} className={`flex ${m.from === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`${m.from === 'user' ? 'bg-sky-600 text-white' : 'bg-slate-100 text-gray-900'} px-4 py-2 rounded-lg max-w-[80%]`}>
-                {m.text}
-              </div>
+            <div
+              key={i}
+              className={`p-3 rounded-lg max-w-xs ${
+                m.sender === "user"
+                  ? "bg-amber-600 text-white self-end"
+                  : "bg-gray-200 text-gray-800 self-start"
+              }`}
+            >
+              {m.text}
             </div>
           ))}
         </div>
 
-        <div className="flex gap-2">
+        {/* Input */}
+        <div className="mt-4 flex gap-2">
           <input
+            type="text"
             value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={(e) => { if (e.key === 'Enter') send() }}
-            className="flex-1 border rounded px-3 py-2"
-            placeholder="Type how you're feeling..."
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type your message..."
+            className="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
-          <button onClick={send} disabled={loading} className="bg-sky-600 text-white px-4 py-2 rounded disabled:opacity-60">
-            {loading ? '...' : 'Send'}
+          <button
+            onClick={sendMessage}
+            className="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition"
+          >
+            Send
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
