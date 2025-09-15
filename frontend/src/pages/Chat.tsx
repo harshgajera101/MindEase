@@ -1,6 +1,7 @@
 // src/pages/Chat.tsx
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Chat() {
   const [messages, setMessages] = useState<{ text: string; sender: string }[]>(
@@ -77,6 +78,8 @@ export default function Chat() {
           </div>
         </div>
       </div>
+      {/* Footer */}
+      <Footer/>
     </>
   );
 }

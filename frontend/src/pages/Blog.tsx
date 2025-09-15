@@ -1,6 +1,7 @@
 // src/pages/Blog.tsx
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Blog() {
   const posts = [
@@ -58,6 +59,7 @@ export default function Blog() {
           ))}
         </section>
       </div>
+      <Footer/>
     </>
   );
 }

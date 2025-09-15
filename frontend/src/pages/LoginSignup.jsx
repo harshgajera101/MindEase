@@ -1,0 +1,149 @@
+import { useState } from "react";
+import { Mail, Lock, User } from "lucide-react";
+
+export default function LoginSignup() {
+  const [isLogin, setIsLogin] = useState(true);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fdf6ec] to-[#f9f7f3] px-4">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+        {/* Tabs */}
+        <div className="flex justify-center mb-6">
+          <button
+            className={`px-4 py-2 text-lg font-medium rounded-l-xl transition ${
+              isLogin
+                ? "bg-[#e8d9c9] text-gray-900"
+                : "bg-gray-100 text-gray-500"
+            }`}
+            onClick={() => setIsLogin(true)}
+          >
+            Login
+          </button>
+          <button
+            className={`px-4 py-2 text-lg font-medium rounded-r-xl transition ${
+              !isLogin
+                ? "bg-[#e8d9c9] text-gray-900"
+                : "bg-gray-100 text-gray-500"
+            }`}
+            onClick={() => setIsLogin(false)}
+          >
+            Signup
+          </button>
+        </div>
+
+        {/* Form */}
+        <form className="space-y-4">
+          {!isLogin && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Username
+              </label>
+              <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2">
+                <User className="h-5 w-5 text-gray-400 mr-2" />
+                <input
+                  type="text"
+                  placeholder="Enter your username"
+                  className="w-full outline-none text-gray-700"
+                />
+              </div>
+            </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
+            <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2">
+              <Mail className="h-5 w-5 text-gray-400 mr-2" />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full outline-none text-gray-700"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
+            <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2">
+              <Lock className="h-5 w-5 text-gray-400 mr-2" />
+              <input
+                type="password"
+                placeholder="Enter your password"
+                className="w-full outline-none text-gray-700"
+              />
+            </div>
+          </div>
+
+          {/* Confirm Password only for Signup */}
+          {!isLogin && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Confirm Password
+              </label>
+              <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2">
+                <Lock className="h-5 w-5 text-gray-400 mr-2" />
+                <input
+                  type="password"
+                  placeholder="Re-enter your password"
+                  className="w-full outline-none text-gray-700"
+                />
+              </div>
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="w-full bg-[#e8d9c9] text-gray-900 font-semibold py-2 rounded-lg shadow-md hover:bg-[#d9c2a9] transition"
+          >
+            {isLogin ? "Login" : "Signup"}
+          </button>
+        </form>
+
+        {/* Divider */}
+        <div className="flex items-center my-6">
+          <hr className="flex-grow border-t border-gray-300" />
+          <span className="mx-2 text-gray-400 text-sm">or</span>
+          <hr className="flex-grow border-t border-gray-300" />
+        </div>
+
+        {/* Google Login (Optional) */}
+        <button className="w-full border border-gray-300 flex items-center justify-center py-2 rounded-lg hover:bg-gray-50 transition">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
+            alt="Google"
+            className="h-5 w-5 mr-2"
+          />
+          Continue with Google
+        </button>
+
+        {/* Switch Auth */}
+        <p className="text-center text-sm text-gray-600 mt-4">
+          {isLogin ? (
+            <>
+              Don’t have an account?{" "}
+              <span
+                className="text-[#b08868] font-medium cursor-pointer hover:underline"
+                onClick={() => setIsLogin(false)}
+              >
+                Signup
+              </span>
+            </>
+          ) : (
+            <>
+              Already have an account?{" "}
+              <span
+                className="text-[#b08868] font-medium cursor-pointer hover:underline"
+                onClick={() => setIsLogin(true)}
+              >
+                Login
+              </span>
+            </>
+          )}
+        </p>
+      </div>
+    </div>
+  );
+}

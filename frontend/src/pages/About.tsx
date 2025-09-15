@@ -1,5 +1,6 @@
 // src/pages/About.tsx
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function About() {
   return (
@@ -45,6 +46,7 @@ export default function About() {
           </div>
         </section>
       </div>
+      <Footer/>
     </>
   );
 }

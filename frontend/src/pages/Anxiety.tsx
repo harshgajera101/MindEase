@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import BackToTop from "../components/BackToTop";
 import { 
   Heart, 
   Brain, 
@@ -356,6 +357,8 @@ export default function Anxiety() {
             ))}
           </div>
         </div>
+        {/* Bottom */}
+      <BackToTop/>
       </section>
 
       {/* Footer */}

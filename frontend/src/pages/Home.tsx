@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import BackToTop from "../components/BackToTop";
 
 const faqs = [
   { q: "Do I need to create an account?", a: "No, MindEase works instantly without requiring you to sign up or log in." },
@@ -137,6 +138,8 @@ export default function Home() {
             </div>
           ))}
         </div>
+        {/* Bottom */}
+      <BackToTop/>
       </section>
 
       {/* Footer */}
