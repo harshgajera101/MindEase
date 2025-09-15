@@ -1,6 +1,6 @@
 // src/pages/Home.tsx
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import Navbar from "../components/Navbar";
 
 const faqs = [
   { q: "Do I need to create an account?", a: "No, MindEase works instantly without requiring you to sign up or log in." },
@@ -16,32 +16,16 @@ export default function Home() {
   return (
     <div className="bg-[#f5f0e8] text-gray-800 font-sans">
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-6 py-4 shadow-md bg-white">
-        <h1 className="text-2xl font-bold text-amber-800">MindEase</h1>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 text-lg">
-          <a href="/" className="hover:text-amber-600">Home</a>
-          <a href="/about" className="hover:text-amber-600">About</a>
-          <a href="/chat" className="hover:text-amber-600">Chat</a>
-          <a href="/blog" className="hover:text-amber-600">Blog</a>
-          <a href="/support" className="hover:text-amber-600">Support</a>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
+      <Navbar/>
 
       {/* Mobile Menu */}
       {isOpen && (
         <div className="flex flex-col items-center gap-4 py-4 bg-white shadow-md md:hidden">
-          <a href="#">Home</a>
-          <a href="#about">About</a>
-          <a href="#chat">Chat</a>
-          <a href="#blog">Blog</a>
-          <a href="#support">Support</a>
+          <a href="">Home</a>
+          <a href="about">About</a>
+          <a href="chat">Chat</a>
+          <a href="blog">Blog</a>
+          <a href="support">Support</a>
         </div>
       )}
 
@@ -60,7 +44,7 @@ export default function Home() {
             MindEase helps you manage stress, anxiety, and depression with instant AI-powered support anytime, anywhere.
           </p>
           <a
-            href="#chat"
+            href="/chat"
             className="bg-amber-600 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-700 transition inline-block"
           >
             Start Chatting
