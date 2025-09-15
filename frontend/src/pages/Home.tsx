@@ -1,6 +1,7 @@
 // src/pages/Home.tsx
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const faqs = [
   { q: "Do I need to create an account?", a: "No, MindEase works instantly without requiring you to sign up or log in." },
@@ -10,7 +11,7 @@ const faqs = [
 ];
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   return (
@@ -139,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-amber-800 text-white py-8 px-6 text-center">
+      {/* <footer className="bg-amber-800 text-white py-8 px-6 text-center">
         <p className="mb-4 text-sm md:text-base">© 2025 MindEase. All Rights Reserved.</p>
         <div className="flex flex-wrap justify-center gap-6 text-sm md:text-base">
           <a href="#" className="hover:text-amber-300">Facebook</a>
@@ -147,7 +148,8 @@ export default function Home() {
           <a href="#" className="hover:text-amber-300">Instagram</a>
           <a href="#" className="hover:text-amber-300">LinkedIn</a>
         </div>
-      </footer>
+      </footer> */}
+      <Footer/>
     </div>
   );
 }

@@ -14,40 +14,156 @@
 //   )
 // }
 
-
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <>
-      <nav className="flex justify-between items-center px-6 py-4 shadow-md bg-white">
-        <h1 className="text-2xl font-bold text-amber-800">MindEase</h1>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 text-lg">
-          <a href="/" className="hover:text-amber-600">
-            Home
-          </a>
-          <a href="/about" className="hover:text-amber-600">
-            About
-          </a>
-          <a href="/chat" className="hover:text-amber-600">
-            Chat
-          </a>
-          <a href="/blog" className="hover:text-amber-600">
-            Blog
-          </a>
-          <a href="/support" className="hover:text-amber-600">
-            Support
-          </a>
+      <nav className="relative bg-amber-800 text-white shadow-lg overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-white transform translate-x-12 -translate-y-12"></div>
+          <div className="absolute bottom-0 left-0 w-16 h-16 rounded-full bg-white transform -translate-x-8 translate-y-8"></div>
         </div>
 
-        {/* Mobile Toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="relative z-10 flex justify-between items-center px-6 py-4">
+          {/* Logo with icon */}
+          <div className="flex items-center space-x-3">
+            <Heart className="w-7 h-7 text-amber-200" fill="currentColor" />
+            <h1 className="text-2xl font-bold tracking-wide hover:text-amber-200 transition-colors duration-200 cursor-pointer">
+              MindEase
+            </h1>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-8 text-lg">
+            <a 
+              href="/" 
+              className="relative hover:text-amber-200 transition-all duration-200 group"
+            >
+              <span className="relative z-10">Home</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </a>
+            <a 
+              href="/about" 
+              className="relative hover:text-amber-200 transition-all duration-200 group"
+            >
+              <span className="relative z-10">About</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </a>
+            <a 
+              href="/depression" 
+              className="relative hover:text-amber-200 transition-all duration-200 group"
+            >
+              <span className="relative z-10">Depression</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </a>
+            <a 
+              href="/anxiety" 
+              className="relative hover:text-amber-200 transition-all duration-200 group"
+            >
+              <span className="relative z-10">Anxiety</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </a>
+            <a 
+              href="/chat" 
+              className="relative hover:text-amber-200 transition-all duration-200 group"
+            >
+              <span className="relative z-10">Chat</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </a>
+            <a 
+              href="/blog" 
+              className="relative hover:text-amber-200 transition-all duration-200 group"
+            >
+              <span className="relative z-10">Blog</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </a>
+            <a 
+              href="/support" 
+              className="relative hover:text-amber-200 transition-all duration-200 group"
+            >
+              <span className="relative z-10">Support</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </a>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="md:hidden p-2 rounded-lg hover:bg-amber-700 transition-colors duration-200 transform hover:scale-110"
+          >
+            {isOpen ? 
+              <X size={24} className="transform rotate-0 transition-transform duration-200" /> : 
+              <Menu size={24} className="transform rotate-0 transition-transform duration-200" />
+            }
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-100 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="bg-amber-900 bg-opacity-50 backdrop-blur-sm border-t border-amber-700">
+            <div className="px-6 py-4 space-y-4">
+              <a 
+                href="/" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </a>
+              <a 
+                href="/about" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                About
+              </a>
+              <a 
+                href="/depression" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Depression
+              </a>
+              <a 
+                href="/anxiety" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Anxiety
+              </a>
+              <a 
+                href="/chat" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Chat
+              </a>
+              <a 
+                href="/blog" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Blog
+              </a>
+              <a 
+                href="/support" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Support
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom accent line */}
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600"></div>
       </nav>
     </>
   );
