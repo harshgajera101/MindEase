@@ -6,7 +6,8 @@ import Anxiety from "./pages/Anxiety";
 import Chat from "./pages/Chat";
 import Blog from "./pages/Blog";
 import Support from "./pages/Support";
-import LoginSignup from "./pages/LoginSignup.jsx";
+import LoginSignup from "./pages/LoginSignup.js";
+import QuizPage from "./pages/QuizPage.js";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/blog" element={<Blog />} />
       <Route path="/support" element={<Support />} />
       <Route path="/login" element={<LoginSignup />} />
+      <Route path="/quiz/:topic" element={<QuizPage />} />
     </Routes>
   );
 }

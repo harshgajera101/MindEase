@@ -1,8 +1,29 @@
 import { useState } from "react";
+import type { FormEvent } from "react";
 import { Mail, Lock, User } from "lucide-react";
 
 export default function LoginSignup() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState<boolean>(true);
+
+  // You can manage form data with state (optional for now)
+  const [formData, setFormData] = useState<{
+    username?: string;
+    email: string;
+    password: string;
+    confirmPassword?: string;
+  }>({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isLogin) {
+      console.log("Logging in with:", formData);
+    } else {
+      console.log("Signing up with:", formData);
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fdf6ec] to-[#f9f7f3] px-4">
@@ -10,9 +31,10 @@ export default function LoginSignup() {
         {/* Tabs */}
         <div className="flex justify-center mb-6">
           <button
+            type="button"
             className={`px-4 py-2 text-lg font-medium rounded-l-xl transition ${
               isLogin
-                ? "bg-[#e8d9c9] text-gray-900"
+                ? "bg-[#e8d9c9] text-amber-900"
                 : "bg-gray-100 text-gray-500"
             }`}
             onClick={() => setIsLogin(true)}
@@ -20,9 +42,10 @@ export default function LoginSignup() {
             Login
           </button>
           <button
+            type="button"
             className={`px-4 py-2 text-lg font-medium rounded-r-xl transition ${
               !isLogin
-                ? "bg-[#e8d9c9] text-gray-900"
+                ? "bg-[#e8d9c9] text-amber-900"
                 : "bg-gray-100 text-gray-500"
             }`}
             onClick={() => setIsLogin(false)}
@@ -32,7 +55,7 @@ export default function LoginSignup() {
         </div>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           {!isLogin && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -44,6 +67,10 @@ export default function LoginSignup() {
                   type="text"
                   placeholder="Enter your username"
                   className="w-full outline-none text-gray-700"
+                  value={formData.username || ""}
+                  onChange={(e) =>
+                    setFormData({ ...formData, username: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -59,6 +86,11 @@ export default function LoginSignup() {
                 type="email"
                 placeholder="Enter your email"
                 className="w-full outline-none text-gray-700"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                required
               />
             </div>
           </div>
@@ -73,11 +105,15 @@ export default function LoginSignup() {
                 type="password"
                 placeholder="Enter your password"
                 className="w-full outline-none text-gray-700"
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+                required
               />
             </div>
           </div>
 
-          {/* Confirm Password only for Signup */}
           {!isLogin && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -89,6 +125,14 @@ export default function LoginSignup() {
                   type="password"
                   placeholder="Re-enter your password"
                   className="w-full outline-none text-gray-700"
+                  value={formData.confirmPassword || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      confirmPassword: e.target.value,
+                    })
+                  }
+                  required
                 />
               </div>
             </div>
@@ -96,7 +140,7 @@ export default function LoginSignup() {
 
           <button
             type="submit"
-            className="w-full bg-[#e8d9c9] text-gray-900 font-semibold py-2 rounded-lg shadow-md hover:bg-[#d9c2a9] transition"
+            className="w-full bg-[#e8d9c9] font-bold text-amber-900 font-semibold py-2 rounded-lg shadow-md hover:bg-[#d9c2a9] transition"
           >
             {isLogin ? "Login" : "Signup"}
           </button>
@@ -109,8 +153,11 @@ export default function LoginSignup() {
           <hr className="flex-grow border-t border-gray-300" />
         </div>
 
-        {/* Google Login (Optional) */}
-        <button className="w-full border border-gray-300 flex items-center justify-center py-2 rounded-lg hover:bg-gray-50 transition">
+        {/* Google Login */}
+        <button
+          type="button"
+          className="w-full border border-gray-300 flex items-center justify-center py-2 rounded-lg hover:bg-gray-50 transition"
+        >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
             alt="Google"

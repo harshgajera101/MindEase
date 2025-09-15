@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
@@ -75,7 +76,7 @@ export default function Anxiety() {
           </p>
           <button className="group px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-500 text-white text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              Take the Quiz
+              <Link to="/quiz/depression">Take the Quiz</Link>
               <FileText className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>
@@ -296,7 +297,7 @@ export default function Anxiety() {
           </p>
           <button className="group px-10 py-5 bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              Start Quiz
+              <Link to="/quiz/depression">Start Quiz</Link>
               <Sparkles className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>

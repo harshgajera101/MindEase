@@ -1,14 +1,61 @@
-// src/pages/Home.tsx
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
+import {
+  Heart,
+  Brain,
+  Users,
+  Moon,
+  Book,
+  Shield,
+  Clock,
+  Lock,
+  MessageCircle,
+  Sparkles,
+  Star,
+  //   Sun,
+  //   Cloud,
+  Wind,
+  Activity,
+  Target,
+  Eye,
+  Globe,
+  Lightbulb,
+  ChevronDown,
+  ChevronRight,
+  Play,
+  Headphones,
+  FileText,
+  UserCheck,
+  Waves,
+  //   TreePine,
+  //   Flower,
+  Phone,
+  Compass,
+} from "lucide-react";
 
 const faqs = [
-  { q: "Do I need to create an account?", a: "No, MindEase works instantly without requiring you to sign up or log in." },
-  { q: "Is my chat private?", a: "Yes, your conversations are private and not stored permanently." },
-  { q: "Can I access it on mobile?", a: "Absolutely! MindEase is mobile-friendly and works on any device." },
-  { q: "Is it a replacement for therapy?", a: "No, MindEase is a supportive tool but not a substitute for professional help." }
+  {
+    q: "Is my chat private and secure?",
+    a: "Yes, your conversations are private and encrypted. We prioritize your confidentiality and data security.",
+  },
+  {
+    q: "Can I access it on mobile devices?",
+    a: "Absolutely! MindEase is fully responsive and works seamlessly on phones, tablets, and desktops.",
+  },
+  {
+    q: "Is it a replacement for professional therapy?",
+    a: "No, MindEase is a supportive tool but not a substitute for professional mental health care. We encourage seeking professional help when needed.",
+  },
+  {
+    q: "What kind of support can I expect?",
+    a: "Our AI provides emotional support, coping strategies, mindfulness exercises, and resources for mental wellness.",
+  },
+  {
+    q: "How accurate is the mental health information?",
+    a: "Our content is based on evidence-based practices and reviewed by mental health professionals, but always consult healthcare providers for clinical advice.",
+  },
 ];
 
 export default function Home() {
@@ -16,143 +63,928 @@ export default function Home() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   return (
-    <div className="bg-[#f5f0e8] text-gray-800 font-sans">
-      {/* Navbar */}
-      <Navbar/>
+    <div className="bg-[#f5f0e8] text-gray-800 font-sans relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="fixed inset-0 pointer-events-none opacity-5 z-0">
+        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-amber-300 animate-pulse"></div>
+        <div className="absolute top-60 right-20 w-20 h-20 rounded-full bg-pink-300 animate-pulse"></div>
+        <div className="absolute bottom-40 left-1/4 w-24 h-24 rounded-full bg-green-300 animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-16 h-16 rounded-full bg-blue-300 animate-pulse"></div>
+      </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="flex flex-col items-center gap-4 py-4 bg-white shadow-md md:hidden">
-          <a href="">Home</a>
-          <a href="about">About</a>
-          <a href="chat">Chat</a>
-          <a href="blog">Blog</a>
-          <a href="support">Support</a>
-        </div>
-      )}
+      {/* Navbar */}
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-12 py-12 md:py-20 gap-10">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/4206/4206277.png"
-          alt="Chat Support"
-          className="w-3/4 md:w-full max-w-sm mx-auto"
-        />
-        <div className="text-center md:text-left">
-          <h2 className="text-3xl md:text-5xl font-bold text-amber-900 mb-4">
-            Your AI Companion for Mental Well-being
-          </h2>
-          <p className="mb-6 text-base md:text-lg text-gray-700">
-            MindEase helps you manage stress, anxiety, and depression with instant AI-powered support anytime, anywhere.
-          </p>
-          <a
-            href="/chat"
-            className="bg-amber-600 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-700 transition inline-block"
-          >
-            Start Chatting
-          </a>
+      <section className="relative min-h-screen flex items-center px-6 md:px-12 py-20 overflow-hidden">
+        {/* Floating elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Heart className="absolute top-32 left-20 w-8 h-8 text-pink-300 opacity-30 animate-pulse" />
+          <Star className="absolute top-20 right-32 w-6 h-6 text-yellow-400 opacity-40 animate-pulse" />
+          <Brain className="absolute bottom-32 left-1/3 w-10 h-10 text-blue-300 opacity-25 animate-pulse" />
+          <Sparkles className="absolute top-1/2 right-1/4 w-7 h-7 text-purple-300 opacity-35 animate-pulse" />
+        </div>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 relative z-10">
+          {/* Text Content */}
+          <div className="text-center lg:text-left space-y-8">
+            <div className="inline-flex items-center bg-amber-100 px-4 py-2 rounded-full text-amber-800 font-medium">
+              <Heart className="w-4 h-4 mr-2" />
+              Mental Wellness Made Simple
+            </div>
+
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-900 leading-tight">
+              Your AI Companion for
+              <span className="block text-gradient bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+                Mental Well-being
+              </span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl">
+              MindEase provides instant AI-powered support for stress, anxiety,
+              and depression. Get personalized guidance, coping strategies, and
+              emotional support anytime, anywhere.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a
+                href="/chat"
+                className="group bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center"
+              >
+                <MessageCircle className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                Start Your Journey
+              </a>
+              <a
+                href="#how"
+                className="group bg-white text-amber-800 px-8 py-4 rounded-2xl font-semibold border-2 border-amber-200 hover:border-amber-400 hover:shadow-lg transition-all duration-200 flex items-center justify-center"
+              >
+                <Play className="w-5 h-5 mr-2" />
+                Learn How It Works
+              </a>
+            </div>
+
+            <div className="flex items-center justify-center lg:justify-start space-x-8 text-sm text-gray-600">
+              <div className="flex items-center">
+                <Shield className="w-4 h-4 mr-1 text-green-500" />
+                100% Private
+              </div>
+              <div className="flex items-center">
+                <Clock className="w-4 h-4 mr-1 text-blue-500" />
+                24/7 Available
+              </div>
+              <div className="flex items-center">
+                <Heart className="w-4 h-4 mr-1 text-pink-500" />
+                Evidence-Based
+              </div>
+            </div>
+          </div>
+
+          {/* Hero Image/Graphics */}
+          <div className="relative">
+            <div className="relative w-full max-w-lg mx-auto">
+              {/* Main illustration container */}
+              <div className="bg-gradient-to-br from-amber-100 via-pink-50 to-blue-100 rounded-3xl p-12 shadow-2xl">
+                <div className="text-center space-y-6">
+                  <div className="w-32 h-32 bg-gradient-to-br from-pink-200 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <Brain className="w-16 h-16 text-purple-700" />
+                  </div>
+
+                  {/* Floating mini cards */}
+                  <div className="relative">
+                    <div className="absolute -top-8 -left-8 bg-white p-3 rounded-xl shadow-lg transform rotate-12 hover:rotate-0 transition-transform duration-200">
+                      <Heart className="w-6 h-6 text-pink-500" />
+                    </div>
+                    <div className="absolute -top-4 -right-12 bg-white p-3 rounded-xl shadow-lg transform -rotate-12 hover:rotate-0 transition-transform duration-200">
+                      <Moon className="w-6 h-6 text-indigo-500" />
+                    </div>
+                    <div className="absolute -bottom-6 -left-4 bg-white p-3 rounded-xl shadow-lg transform rotate-45 hover:rotate-0 transition-transform duration-200">
+                      <Sparkles className="w-6 h-6 text-yellow-500" />
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-gray-800">
+                      AI-Powered Support
+                    </h3>
+                    <p className="text-gray-600">
+                      Instant guidance when you need it most
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-300 rounded-full opacity-60"></div>
+              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-pink-300 rounded-full opacity-40"></div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="px-6 md:px-12 py-12 md:py-20 bg-[#fcf9f4]">
-        <h3 className="text-2xl md:text-3xl font-bold text-center text-amber-900 mb-10">
-          Why Choose MindEase?
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              img: "https://cdn-icons-png.flaticon.com/512/1048/1048946.png",
-              title: "No Login Needed",
-              desc: "Get support instantly without creating an account."
-            },
-            {
-              img: "https://cdn-icons-png.flaticon.com/512/4359/4359963.png",
-              title: "24/7 Availability",
-              desc: "Access support anytime, day or night."
-            },
-            {
-              img: "https://cdn-icons-png.flaticon.com/512/599/599995.png",
-              title: "Safe & Private",
-              desc: "Your conversations remain confidential and secure."
-            }
-          ].map((f, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition text-center"
-            >
-              <img
-                src={f.img}
-                alt={f.title}
-                className="w-20 h-20 mx-auto mb-4 rounded-full"
-              />
-              <h4 className="text-lg md:text-xl font-semibold text-amber-800">{f.title}</h4>
-              <p className="text-gray-600 mt-2 text-sm md:text-base">{f.desc}</p>
+      <section
+        id="features"
+        className="px-6 md:px-12 py-20 bg-gradient-to-br from-[#fcf9f4] via-amber-50 to-pink-50 relative"
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-200 to-yellow-200 rounded-full mb-6">
+              <Star className="w-8 h-8 text-amber-700" />
             </div>
-          ))}
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+              Why Choose MindEase?
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-300 to-yellow-300 mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Discover the features that make MindEase your trusted companion
+              for mental wellness
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Clock className="w-10 h-10 text-blue-600" />,
+                title: "24/7 Availability",
+                desc: "Access mental health support anytime, day or night. No waiting rooms, no appointments needed.",
+                bgColor: "from-blue-100 to-blue-200",
+              },
+              {
+                icon: <Shield className="w-10 h-10 text-green-600" />,
+                title: "Private & Secure",
+                desc: "Your conversations are encrypted and confidential. Your mental health journey stays private.",
+                bgColor: "from-green-100 to-green-200",
+              },
+              {
+                icon: <Brain className="w-10 h-10 text-purple-600" />,
+                title: "AI-Powered Intelligence",
+                desc: "Advanced AI trained on evidence-based mental health practices and therapeutic techniques.",
+                bgColor: "from-purple-100 to-purple-200",
+              },
+              {
+                icon: <Heart className="w-10 h-10 text-pink-600" />,
+                title: "Personalized Support",
+                desc: "Tailored responses based on your unique needs and emotional state.",
+                bgColor: "from-pink-100 to-pink-200",
+              },
+              {
+                icon: <Globe className="w-10 h-10 text-cyan-600" />,
+                title: "Accessible Anywhere",
+                desc: "Works on any device - phone, tablet, or computer. Mental health support in your pocket.",
+                bgColor: "from-cyan-100 to-cyan-200",
+              },
+              {
+                icon: <FileText className="w-10 h-10 text-orange-600" />,
+                title: "Evidence-Based",
+                desc: "Built on scientifically-backed therapeutic approaches and mental health best practices.",
+                bgColor: "from-orange-100 to-orange-200",
+              },
+            ].map((feature, i) => (
+              <div
+                key={i}
+                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100"
+              >
+                <div
+                  className={`w-16 h-16 bg-gradient-to-br ${feature.bgColor} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200`}
+                >
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-amber-900 mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-700 leading-relaxed">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section id="how" className="px-6 md:px-12 py-12 md:py-20">
-        <h3 className="text-2xl md:text-3xl font-bold text-center text-amber-900 mb-10">
-          How It Works
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          {[
-            { step: "1", title: "Visit MindEase", desc: "Open the website on your phone or desktop." },
-            { step: "2", title: "Start Chat", desc: "Click on 'Start Chatting' to begin your conversation." },
-            { step: "3", title: "Get Support", desc: "Receive instant, AI-powered responses and guidance." }
-          ].map((h, i) => (
-            <div
-              key={i}
-              className="bg-[#fcf9f4] rounded-xl p-6 shadow hover:shadow-md transition"
-            >
-              <div className="text-2xl md:text-3xl font-bold text-amber-700 mb-3">{h.step}</div>
-              <h4 className="text-lg md:text-xl font-semibold text-amber-800">{h.title}</h4>
-              <p className="text-gray-600 mt-2 text-sm md:text-base">{h.desc}</p>
+      <section id="how" className="px-6 md:px-12 py-20 bg-[#f5f0e8] relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full mb-6">
+              <Compass className="w-8 h-8 text-blue-700" />
             </div>
-          ))}
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+              How It Works
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-300 to-purple-300 mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Getting started with MindEase is simple and takes less than a
+              minute
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "1",
+                icon: <Globe className="w-8 h-8 text-blue-600" />,
+                title: "Visit MindEase",
+                desc: "Open our website on any device - phone, tablet, or computer. No downloads required.",
+                color: "blue",
+              },
+              {
+                step: "2",
+                icon: <MessageCircle className="w-8 h-8 text-green-600" />,
+                title: "Start Conversation",
+                desc: "Click 'Start Your Journey' and begin chatting with our AI companion instantly.",
+                color: "green",
+              },
+              {
+                step: "3",
+                icon: <Heart className="w-8 h-8 text-pink-600" />,
+                title: "Get Support",
+                desc: "Receive personalized guidance, coping strategies, and emotional support tailored to you.",
+                color: "pink",
+              },
+            ].map((step, i) => (
+              <div
+                key={i}
+                className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center group"
+              >
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-br from-${step.color}-400 to-${step.color}-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg`}
+                  >
+                    {step.step}
+                  </div>
+                </div>
+
+                <div
+                  className={`w-16 h-16 bg-gradient-to-br from-${step.color}-100 to-${step.color}-200 rounded-2xl flex items-center justify-center mx-auto mt-6 mb-6 group-hover:scale-110 transition-transform duration-200`}
+                >
+                  {step.icon}
+                </div>
+
+                <h3 className="text-xl font-bold text-amber-900 mb-4">
+                  {step.title}
+                </h3>
+                <p className="text-gray-700 leading-relaxed">{step.desc}</p>
+
+                {i < 2 && (
+                  <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                    <ChevronRight className="w-6 h-6 text-amber-300" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="px-6 md:px-12 py-12 md:py-20 bg-[#fcf9f4]">
-        <h3 className="text-2xl md:text-3xl font-bold text-center text-amber-900 mb-10">
-          Frequently Asked Questions
-        </h3>
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((f, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl shadow p-4 cursor-pointer"
-              onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-            >
-              <div className="flex justify-between items-center">
-                <h4 className="font-semibold text-base md:text-lg">{f.q}</h4>
-                <span className="text-xl">{openFAQ === i ? "-" : "+"}</span>
-              </div>
-              {openFAQ === i && (
-                <p className="text-gray-600 mt-2 text-sm md:text-base">{f.a}</p>
-              )}
+      {/* Mental Health Awareness Preview */}
+      <section className="px-6 md:px-12 py-20 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-200 to-purple-200 rounded-full mb-6">
+              <Lightbulb className="w-8 h-8 text-pink-700" />
             </div>
-          ))}
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+              Mental Health Awareness
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-pink-300 to-purple-300 mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Learn about common mental health conditions and discover coping
+              strategies
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Depression Card */}
+            <div className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-pink-200 rounded-2xl flex items-center justify-center mr-4">
+                  <Heart className="w-8 h-8 text-pink-600" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-amber-900">
+                    Understanding Depression
+                  </h3>
+                  <p className="text-gray-600">
+                    Learn about symptoms and coping strategies
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Depression affects millions worldwide. Discover what it is, how
+                it happens, and effective ways to manage and overcome it with
+                professional support and self-care strategies.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-pink-400 rounded-full mr-3"></div>
+                  Self-assessment tools
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-pink-400 rounded-full mr-3"></div>
+                  Coping strategies and techniques
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-pink-400 rounded-full mr-3"></div>
+                  Professional resources
+                </div>
+              </div>
+
+              <a
+                href="/depression"
+                className="group inline-flex items-center bg-gradient-to-r from-pink-400 to-pink-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-200"
+              >
+                Explore Depression Resources
+                <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+              </a>
+            </div>
+
+            {/* Anxiety Card */}
+            <div className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mr-4">
+                  <Wind className="w-8 h-8 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-amber-900">
+                    Managing Anxiety
+                  </h3>
+                  <p className="text-gray-600">
+                    Understand anxiety and find relief
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Anxiety can be overwhelming, but it's manageable. Learn about
+                different types of anxiety, triggers, and evidence-based
+                techniques to calm your mind and regain control.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                  Breathing and grounding exercises
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                  Anxiety management techniques
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                  Support resources
+                </div>
+              </div>
+
+              <a
+                href="/anxiety"
+                className="group inline-flex items-center bg-gradient-to-r from-blue-400 to-blue-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-200"
+              >
+                Explore Anxiety Resources
+                <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+              </a>
+            </div>
+          </div>
         </div>
-        {/* Bottom */}
-      <BackToTop/>
+      </section>
+
+      {/* Quick Relaxation Preview */}
+      <section className="px-6 md:px-12 py-20 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-200 to-blue-200 rounded-full mb-6">
+              <Waves className="w-8 h-8 text-green-700" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+              Quick Relaxation Exercises
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-green-300 to-blue-300 mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Instant relief techniques you can use anywhere, anytime
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Wind className="w-8 h-8 text-cyan-600" />,
+                title: "Breathing Exercises",
+                desc: "Simple breathing techniques to calm anxiety and reduce stress instantly.",
+                duration: "2-5 minutes",
+                bgColor: "from-cyan-100 to-cyan-200",
+              },
+              {
+                icon: <Eye className="w-8 h-8 text-purple-600" />,
+                title: "Guided Meditation",
+                desc: "Short mindfulness sessions to center your thoughts and find peace.",
+                duration: "5-10 minutes",
+                bgColor: "from-purple-100 to-purple-200",
+              },
+              {
+                icon: <Activity className="w-8 h-8 text-green-600" />,
+                title: "Progressive Relaxation",
+                desc: "Step-by-step muscle relaxation to release physical tension.",
+                duration: "10-15 minutes",
+                bgColor: "from-green-100 to-green-200",
+              },
+            ].map((exercise, i) => (
+              <div
+                key={i}
+                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center"
+              >
+                <div
+                  className={`w-16 h-16 bg-gradient-to-br ${exercise.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200`}
+                >
+                  {exercise.icon}
+                </div>
+
+                <h3 className="text-xl font-bold text-amber-900 mb-3">
+                  {exercise.title}
+                </h3>
+                <p className="text-gray-700 mb-4 leading-relaxed">
+                  {exercise.desc}
+                </p>
+
+                <div className="inline-flex items-center bg-amber-100 px-3 py-1 rounded-full text-amber-800 text-sm font-medium mb-6">
+                  <Clock className="w-3 h-3 mr-1" />
+                  {exercise.duration}
+                </div>
+
+                <button className="group w-full bg-gradient-to-r from-amber-400 to-amber-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center">
+                  <Play className="w-4 h-4 mr-2 group-hover:animate-pulse" />
+                  Try Now
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <a
+              href="/relaxation"
+              className="group inline-flex items-center bg-white text-amber-800 px-8 py-4 rounded-2xl font-semibold border-2 border-amber-200 hover:border-amber-400 hover:shadow-lg transition-all duration-200"
+            >
+              <Headphones className="w-5 h-5 mr-2" />
+              View All Relaxation Exercises
+              <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="px-6 md:px-12 py-20 bg-[#fcf9f4]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-200 to-orange-200 rounded-full mb-6">
+              <Target className="w-8 h-8 text-amber-700" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+              Our Mission & Vision
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-300 to-orange-300 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Mission */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-pink-200 rounded-2xl flex items-center justify-center mr-4">
+                  <Heart className="w-8 h-8 text-pink-600" />
+                </div>
+                <h3 className="text-3xl font-bold text-amber-900">
+                  Our Mission
+                </h3>
+              </div>
+
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                To make mental health support accessible, immediate, and
+                stigma-free for everyone. We believe that seeking help for
+                mental wellness should be as natural as taking care of your
+                physical health.
+              </p>
+
+              <div className="space-y-3">
+                {[
+                  "Break down barriers to mental health care",
+                  "Provide instant, compassionate support",
+                  "Reduce stigma around mental wellness",
+                  "Empower individuals with coping tools",
+                ].map((point, i) => (
+                  <div key={i} className="flex items-center text-gray-700">
+                    <div className="w-2 h-2 bg-pink-400 rounded-full mr-3"></div>
+                    {point}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Vision */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mr-4">
+                  <Eye className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-3xl font-bold text-amber-900">
+                  Our Vision
+                </h3>
+              </div>
+
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                A world where mental health support is universally accessible,
+                where AI and human compassion work together to create a more
+                emotionally healthy society for all.
+              </p>
+
+              <div className="space-y-3">
+                {[
+                  "Global mental wellness accessibility",
+                  "AI-enhanced therapeutic support",
+                  "Community-driven healing",
+                  "Preventive mental health care",
+                ].map((point, i) => (
+                  <div key={i} className="flex items-center text-gray-700">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                    {point}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why This Project */}
+      <section className="px-6 md:px-12 py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full mb-6">
+              <Lightbulb className="w-8 h-8 text-purple-700" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+              Why This Project Matters
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-purple-300 to-pink-300 mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto">
+              Mental health challenges affect millions globally, yet barriers to
+              care persist. Here's why MindEase is needed now more than ever.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                icon: <Users className="w-8 h-8 text-red-600" />,
+                stat: "1 in 4",
+                title: "People Affected",
+                desc: "1 in 4 people will experience mental health issues in their lifetime, yet many never receive support.",
+                bgColor: "from-red-100 to-red-200",
+              },
+              {
+                icon: <Clock className="w-8 h-8 text-orange-600" />,
+                stat: "6 Months",
+                title: "Average Wait Time",
+                desc: "The average wait time for mental health services can be months, when help is needed immediately.",
+                bgColor: "from-orange-100 to-orange-200",
+              },
+              {
+                icon: <Shield className="w-8 h-8 text-blue-600" />,
+                stat: "60%",
+                title: "Don't Seek Help",
+                desc: "60% of people with mental health conditions don't receive treatment due to stigma and barriers.",
+                bgColor: "from-blue-100 to-blue-200",
+              },
+            ].map((stat, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center"
+              >
+                <div
+                  className={`w-16 h-16 bg-gradient-to-br ${stat.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6`}
+                >
+                  {stat.icon}
+                </div>
+                <div className="text-3xl font-bold text-amber-900 mb-2">
+                  {stat.stat}
+                </div>
+                <h3 className="text-xl font-semibold text-amber-800 mb-4">
+                  {stat.title}
+                </h3>
+                <p className="text-gray-700 leading-relaxed">{stat.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-3xl font-bold text-amber-900 mb-6">
+                  Breaking Down Barriers
+                </h3>
+                <div className="space-y-6">
+                  {[
+                    {
+                      icon: <Globe className="w-6 h-6 text-green-600" />,
+                      title: "Accessibility",
+                      desc: "Available 24/7 from anywhere with internet access",
+                    },
+                    {
+                      icon: <Lock className="w-6 h-6 text-blue-600" />,
+                      title: "Privacy",
+                      desc: "No stigma, no judgment - completely anonymous support",
+                    },
+                    {
+                      icon: <Heart className="w-6 h-6 text-pink-600" />,
+                      title: "Immediate Help",
+                      desc: "Instant response when you need support most",
+                    },
+                    {
+                      icon: <Brain className="w-6 h-6 text-purple-600" />,
+                      title: "Evidence-Based",
+                      desc: "Grounded in proven therapeutic techniques and research",
+                    },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-amber-800 mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-gray-600">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-8 text-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Heart className="w-12 h-12 text-purple-700" />
+                  </div>
+                  <h4 className="text-xl font-bold text-amber-900 mb-4">
+                    Making a Difference
+                  </h4>
+                  <p className="text-gray-700">
+                    Every conversation matters. Every person deserves support.
+                    MindEase bridges the gap between needing help and getting
+                    it.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team & Ethical Considerations */}
+      <section className="px-6 md:px-12 py-20 bg-[#fcf9f4]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-200 to-blue-200 rounded-full mb-6">
+              <Users className="w-8 h-8 text-green-700" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+              Our Commitment to Ethics
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-green-300 to-blue-300 mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto">
+              Built with responsibility, transparency, and your wellbeing as our
+              highest priority
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Ethical Principles */}
+            <div className="space-y-8">
+              <h3 className="text-3xl font-bold text-amber-900 mb-8">
+                Our Ethical Principles
+              </h3>
+
+              {[
+                {
+                  icon: <Shield className="w-6 h-6 text-blue-600" />,
+                  title: "Privacy First",
+                  desc: "Your data is encrypted, never sold, and processed with the highest security standards. We believe privacy is fundamental to healing.",
+                },
+                {
+                  icon: <Heart className="w-6 h-6 text-pink-600" />,
+                  title: "Do No Harm",
+                  desc: "Our AI is trained to recognize crisis situations and always directs users to professional help when needed. We supplement, never replace, professional care.",
+                },
+                {
+                  icon: <Eye className="w-6 h-6 text-purple-600" />,
+                  title: "Transparency",
+                  desc: "We're clear about our AI's capabilities and limitations. Users always know they're interacting with AI, not a human therapist.",
+                },
+                {
+                  icon: <Users className="w-6 h-6 text-green-600" />,
+                  title: "Inclusivity",
+                  desc: "MindEase is designed to be culturally sensitive and accessible to people from all backgrounds, identities, and experiences.",
+                },
+                {
+                  icon: <Book className="w-6 h-6 text-orange-600" />,
+                  title: "Evidence-Based",
+                  desc: "All our content and approaches are grounded in scientific research and reviewed by licensed mental health professionals.",
+                },
+              ].map((principle, i) => (
+                <div
+                  key={i}
+                  className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center">
+                    {principle.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-amber-800 mb-2">
+                      {principle.title}
+                    </h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      {principle.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Safety Measures */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg">
+              <h3 className="text-3xl font-bold text-amber-900 mb-8">
+                Safety Measures
+              </h3>
+
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4 p-4 bg-red-50 rounded-2xl">
+                  <div className="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center">
+                    <UserCheck className="w-5 h-5 text-red-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-red-800">
+                      Crisis Detection
+                    </h4>
+                    <p className="text-red-700 text-sm">
+                      AI trained to identify crisis situations and provide
+                      immediate resources
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4 p-4 bg-blue-50 rounded-2xl">
+                  <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-blue-800">
+                      Emergency Contacts
+                    </h4>
+                    <p className="text-blue-700 text-sm">
+                      Direct links to crisis hotlines and emergency services
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-2xl">
+                  <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                    <FileText className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-green-800">
+                      Professional Resources
+                    </h4>
+                    <p className="text-green-700 text-sm">
+                      Curated list of licensed therapists and mental health
+                      services
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4 p-4 bg-purple-50 rounded-2xl">
+                  <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+                    <Brain className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-purple-800">
+                      Continuous Learning
+                    </h4>
+                    <p className="text-purple-700 text-sm">
+                      Regular updates and improvements based on latest research
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 p-6 bg-amber-50 rounded-2xl border border-amber-200">
+                <div className="flex items-center mb-3">
+                  <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center mr-3">
+                    <Lightbulb className="w-4 h-4 text-amber-600" />
+                  </div>
+                  <h4 className="font-bold text-amber-800">Important Note</h4>
+                </div>
+                <p className="text-amber-700 text-sm leading-relaxed">
+                  MindEase is designed to complement, not replace, professional
+                  mental health care. If you're experiencing a mental health
+                  crisis, please contact emergency services or a crisis hotline
+                  immediately.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section
+        id="faq"
+        className="px-6 md:px-12 py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"
+      >
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full mb-6">
+              <MessageCircle className="w-8 h-8 text-blue-700" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+              Frequently Asked Questions
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-300 to-purple-300 mx-auto rounded-full mb-6"></div>
+            <p className="text-xl text-gray-700">
+              Everything you need to know about MindEase
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-200 hover:shadow-xl"
+              >
+                <button
+                  className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
+                >
+                  <h3 className="font-semibold text-lg text-amber-900 pr-4">
+                    {faq.q}
+                  </h3>
+                  <div className="flex-shrink-0">
+                    {openFAQ === i ? (
+                      <ChevronDown className="w-6 h-6 text-amber-600 transform rotate-180 transition-transform duration-200" />
+                    ) : (
+                      <ChevronDown className="w-6 h-6 text-amber-600 transition-transform duration-200" />
+                    )}
+                  </div>
+                </button>
+                {openFAQ === i && (
+                  <div className="px-6 pb-6">
+                    <div className="border-t pt-4">
+                      <p className="text-gray-700 leading-relaxed">{faq.a}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="px-6 md:px-12 py-20 bg-gradient-to-r from-amber-500 via-orange-500 to-pink-500 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <div className="mb-8">
+            <Heart className="w-16 h-16 mx-auto mb-6 opacity-90" />
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Ready to Begin Your Journey?
+            </h2>
+            <p className="text-xl md:text-2xl opacity-90 leading-relaxed">
+              Take the first step towards better mental health. Your wellbeing
+              matters, and help is just a click away.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/chat"
+              className="group bg-white text-amber-600 px-8 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
+            >
+              <MessageCircle className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+              Start Your Journey Now
+            </a>
+            <a
+              href="/support"
+              className="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-2xl font-bold hover:bg-white hover:text-amber-600 transition-all duration-200 flex items-center justify-center"
+            >
+              <UserCheck className="w-5 h-5 mr-2" />
+              Find Professional Help
+            </a>
+          </div>
+
+          <p className="mt-8 text-sm opacity-75">
+            Available 24/7 • Completely Private • No Registration Required
+          </p>
+          {/* Back to Top */}
+          <BackToTop />
+        </div>
       </section>
 
       {/* Footer */}
-      {/* <footer className="bg-amber-800 text-white py-8 px-6 text-center">
-        <p className="mb-4 text-sm md:text-base">© 2025 MindEase. All Rights Reserved.</p>
-        <div className="flex flex-wrap justify-center gap-6 text-sm md:text-base">
-          <a href="#" className="hover:text-amber-300">Facebook</a>
-          <a href="#" className="hover:text-amber-300">Twitter</a>
-          <a href="#" className="hover:text-amber-300">Instagram</a>
-          <a href="#" className="hover:text-amber-300">LinkedIn</a>
-        </div>
-      </footer> */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }
