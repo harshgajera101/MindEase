@@ -16,6 +16,8 @@
 
 import { useState } from "react";
 import { Menu, X, Heart } from "lucide-react";
+import Logo from "../assets/img/logo.png";
+import Logo1 from "../assets/img/logo1.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +35,7 @@ export default function Navbar() {
           {/* Logo with icon */}
           <div className="flex items-center space-x-3">
             <Heart className="w-7 h-7 text-amber-200" fill="currentColor" />
+            {/* <img src={Logo1} alt="" className="w-16 h-16"/> */}
             <h1 className="text-2xl font-bold tracking-wide hover:text-amber-200 transition-colors duration-200 cursor-pointer">
               MindEase
             </h1>
