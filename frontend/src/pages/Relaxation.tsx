@@ -1,4 +1,3 @@
-// src/pages/Relaxation.tsx
 import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -34,7 +33,7 @@ export default function Relaxation() {
   const [selectedMusic, setSelectedMusic] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [journalEntry, setJournalEntry] = useState("");
-  const [currentTip, setCurrentTip] = useState(0);
+  const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
   const [selectedDuration, setSelectedDuration] = useState(60); // 1 minute default
   
   const breathingIntervalRef = useRef(null);
@@ -174,231 +173,235 @@ export default function Relaxation() {
         </section>
 
         {/* Enhanced Breathing Exercise */}
-        <section className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 mb-16">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-4 sm:p-6 lg:p-8 border border-white/20">
-            <div className="text-center mb-6 sm:mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center flex-wrap">
-                <Wind className="w-6 sm:w-8 h-6 sm:h-8 mr-2 sm:mr-3 text-amber-600" />
-                Guided Breathing
-              </h2>
-              <p className="text-sm sm:text-base text-gray-600 px-2">Choose your duration and let the rhythm guide you to calmness</p>
-            </div>
-
-            {/* Duration Selection */}
-            <div className="flex justify-center mb-6 sm:mb-8 space-x-2 sm:space-x-4">
-              {[
-                { duration: 60, label: '1m' },
-                { duration: 180, label: '3m' },
-                { duration: 300, label: '5m' }
-              ].map((option) => (
-                <button
-                  key={option.duration}
-                  onClick={() => setSelectedDuration(option.duration)}
-                  className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl transition-all text-sm sm:text-base font-medium ${
-                    selectedDuration === option.duration
-                      ? 'bg-amber-500 text-white shadow-lg scale-105'
-                      : 'bg-amber-100 text-amber-800 hover:bg-amber-200'
-                  }`}
-                  disabled={isBreathing}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Breathing Circle */}
-            <div className="flex flex-col items-center">
-              <div className="relative mb-6 sm:mb-8">
-                <div
-                  className={`w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-gradient-to-br from-amber-200 to-orange-200 flex flex-col items-center justify-center text-gray-800 font-bold shadow-2xl border-4 border-white/50 transition-all duration-[4000ms] ${
-                    getCurrentBreathingPhase().scale
-                  } ${isBreathing ? 'animate-pulse' : ''}`}
-                >
-                  <div className="text-lg sm:text-xl lg:text-2xl mb-2 text-center px-4">
-                    {getCurrentBreathingPhase().text}
-                  </div>
-                  {isBreathing && (
-                    <div className="text-xs sm:text-sm font-normal text-gray-600">
-                      {formatTime(breathingTimer)}
-                    </div>
-                  )}
-                  {!isBreathing && (
-                    <div className="text-xs sm:text-sm font-normal text-gray-600 text-center px-4">
-                      {selectedDuration / 60} minute{selectedDuration > 60 ? 's' : ''} session
-                    </div>
-                  )}
-                </div>
-                
-                {/* Breathing ring indicator */}
-                {isBreathing && (
-                  <div className="absolute inset-0 rounded-full border-4 border-amber-400 animate-ping opacity-20"></div>
-                )}
-                
-                {/* Progress ring */}
-                {isBreathing && (
-                  <div className="absolute inset-0 rounded-full">
-                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="48"
-                        fill="none"
-                        stroke="rgba(251, 191, 36, 0.2)"
-                        strokeWidth="2"
-                      />
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="48"
-                        fill="none"
-                        stroke="rgb(251, 191, 36)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeDasharray={`${2 * Math.PI * 48}`}
-                        strokeDashoffset={`${2 * Math.PI * 48 * (breathingTimer / selectedDuration)}`}
-                        className="transition-all duration-1000"
-                      />
-                    </svg>
-                  </div>
-                )}
+        <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 border border-blue-200">
+            <div className="max-w-2xl mx-auto">
+              <div className="text-center mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center flex-wrap">
+                  <Wind className="w-6 sm:w-8 h-6 sm:h-8 mr-2 sm:mr-3 text-blue-600" />
+                  Guided Breathing
+                </h2>
+                <p className="text-sm sm:text-base text-gray-700 px-2">Choose your duration and let the rhythm guide you to calmness</p>
               </div>
 
-              {/* Instructions */}
-              {isBreathing && (
-                <div className="text-center mb-6 px-4">
-                  <p className="text-sm sm:text-base text-gray-600 mb-2">
-                    Follow the circle and breathe naturally
-                  </p>
-                  <div className="flex justify-center items-center space-x-4 text-xs sm:text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                      <span>Inhale: 4s</span>
+              {/* Duration Selection */}
+              <div className="flex justify-center mb-6 sm:mb-8 space-x-2 sm:space-x-4">
+                {[
+                  { duration: 60, label: '1m' },
+                  { duration: 180, label: '3m' },
+                  { duration: 300, label: '5m' }
+                ].map((option) => (
+                  <button
+                    key={option.duration}
+                    onClick={() => setSelectedDuration(option.duration)}
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl transition-all text-sm sm:text-base font-medium ${
+                      selectedDuration === option.duration
+                        ? 'bg-blue-500 text-white shadow-lg scale-105'
+                        : 'bg-blue-100 text-blue-800 hover:bg-blue-200'
+                    }`}
+                    disabled={isBreathing}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Breathing Circle */}
+              <div className="flex flex-col items-center">
+                <div className="relative mb-6 sm:mb-8">
+                  <div
+                    className={`w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-gradient-to-br from-blue-200 to-indigo-200 flex flex-col items-center justify-center text-gray-800 font-bold shadow-2xl border-4 border-white/50 transition-all duration-[4000ms] ${
+                      getCurrentBreathingPhase().scale
+                    }`}
+                  >
+                    <div className="text-lg sm:text-xl lg:text-2xl mb-2 text-center px-4">
+                      {getCurrentBreathingPhase().text}
                     </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                      <span>Hold: 2s</span>
+                    {isBreathing && (
+                      <div className="text-xs sm:text-sm font-normal text-gray-600">
+                        {formatTime(breathingTimer)}
+                      </div>
+                    )}
+                    {!isBreathing && (
+                      <div className="text-xs sm:text-sm font-normal text-gray-600 text-center px-4">
+                        {selectedDuration / 60} minute{selectedDuration > 60 ? 's' : ''} session
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Progress ring */}
+                  {isBreathing && (
+                    <div className="absolute inset-0 rounded-full">
+                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="48"
+                          fill="none"
+                          stroke="rgba(59, 130, 246, 0.2)"
+                          strokeWidth="2"
+                        />
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="48"
+                          fill="none"
+                          stroke="rgb(59, 130, 246)"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeDasharray={`${2 * Math.PI * 48}`}
+                          strokeDashoffset={`${2 * Math.PI * 48 * (breathingTimer / selectedDuration)}`}
+                          className="transition-all duration-1000"
+                        />
+                      </svg>
                     </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-orange-400 rounded-full mr-2"></div>
-                      <span>Exhale: 6s</span>
+                  )}
+                </div>
+
+                {/* Instructions */}
+                {isBreathing && (
+                  <div className="text-center mb-6 px-4">
+                    <p className="text-sm sm:text-base text-gray-700 mb-2">
+                      Follow the circle and breathe naturally
+                    </p>
+                    <div className="flex justify-center items-center space-x-4 text-xs sm:text-sm text-gray-600">
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                        <span>Inhale: 4s</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                        <span>Hold: 2s</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-orange-400 rounded-full mr-2"></div>
+                        <span>Exhale: 6s</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Control Buttons */}
-              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
-                {!isBreathing ? (
-                  <button
-                    onClick={startBreathing}
-                    className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-sm sm:text-base font-medium"
-                  >
-                    <Play className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
-                    Start Breathing
-                  </button>
-                ) : (
-                  <button
-                    onClick={stopBreathing}
-                    className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-sm sm:text-base font-medium"
-                  >
-                    <Pause className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
-                    Stop Session
-                  </button>
-                )}
-                
-                {isBreathing && (
-                  <button
-                    onClick={stopBreathing}
-                    className="flex items-center justify-center px-4 sm:px-6 py-3 sm:py-4 bg-gray-500 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-sm sm:text-base font-medium"
-                  >
-                    <RotateCcw className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
-                    Reset
-                  </button>
-                )}
+                {/* Control Buttons */}
+                <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+                  {!isBreathing ? (
+                    <button
+                      onClick={startBreathing}
+                      className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-sm sm:text-base font-medium"
+                    >
+                      <Play className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
+                      Start Breathing
+                    </button>
+                  ) : (
+                    <button
+                      onClick={stopBreathing}
+                      className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-sm sm:text-base font-medium"
+                    >
+                      <Pause className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
+                      Stop Session
+                    </button>
+                  )}
+                  
+                  {isBreathing && (
+                    <button
+                      onClick={stopBreathing}
+                      className="flex items-center justify-center px-4 sm:px-6 py-3 sm:py-4 bg-gray-500 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-sm sm:text-base font-medium"
+                    >
+                      <RotateCcw className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
+                      Reset
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Enhanced Music/Sounds Section */}
-        <section className="relative z-10 max-w-7xl mx-auto px-6 mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4 flex items-center justify-center">
-              <Music className="w-10 h-10 mr-4 text-amber-600" />
-              Healing Sounds
-            </h2>
-            <p className="text-gray-600 text-lg">Immerse yourself in carefully selected frequencies for deep relaxation</p>
-          </div>
+        <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+          <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 border border-purple-200">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 flex items-center justify-center flex-wrap">
+                <Music className="w-8 sm:w-10 h-8 sm:h-10 mr-3 sm:mr-4 text-purple-600" />
+                Healing Sounds
+              </h2>
+              <p className="text-gray-700 text-base sm:text-lg">Immerse yourself in carefully selected frequencies for deep relaxation</p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {musicOptions.map((music) => (
-              <div key={music.id} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20">
-                <div className={`w-16 h-16 bg-gradient-to-br ${music.color} rounded-full flex items-center justify-center mb-4 mx-auto`}>
-                  <music.icon className="w-8 h-8 text-white" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {musicOptions.map((music) => (
+                <div key={music.id} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${music.color} rounded-full flex items-center justify-center mb-4 mx-auto`}>
+                    <music.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 text-center mb-2">{music.name}</h3>
+                  <p className="text-gray-600 text-center mb-4">{music.description}</p>
+                  
+                  <div className="flex justify-center space-x-2">
+                    <button
+                      onClick={() => {
+                        setSelectedMusic(music.id);
+                        setIsPlaying(!isPlaying);
+                      }}
+                      className="flex items-center px-6 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                    >
+                      {selectedMusic === music.id && isPlaying ? (
+                        <><Pause className="w-4 h-4 mr-2" /> Pause</>
+                      ) : (
+                        <><Play className="w-4 h-4 mr-2" /> Play</>
+                      )}
+                    </button>
+                    <button className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                      <Volume2 className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 text-center mb-2">{music.name}</h3>
-                <p className="text-gray-600 text-center mb-4">{music.description}</p>
-                
-                <div className="flex justify-center space-x-2">
-                  <button
-                    onClick={() => {
-                      setSelectedMusic(music.id);
-                      setIsPlaying(!isPlaying);
-                    }}
-                    className="flex items-center px-6 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                  >
-                    {selectedMusic === music.id && isPlaying ? (
-                      <><Pause className="w-4 h-4 mr-2" /> Pause</>
-                    ) : (
-                      <><Play className="w-4 h-4 mr-2" /> Play</>
-                    )}
-                  </button>
-                  <button className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Journaling Section */}
-        <section className="relative z-10 max-w-4xl mx-auto px-6 mb-16">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 border border-white/20">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center">
-                <Edit3 className="w-8 h-8 mr-3 text-amber-600" />
-                Mindful Journaling
-              </h2>
-              <p className="text-gray-600">Express your thoughts and feelings in a safe, private space</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Today's Prompt:</h3>
-                <div className="bg-amber-50 p-6 rounded-xl border-l-4 border-amber-400 mb-4">
-                  <p className="text-gray-700 italic">"{journalingPrompts[Math.floor(Math.random() * journalingPrompts.length)]}"</p>
-                </div>
-                <button className="text-amber-600 hover:text-amber-700 flex items-center text-sm">
-                  <RefreshCw className="w-4 h-4 mr-1" />
-                  New Prompt
-                </button>
+        <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+          <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 border border-green-200">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center flex-wrap">
+                  <Edit3 className="w-6 sm:w-8 h-6 sm:h-8 mr-2 sm:mr-3 text-green-600" />
+                  Mindful Journaling
+                </h2>
+                <p className="text-gray-700 text-sm sm:text-base">Express your thoughts and feelings in a safe, private space</p>
               </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Your Thoughts:</h3>
-                <textarea
-                  value={journalEntry}
-                  onChange={(e) => setJournalEntry(e.target.value)}
-                  placeholder="Write freely... your thoughts are safe here."
-                  className="w-full h-32 p-4 border border-gray-200 rounded-xl focus:border-amber-400 focus:outline-none resize-none bg-white/80 backdrop-blur-sm"
-                />
-                <div className="flex justify-between items-center mt-2 text-sm text-gray-500">
-                  <span>{journalEntry.length} characters</span>
-                  <span className="flex items-center">
-                    <Heart className="w-4 h-4 mr-1 text-red-400" />
-                    Private & Secure
-                  </span>
+
+              <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">Today's Prompt:</h3>
+                  <div className="bg-green-100 p-4 sm:p-6 rounded-xl border-l-4 border-green-400 mb-4">
+                    <p className="text-gray-700 italic text-sm sm:text-base">"{journalingPrompts[currentPromptIndex]}"</p>
+                  </div>
+                  <button 
+                    onClick={() => setCurrentPromptIndex((prev) => (prev + 1) % journalingPrompts.length)}
+                    className="text-green-600 hover:text-green-700 flex items-center text-sm transition-colors"
+                  >
+                    <RefreshCw className="w-4 h-4 mr-1" />
+                    New Prompt
+                  </button>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">Your Thoughts:</h3>
+                  <textarea
+                    value={journalEntry}
+                    onChange={(e) => setJournalEntry(e.target.value)}
+                    placeholder="Write freely... your thoughts are safe here."
+                    className="w-full h-28 sm:h-32 p-3 sm:p-4 border border-gray-200 rounded-xl focus:border-green-400 focus:outline-none resize-none bg-white/80 backdrop-blur-sm text-sm sm:text-base"
+                  />
+                  <div className="flex justify-between items-center mt-2 text-xs sm:text-sm text-gray-500">
+                    <span>{journalEntry.length} characters</span>
+                    <span className="flex items-center">
+                      <Heart className="w-3 sm:w-4 h-3 sm:h-4 mr-1 text-red-400" />
+                      Private & Secure
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -406,68 +409,72 @@ export default function Relaxation() {
         </section>
 
         {/* Quick Mood Uplift Tips */}
-        <section className="relative z-10 max-w-6xl mx-auto px-6 mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4 flex items-center justify-center">
-              <Lightbulb className="w-10 h-10 mr-4 text-amber-600" />
-              Instant Mood Boosters
-            </h2>
-            <p className="text-gray-600 text-lg">Simple actions that can shift your energy in just minutes</p>
-          </div>
+        <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+          <div className="bg-gradient-to-br from-orange-50 to-yellow-100 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 border border-orange-200">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 flex items-center justify-center flex-wrap">
+                <Lightbulb className="w-8 sm:w-10 h-8 sm:h-10 mr-3 sm:mr-4 text-orange-600" />
+                Instant Mood Boosters
+              </h2>
+              <p className="text-gray-700 text-base sm:text-lg">Simple actions that can shift your energy in just minutes</p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {quickTips.map((tip, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20 cursor-pointer group">
-                <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <tip.icon className="w-6 h-6 text-white" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {quickTips.map((tip, index) => (
+                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20 cursor-pointer group">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <tip.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">{tip.text}</p>
+                  <div className="mt-4 text-orange-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    Try this now →
+                  </div>
                 </div>
-                <p className="text-gray-700 leading-relaxed">{tip.text}</p>
-                <div className="mt-4 text-amber-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  Try this now →
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Grounding Exercise */}
-        <section className="relative z-10 max-w-4xl mx-auto px-6 mb-16">
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 border border-blue-100">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center">
-                <Star className="w-8 h-8 mr-3 text-blue-600" />
-                5-4-3-2-1 Grounding
-              </h2>
-              <p className="text-gray-600">Use your senses to anchor yourself in the present moment</p>
-            </div>
+        <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+          <div className="bg-gradient-to-br from-indigo-50 to-blue-100 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 border border-indigo-200">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center flex-wrap">
+                  <Star className="w-6 sm:w-8 h-6 sm:h-8 mr-2 sm:mr-3 text-indigo-600" />
+                  5-4-3-2-1 Grounding
+                </h2>
+                <p className="text-gray-700 text-sm sm:text-base">Use your senses to anchor yourself in the present moment</p>
+              </div>
 
-            <div className="grid md:grid-cols-5 gap-4 text-center">
-              <div className="bg-white/80 p-4 rounded-xl shadow-sm">
-                <div className="text-2xl font-bold text-blue-600 mb-2">5</div>
-                <p className="text-sm text-gray-600">Things you can <strong>see</strong></p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 text-center mb-6 sm:mb-8">
+                <div className="bg-white/80 p-4 rounded-xl shadow-sm">
+                  <div className="text-2xl font-bold text-blue-600 mb-2">5</div>
+                  <p className="text-sm text-gray-600">Things you can <strong>see</strong></p>
+                </div>
+                <div className="bg-white/80 p-4 rounded-xl shadow-sm">
+                  <div className="text-2xl font-bold text-green-600 mb-2">4</div>
+                  <p className="text-sm text-gray-600">Things you can <strong>touch</strong></p>
+                </div>
+                <div className="bg-white/80 p-4 rounded-xl shadow-sm">
+                  <div className="text-2xl font-bold text-yellow-600 mb-2">3</div>
+                  <p className="text-sm text-gray-600">Things you can <strong>hear</strong></p>
+                </div>
+                <div className="bg-white/80 p-4 rounded-xl shadow-sm">
+                  <div className="text-2xl font-bold text-pink-600 mb-2">2</div>
+                  <p className="text-sm text-gray-600">Things you can <strong>smell</strong></p>
+                </div>
+                <div className="bg-white/80 p-4 rounded-xl shadow-sm">
+                  <div className="text-2xl font-bold text-purple-600 mb-2">1</div>
+                  <p className="text-sm text-gray-600">Thing you can <strong>taste</strong></p>
+                </div>
               </div>
-              <div className="bg-white/80 p-4 rounded-xl shadow-sm">
-                <div className="text-2xl font-bold text-green-600 mb-2">4</div>
-                <p className="text-sm text-gray-600">Things you can <strong>touch</strong></p>
-              </div>
-              <div className="bg-white/80 p-4 rounded-xl shadow-sm">
-                <div className="text-2xl font-bold text-yellow-600 mb-2">3</div>
-                <p className="text-sm text-gray-600">Things you can <strong>hear</strong></p>
-              </div>
-              <div className="bg-white/80 p-4 rounded-xl shadow-sm">
-                <div className="text-2xl font-bold text-pink-600 mb-2">2</div>
-                <p className="text-sm text-gray-600">Things you can <strong>smell</strong></p>
-              </div>
-              <div className="bg-white/80 p-4 rounded-xl shadow-sm">
-                <div className="text-2xl font-bold text-purple-600 mb-2">1</div>
-                <p className="text-sm text-gray-600">Thing you can <strong>taste</strong></p>
-              </div>
-            </div>
 
-            <div className="text-center mt-8">
-              <button className="px-8 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transform hover:scale-105 transition-all shadow-lg">
-                Start Grounding Exercise
-              </button>
+              <div className="text-center">
+                <button className="px-6 sm:px-8 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transform hover:scale-105 transition-all shadow-lg text-sm sm:text-base font-medium">
+                  Start Grounding Exercise
+                </button>
+              </div>
             </div>
           </div>
         </section>
