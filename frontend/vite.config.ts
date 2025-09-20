@@ -6,4 +6,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   // base: "/MindEase",
+  base: './', // Important for deployment
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets'
+  }
 })

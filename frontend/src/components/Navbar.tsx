@@ -79,6 +79,13 @@ export default function Navbar() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
             </a>
             <a 
+              href="/relaxation" 
+              className="relative hover:text-amber-200 transition-all duration-200 group"
+            >
+              <span className="relative z-10">Exercise</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </a>
+            {/* <a 
               href="/blog" 
               className="relative hover:text-amber-200 transition-all duration-200 group"
             >
@@ -91,7 +98,7 @@ export default function Navbar() {
             >
               <span className="relative z-10">Support</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
-            </a>
+            </a> */}
              <a 
               href="/login" 
               className="relative hover:text-amber-200 transition-all duration-200 group"
