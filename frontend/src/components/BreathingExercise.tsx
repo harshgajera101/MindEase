@@ -255,7 +255,7 @@ const BreathingExercise: React.FC = () => {
       </div>
 
       {/* small CSS for hold pulse */}
-      <style jsx>{`
+      <style>{`
         @keyframes holdPulse {
           0% { transform: scale(1.0); }
           50% { transform: scale(1.02); }
