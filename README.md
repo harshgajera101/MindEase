@@ -68,61 +68,6 @@ MindEase/
 └── README.md                       # Project documentation
 ```
 
-**Flow of the Project:**
-1. **Home Page** → Entry point with hero section, features overview, and quick access
-2. **Mental Health Education** → Depression & Anxiety resource pages with coping strategies
-3. **Assessment Tools** → Interactive quiz for personalized recommendations
-4. **AI Chatbot** → Personalized mental health support and conversations
-5. **Relaxation Center** → Guided breathing, healing sounds, journaling prompts
-6. **Resources** → Blog articles, crisis support, and professional help connections
-
----
-
-## ✨ Key Features
-
-### 🏠 **Home Page**
-- **Hero Section** with welcoming introduction and clear CTAs
-- **How It Works** - Simple 3-step process explanation
-- **Mental Health Awareness** preview cards for Depression & Anxiety
-- **Quick Relaxation** preview linking to mindfulness exercises
-
-### 🤖 **AI-Powered Chatbot**
-- **24/7 Personalized Support** - AI companion for mental wellness
-- **Conversation Memory** - Maintains context throughout sessions
-- **Empathetic Responses** - Trained on mental health best practices
-- **Crisis Detection** - Recognizes and responds to urgent situations
-
-### 🧘 **Relaxation & Mindfulness Suite**
-- **Guided Breathing Exercises** - Interactive breathing sessions (1m, 3m, 5m)
-- **Healing Sounds Library** - Nature sounds, 432Hz frequencies, ambient music
-- **Real-time Audio Playback** - Volume controls and continuous looping
-- **Mindful Journaling** - Rotating prompts for reflection and growth
-- **5-4-3-2-1 Grounding Technique** - Sensory-based anxiety management
-- **Instant Mood Boosters** - Quick energy-lifting activities
-
-### 📚 **Mental Health Education**
-- **Depression Support** - Comprehensive information, symptoms, coping strategies
-- **Anxiety Resources** - Understanding disorders, management techniques
-- **Evidence-Based Content** - Professionally curated mental health information
-- **Professional Help Guidance** - Connections to licensed therapists
-
-### 📊 **Assessment & Personalization**
-- **Interactive Mental Health Quiz** - Self-assessment questionnaire
-- **Personalized Results** - Tailored recommendations based on responses
-- **Chatbot Integration** - Quiz results inform AI conversations
-
-### 🌐 **Support & Resources**
-- **Crisis Helplines** - Immediate access to emergency support
-- **Blog & Articles** - Educational content on stress, mindfulness, habits
-- **FAQ Section** - Common questions and helpful answers
-- **Contact Support** - Direct communication with the team
-
-### 🎨 **Design & User Experience**
-- **Responsive Design** - Seamless experience across all devices
-- **Accessibility First** - WCAG compliant for inclusive access
-- **Calming Aesthetic** - Soft earth tones and gentle animations
-- **Intuitive Navigation** - User-friendly interface design
-
 ---
 
 ## 🛠️ Tech Stack
@@ -301,36 +246,6 @@ We welcome contributions to make MindEase better for everyone! Here's how you ca
 
 ---
 
-## 🔒 Privacy & Security
-
-- **Client-Side Processing** - No personal data sent to servers
-- **Local Storage Only** - Conversations remain on your device
-- **No Data Collection** - We don't track or store personal information
-- **Secure Connections** - HTTPS encryption for all communications
-- **Privacy by Design** - Minimal data collection principles
-
----
-
-## 🆘 Crisis Support Resources
-
-**If you're in immediate danger, please contact emergency services:**
-
-### **United States**
-- **Emergency**: 911
-- **National Suicide Prevention Lifeline**: 988
-- **Crisis Text Line**: Text HOME to 741741
-- **SAMHSA National Helpline**: 1-800-662-4357
-
-### **International**
-- **UK**: Samaritans - 116 123
-- **Canada**: Talk Suicide Canada - 1-833-456-4566
-- **Australia**: Lifeline - 13 11 14
-- **India**: AASRA - +91-22-27546669
-
-*MindEase includes direct links to these resources throughout the platform.*
-
----
-
 ## 📜 License
 
 This project is licensed under the **MIT License** - see the [LICENSE.md](LICENSE.md) file for details.
@@ -360,21 +275,6 @@ MIT License - you are free to:
 - Beta testers and early users for invaluable feedback
 - Organizations promoting mental health awareness globally
 - Everyone working to make wellness more accessible
-
----
-
-## 📞 Support & Contact
-
-### **Get Help**
-- 🌐 **Website**: [mindease.org](https://mindease.org)
-- 📧 **Email**: support@mindease.org
-- 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/mindease/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/yourusername/mindease/discussions)
-
-### **Connect With Us**
-- 📱 **Twitter**: [@MindEaseApp](https://twitter.com/mindeaseapp)
-- 📘 **LinkedIn**: [MindEase](https://linkedin.com/company/mindease)
-- 📰 **Blog**: [mindease.org/blog](https://mindease.org/blog)
 
 ---
 
