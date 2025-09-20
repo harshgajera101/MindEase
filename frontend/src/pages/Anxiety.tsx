@@ -71,12 +71,12 @@ export default function Anxiety() {
           <p className="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mb-8">
             Anxiety is more than feeling nervous—it's a common mental health
             condition that can interfere with daily life. Here, you can learn what
-            anxiety is, discover coping strategies, and take a quiz to reflect on
+            anxiety is, discover coping strategies, and take a Test to reflect on
             your wellbeing.
           </p>
           <button className="group px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-500 text-white text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              <Link to="/quiz/depression">Take the Quiz</Link>
+              <Link to="/quiz/depression">Take the Test</Link>
               <FileText className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>
@@ -287,7 +287,7 @@ export default function Anxiety() {
             <FileText className="w-10 h-10 text-blue-700" />
           </div>
           <h2 className="text-4xl font-bold mb-6 text-blue-900">
-            Take the Anxiety Self-Check Quiz
+            Take the Anxiety Self-Check Test
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 mx-auto rounded-full mb-8"></div>
           <p className="text-gray-700 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
@@ -297,7 +297,7 @@ export default function Anxiety() {
           </p>
           <button className="group px-10 py-5 bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              <Link to="/quiz/depression">Start Quiz</Link>
+              <Link to="/quiz/depression">Start Test</Link>
               <Sparkles className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>

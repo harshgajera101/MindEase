@@ -10,6 +10,8 @@ import LoginSignup from "./pages/LoginSignup";
 import QuizPage from "./pages/QuizPage";
 import Relaxation from "./pages/Relaxation"
 
+import BreathingExercise from "./components/BreathingExercise"
+
 function App() {
   return (
     <Routes>
@@ -22,6 +24,7 @@ function App() {
       <Route path="/support" element={<Support />} />
       <Route path="/login" element={<LoginSignup />} />
       <Route path="/relaxation" element={<Relaxation />} />
+      <Route path="/breathing" element={<BreathingExercise />} />
       <Route path="/quiz/:topic" element={<QuizPage />} />
     </Routes>
   );

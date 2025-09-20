@@ -71,11 +71,11 @@ export default function DepressionPage() {
           <p className="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mb-8">
             Depression is not just sadness—it's a serious mental health
             condition. Here you can learn more, find coping strategies, and take
-            a quiz to reflect on your wellbeing.
+            a test to reflect on your wellbeing.
           </p>
           <button className="group px-8 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              <Link to="/quiz/anxiety">Take the Quiz</Link>
+              <Link to="/quiz/anxiety">Take the Test</Link>
               <FileText className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>
@@ -299,7 +299,7 @@ export default function DepressionPage() {
             <FileText className="w-10 h-10 text-blue-700" />
           </div>
           <h2 className="text-4xl font-bold mb-6 text-amber-900">
-            Take the Depression Self-Check Quiz
+            Take the Depression Self-Check Test
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-300 to-purple-300 mx-auto rounded-full mb-8"></div>
           <p className="text-gray-700 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
@@ -308,7 +308,7 @@ export default function DepressionPage() {
           </p>
           <button className="group px-10 py-5 bg-gradient-to-r from-blue-400 to-purple-500 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              <Link to="/quiz/anxiety">Start Quiz</Link>
+              <Link to="/quiz/anxiety">Start Test</Link>
               <Sparkles className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>
