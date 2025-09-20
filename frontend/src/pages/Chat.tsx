@@ -7,7 +7,7 @@ export default function Chat() {
   const [messages, setMessages] = useState<{ text: string; sender: string; timestamp: Date }[]>([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [isConnected, setIsConnected] = useState(true);
+  // const [isConnected, setIsConnected] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 

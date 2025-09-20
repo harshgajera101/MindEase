@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Logo from "../assets/img/logo.png";
-import Logo1 from "../assets/img/logo1.png";
+// import Logo from "../assets/img/logo.png";
+// import Logo1 from "../assets/img/logo1.png";
 import {
   Heart,
   Brain,
@@ -52,7 +52,7 @@ const faqs = [
 ];
 
 export default function Home() {
-  const [isOpen] = useState(false);
+  // const [isOpen] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
