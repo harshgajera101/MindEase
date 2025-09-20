@@ -75,7 +75,7 @@ export default function DepressionPage() {
           </p>
           <button className="group px-8 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              <Link to="/quiz/anxiety">Take the Quiz</Link>
+              <Link to="/quiz/depression">Take the Quiz</Link>
               <FileText className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>
