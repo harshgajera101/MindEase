@@ -60,13 +60,19 @@ export default function Chat() {
     }
   }, [initialChatData]);
 
-  // --- MODIFIED: The sendMessage function with the timing fix ---
+  // --- FIXED: The sendMessage function with refined timing logic ---
   const sendMessage = async () => {
     if (!input.trim() || !sessionId || isTyping) return;
     
     const userInput = input.trim();
+    
+    // Add user message to the state immediately
     setMessages(prev => [...prev, { text: userInput, sender: 'user' }]);
+    
+    // Clear the input field immediately
     setInput("");
+
+    // Start typing animation
     setIsTyping(true);
 
     try {
@@ -83,10 +89,9 @@ export default function Chat() {
           setTimeout(() => {
             setMessages(prev => [...prev, { text: res, sender: 'bot' }]);
             
-            // Fix is here: only stop typing after the LAST message is displayed
+            // Only stop typing and check for session end after the last message is added
             if (index === data.bot_responses.length - 1) {
               setIsTyping(false);
-              // And check if the session is over after the last message
               if (res.toLowerCase().includes("goodbye") || res.toLowerCase().includes("take care!")) {
                 setIsSessionOver(true);
               }
@@ -95,7 +100,7 @@ export default function Chat() {
           delay += 1200;
         });
       } else {
-        // If there are no bot responses, stop typing immediately
+        // If no bot responses, simply stop typing
         setIsTyping(false);
       }
     } catch (error) {
@@ -103,7 +108,6 @@ export default function Chat() {
       setMessages(prev => [...prev, { text: "Sorry, I'm having trouble connecting. Please try again later.", sender: 'bot' }]);
       setIsTyping(false); // Stop typing on error
     }
-    // The 'finally' block was removed as it was causing the timing issue
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

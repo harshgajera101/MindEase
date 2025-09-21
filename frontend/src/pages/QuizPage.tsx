@@ -13,110 +13,110 @@ type Question = {
 
 // --- Your questions arrays remain the same ---
 const depressionQuestions: Question[] = [
-    {
-      id: 1,
-      text: "How often do you feel sad, down, or low without a clear reason?",
-      options: ["Never / Not at all", "Sometimes", "Often", "Almost Always"],
-    },
-    {
-      id: 2,
-      text: "Do you still enjoy activities, hobbies, or things that once made you happy?",
-      options: ["Almost Always", "Frequently", "Occasionally", "Not at all"], // Note: Reversed scoring
-    },
-    {
-      id: 3,
-      text: "How do you usually feel about your energy levels during the day?",
-      options: ["Energized", "Sometimes tired", "Often fatigued", "Completely exhausted"],
-    },
-    {
-      id: 4,
-      text: "How often do you feel hopeful and positive about the future?",
-      options: ["Almost Always", "Frequently", "Occasionally", "Not at all"], // Note: Reversed scoring
-    },
-    {
-      id: 5,
-      text: "How well do you sleep at night (quality, not just hours)?",
-      options: ["Very well", "Sometimes restless", "Often poorly", "Almost never well"],
-    },
-    {
-      id: 6,
-      text: "Do you find it difficult to concentrate on studies, work, or daily tasks?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
-    },
-    {
-      id: 7,
-      text: "How often do you feel guilty, worthless, or like a burden to others?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
-    },
-    {
-      id: 8,
-      text: "Do you notice changes in your appetite or eating habits lately?",
-      options: ["No change", "Minor changes", "Significant changes", "Major changes"],
-    },
-    {
-      id: 9,
-      text: "How often do you feel irritable, frustrated, or angry over small things?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
-    },
-    {
-      id: 10,
-      text: "Do you feel motivated to get out of bed and start your day?",
-      options: ["Almost Always", "Often", "Sometimes", "Never / Not at all"], // Note: Reversed scoring
-    },
-  ];
+  {
+    id: 1,
+    text: "How have you been feeling lately?",
+    options: ["Great", "Okay", "A bit low", "Really down"],
+  },
+  {
+    id: 2,
+    text: "Have you been able to enjoy things you usually like doing?",
+    options: ["Yes, as usual", "Sometimes", "Rarely", "Not at all"],
+  },
+  {
+    id: 3,
+    text: "Do you feel more tired than usual, even after resting?",
+    options: ["Not at all", "Sometimes", "Often", "Almost every day"],
+  },
+  {
+    id: 4,
+    text: "Has your sleep been good, or have you been sleeping too much or too little?",
+    options: ["Just fine", "Sometimes disturbed", "Often disturbed", "Nearly every night"],
+  },
+  {
+    id: 5,
+    text: "Have you noticed any changes in your appetite or eating habits?",
+    options: ["No change", "Slight changes", "Noticeable changes", "Significant changes"],
+  },
+  {
+    id: 6,
+    text: "Do you sometimes feel bad about yourself or like you’re not good enough?",
+    options: ["Not at all", "Sometimes", "Often", "Almost always"],
+  },
+  {
+    id: 7,
+    text: "Have you had trouble focusing on work, school, or daily tasks?",
+    options: ["No trouble", "Sometimes", "Often", "Almost always"],
+  },
+  {
+    id: 8,
+    text: "Have you been moving or speaking more slowly than usual, or feeling restless?",
+    options: ["Not at all", "Sometimes", "Often", "Almost always"],
+  },
+  {
+    id: 9,
+    text: "Have you been avoiding people or social situations?",
+    options: ["Not at all", "Sometimes", "Often", "Almost always"],
+  },
+  {
+    id: 10,
+    text: "Have you had thoughts about hurting yourself or that life isn’t worth living?",
+    options: ["Never", "Rarely", "Sometimes", "Often"],
+  },
+];
 
 const anxietyQuestions: Question[] = [
     {
       id: 1,
-      text: "How often do you feel nervous or on-edge without a specific reason?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Lately, have you felt nervous, anxious, or on edge?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 2,
-      text: "How often do you find it hard to control or stop worrying once you start?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Do you find yourself worrying about many different things, even small stuff?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 3,
-      text: "How frequently do you experience a rapid heartbeat, sweating, or trembling?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Have you felt tense, jittery, or unable to sit still recently?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 4,
-      text: "How often do you feel restless or unable to sit still during the day?",
-      options: ["Never", "Rarely", "Often", "Almost Always"],
+      text: "Do you have trouble calming down or relaxing?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 5,
-      text: "How often do you avoid social situations because of fear or discomfort?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Have you felt more easily annoyed or irritable than usual?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 6,
-      text: "How often do you expect the worst to happen?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Do your worries make it hard to focus, or do your thoughts race?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 7,
-      text: "How frequently do you have difficulty concentrating?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Has anxiety affected your sleep — trouble falling asleep, staying asleep, or restless sleep?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 8,
-      text: "How often do you have trouble falling asleep due to racing thoughts?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Have you noticed physical signs of anxiety, like a fast heartbeat, sweating, or shortness of breath?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 9,
-      text: "How often do you wake up with feelings of fear or worry?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Because of anxiety, have you been avoiding certain situations or tasks?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
     {
       id: 10,
-      text: "How frequently do you feel overwhelmed by your responsibilities?",
-      options: ["Never", "Sometimes", "Often", "Almost Always"],
+      text: "Has anxiety interfered with your daily life, work, or caused moments of panic?",
+      options: ["Not at all", "Several days", "More than half the days", "Nearly every day"],
     },
-  ];
+];
 
 
 export default function QuizPage() {

@@ -1,9 +1,16 @@
-# app.py
-
 import sys
 import uuid
+import spacy
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    print("SpaCy English model 'en_core_web_sm' not found. Please install it with:")
+    print("python -m spacy download en_core_web_sm")
+    sys.exit(1)
 
 app = Flask(__name__)
 CORS(app)
@@ -60,9 +67,6 @@ ANXIETY_TASKS = {
         "When you feel ready, please consider reaching out to someone you trust or a support hotline. Talking about these feelings can make a significant difference."
     ]
 }
-POSITIVE_STATUS = ["done", "okay", "finished", "completed", "yes", "ok"]
-NEGATIVE_STATUS = ["no", "i dont want to do", "never", "not today", "i don't want to do"]
-LATER_STATUS = ["not now", "later", "afterwards", "maybe"]
 
 # --- In-memory storage for chat sessions ---
 chat_sessions = {}
@@ -81,6 +85,49 @@ def get_anxiety_level(score):
     elif 15 <= score <= 21: return "Severe", "Severe Anxiety"
     else: return None, None
 
+def get_intent(user_message):
+    """
+    Analyzes a user's message using spaCy to determine the intent.
+    Returns one of 'positive', 'negative', 'later', or 'unknown'.
+    """
+    doc = nlp(user_message.lower())
+
+    positive_keywords = {"yes", "yeah", "yep", "sure", "ok", "okay", "correct", "true", "done", "finished", "completed", "thank", "thanks"}
+    negative_keywords = {"no", "nope", "not", "don't", "can't", "never", "apologies"}
+    later_keywords = {"later", "afterwards", "maybe", "not now"}
+
+    if any(token.lemma_ in positive_keywords for token in doc):
+        return "positive"
+    elif any(token.lemma_ in negative_keywords for token in doc):
+        return "negative"
+    elif any(token.lemma_ in later_keywords for token in doc):
+        return "later"
+    
+    if any(token.text in positive_keywords for token in doc):
+        return "positive"
+    elif any(token.text in negative_keywords for token in doc):
+        return "negative"
+    elif any(token.text in later_keywords for token in doc):
+        return "later"
+
+    return "unknown"
+
+def get_sentiment(user_message):
+    """
+    Analyzes user message for sentiment based on a simple keyword list.
+    Returns a positive or negative score.
+    """
+    positive_words = {"good", "great", "better", "well", "happy", "ok", "calm", "relieved"}
+    negative_words = {"bad", "sad", "worse", "not good", "down", "stressed", "anxious", "tired", "difficult"}
+    
+    score = 0
+    doc = nlp(user_message.lower())
+    for token in doc:
+        if token.lemma_ in positive_words:
+            score += 1
+        elif token.lemma_ in negative_words:
+            score -= 1
+    return score
 
 @app.route('/start_session', methods=['POST'])
 def start_session():
@@ -116,29 +163,36 @@ def start_session():
     }
     return jsonify(response_data)
 
-
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.get_json()
     session_id = data.get('session_id')
-    user_message = data.get('message', '').lower()
+    user_message = data.get('message', '').lower().strip()
     
+    exit_keywords = {"bye", "by", "goodbye", "see you soon", "gotta go"}
+    if user_message in exit_keywords:
+        chat_sessions.pop(session_id, None)
+        return jsonify({"bot_responses": ["Goodbye!"]})
+
     state = chat_sessions.get(session_id)
     if not state:
-        return jsonify({"error": "Invalid session ID"}), 400
+        return jsonify({"error": "Invalid session ID or session ended"}), 400
 
     bot_responses = []
+    user_intent = get_intent(user_message)
 
     if state["step"] == "confirm_diagnosis":
-        if user_message in POSITIVE_STATUS:
+        if user_intent == "positive":
             state["step"] = "ask_to_try"
             bot_responses.append("I understand this can be difficult. I have a few small, gentle tasks that might help you feel a bit of relief. Shall we try?")
-        else:
+        elif user_intent == "negative":
             state["step"] = "end"
             bot_responses.append("I see. My apologies. In that case, let's end our session here. Take care!")
-    
+        else:
+            bot_responses.append("I'm sorry, I didn't quite understand. Please confirm if that is correct. (yes/no)")
+
     elif state["step"] == "ask_to_try":
-        if user_message in POSITIVE_STATUS:
+        if user_intent == "positive":
             state["step"] = "in_task"
             bot_responses.append("Great. Let's start. Just take them one at a time.")
             if state["tasks"]:
@@ -146,23 +200,47 @@ def chat():
             else:
                 state["step"] = "feeling_check"
                 bot_responses.append("It seems there are no specific tasks for this level, but it's great you're engaging with your well-being. How are you feeling now?")
-        else:
+        elif user_intent == "negative":
             state["step"] = "end"
             bot_responses.append("That's completely okay. Thank you for your time. Please take care!")
+        else:
+            bot_responses.append("I'm sorry, I didn't quite understand. Please let me know if you would like to proceed.")
 
     elif state["step"] == "in_task":
-        acknowledged = False
-        if user_message in POSITIVE_STATUS:
+        if user_intent == "positive" and len(user_message.split()) > 1:
+            state["step"] = "feeling_check"
+            sentiment_score = get_sentiment(user_message)
+            
+            if sentiment_score > 0:
+                bot_responses.append("That's really good to hear. I'm glad you're feeling a bit better.")
+            elif sentiment_score < 0:
+                bot_responses.append("I'm sorry to hear that. Remember to be kind to yourself.")
+            else:
+                bot_responses.append("Thank you for sharing.")
+            
+            bot_responses.append("We've reached the end of the tasks for now.")
+            state["step"] = "closing_session"
+            bot_responses.append("Take care!")
+            bot_responses.append("Feel free to say 'bye' or close this window when you're ready.")
+
+        elif user_intent == "positive":
             bot_responses.append("Well done.")
-            acknowledged = True
-        elif user_message in NEGATIVE_STATUS:
+            state["task_index"] += 1
+            if state["task_index"] < len(state["tasks"]):
+                bot_responses.append(f'Task {state["task_index"] + 1}: {state["tasks"][state["task_index"]]}')
+            else:
+                state["step"] = "feeling_check"
+                bot_responses.append("We've reached the end of the tasks for now. How are you feeling?")
+        elif user_intent == "negative":
             bot_responses.append("No problem at all. We can skip that one.")
-            acknowledged = True
-        elif user_message in LATER_STATUS:
+            state["task_index"] += 1
+            if state["task_index"] < len(state["tasks"]):
+                bot_responses.append(f'Task {state["task_index"] + 1}: {state["tasks"][state["task_index"]]}')
+            else:
+                state["step"] = "feeling_check"
+                bot_responses.append("We've reached the end of the tasks for now. How are you feeling?")
+        elif user_intent == "later":
             bot_responses.append("Okay, maybe another time.")
-            acknowledged = True
-        
-        if acknowledged:
             state["task_index"] += 1
             if state["task_index"] < len(state["tasks"]):
                 bot_responses.append(f'Task {state["task_index"] + 1}: {state["tasks"][state["task_index"]]}')
@@ -171,22 +249,35 @@ def chat():
                 bot_responses.append("We've reached the end of the tasks for now. How are you feeling?")
         else:
             bot_responses.append("I'm sorry, I didn't quite understand. Please let me know if you are 'done', 'no', or 'later'.")
-
+            return jsonify({"bot_responses": bot_responses})
+        
     elif state["step"] == "feeling_check":
-        state["step"] = "final_goodbye"
-        bot_responses.append("Thank you for your time and for trusting me today. Remember to be kind to yourself. Take care!")
+        sentiment_score = get_sentiment(user_message)
+        
+        if sentiment_score > 0:
+            bot_responses.append("That's great to hear! It's a positive step forward.")
+        elif sentiment_score < 0:
+            bot_responses.append("I'm sorry to hear that. Remember, it's okay to feel this way. These tasks are just small steps.")
+        else:
+            bot_responses.append("Thank you for sharing.")
+        
+        state["step"] = "closing_session"
+        bot_responses.append("Take care!")
+        bot_responses.append("Thanks for your time!")
         bot_responses.append("Feel free to say 'bye' or close this window when you're ready.")
     
-    elif state["step"] == "final_goodbye":
-        if user_message == "thank you":
-             bot_responses.append("You're most welcome! Take care.")
+    elif state["step"] == "closing_session":
+        if 'thank' in user_message:
+            bot_responses.append("You're most welcome! Feel free to say 'bye' when you're ready.")
+        elif user_message in exit_keywords:
+            bot_responses.append("Goodbye!")
+            state["step"] = "end"
         else:
-             bot_responses.append("Goodbye!")
-        state["step"] = "end"
-        
+            bot_responses.append("I appreciate our chat. Please take care of yourself.")
+            state["step"] = "end"
+
     chat_sessions[session_id] = state
     return jsonify({"bot_responses": bot_responses})
-
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
