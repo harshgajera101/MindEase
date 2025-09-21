@@ -143,11 +143,11 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div
           className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isOpen ? "max-h-100 opacity-100" : "max-h-0 opacity-0"
+            isOpen ? "max-h-120 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="bg-amber-900 bg-opacity-50 backdrop-blur-sm border-t border-amber-700">
-            <div className="px-6 py-4 space-y-4">
+            <div className="px-6 py-4 space-y-4 text-center">
               <a
                 href="/"
                 className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
@@ -217,7 +217,7 @@ export default function Navbar() {
                   </SignInButton>
                 </SignedOut>
                 <SignedIn>
-                  <div className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg">
+                  <div className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-2 py-1 rounded-lg">
                     <UserButton afterSignOutUrl="/" />
                   </div>
                 </SignedIn>
