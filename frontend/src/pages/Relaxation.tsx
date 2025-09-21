@@ -12,8 +12,8 @@ import {
   Heart,
   Sparkles,
   Volume2,
-  Timer,
-  Book,
+  // Timer,
+  // Book,
   Lightbulb,
   Waves,
   Sun,
@@ -30,14 +30,14 @@ export default function Relaxation() {
   const [isBreathing, setIsBreathing] = useState(false);
   const [breathingPhase, setBreathingPhase] = useState("ready");
   const [breathingTimer, setBreathingTimer] = useState(0);
-  const [selectedMusic, setSelectedMusic] = useState(null);
+  const [selectedMusic, setSelectedMusic] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [journalEntry, setJournalEntry] = useState("");
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
   const [selectedDuration, setSelectedDuration] = useState(60); // 1 minute default
   
-  const breathingIntervalRef = useRef(null);
-  const phaseTimeoutRef = useRef(null);
+  const breathingIntervalRef = useRef<number | null>(null);
+  const phaseTimeoutRef = useRef<number | null>(null);
 
   // Breathing animation phases
   const breathingPhases = [
@@ -132,7 +132,7 @@ export default function Relaxation() {
     return phase || { text: "Ready to Begin", scale: "scale-100" };
   };
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
@@ -482,7 +482,7 @@ export default function Relaxation() {
 
       <Footer />
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-15px) rotate(5deg); }

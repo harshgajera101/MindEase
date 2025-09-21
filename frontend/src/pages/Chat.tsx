@@ -7,7 +7,7 @@ export default function Chat() {
   const [messages, setMessages] = useState<{ text: string; sender: string; timestamp: Date }[]>([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [isConnected, setIsConnected] = useState(true);
+  // const [isConnected, setIsConnected] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -244,7 +244,7 @@ export default function Chat() {
       
       <Footer />
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
