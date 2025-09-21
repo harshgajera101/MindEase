@@ -16,8 +16,10 @@
 
 import { useState } from "react";
 import { Menu, X, Heart } from "lucide-react";
-// import Logo from "../assets/img/logo.png";
-// import Logo1 from "../assets/img/logo1.png";
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+import Logo from "../assets/img/logo.png";
+import Logo1 from "../assets/img/logo1.png";
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,13 +101,21 @@ export default function Navbar() {
               <span className="relative z-10">Support</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
             </a> */}
-             <a 
-              href="/login" 
-              className="relative hover:text-amber-200 transition-all duration-200 group"
-            >
-              <span className="relative z-10">Sign-in</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
             </a>
+              {/* 🔑 Clerk Authentication */}
+            <div className="relative">
+            <SignedOut>
+             <SignInButton mode="modal">
+                <button className="relative hover:text-amber-200 transition-all duration-200 group">
+              <span className="relative z-10">Sign in</span>
+             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
+            </button>
+          </SignInButton>
+          </SignedOut>
+              <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          </div>
           </div>
 
           {/* Mobile Toggle */}
