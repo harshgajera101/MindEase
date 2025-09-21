@@ -302,7 +302,7 @@ export default function Home() {
               >
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
                   <div
-                    className={`w-12 h-12 bg-gradient-to-br from-${step.color}-400 to-${step.color}-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg`}
+                    className={`w-12 h-12 bg-gradient-to-br from-${step.color}-400 to-${step.color}-300 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg`}
                   >
                     {step.step}
                   </div>

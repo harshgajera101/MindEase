@@ -71,20 +71,20 @@ const Footer = () => {
               </li>
               <li>
                 <a
+                  href="/relaxation"
+                  className="hover:text-amber-200 transition-colors duration-200 flex items-center group"
+                >
+                  <span className="w-1 h-1 bg-amber-400 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
+                  Relaxation Technique
+                </a>
+              </li>
+              <li>
+                <a
                   href="/support"
                   className="hover:text-amber-200 transition-colors duration-200 flex items-center group"
                 >
                   <span className="w-1 h-1 bg-amber-400 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
                   Support
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/blog"
-                  className="hover:text-amber-200 transition-colors duration-200 flex items-center group"
-                >
-                  <span className="w-1 h-1 bg-amber-400 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
-                  Blog
                 </a>
               </li>
             </ul>

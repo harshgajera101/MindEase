@@ -1,19 +1,3 @@
-// import { Link } from 'react-router-dom'
-
-// export default function Navbar(){
-//   return (
-//     <nav className="bg-white shadow">
-//       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-//         <Link to="/" className="text-2xl font-bold text-sky-600">MindEase</Link>
-//         <div className="space-x-4">
-//           <Link to="/" className="text-gray-700 hover:text-sky-600">Home</Link>
-//           <Link to="/chat" className="text-gray-700 hover:text-sky-600">Chat</Link>
-//         </div>
-//       </div>
-//     </nav>
-//   )
-// }
-
 import { useState } from "react";
 import { Menu, X, Heart } from "lucide-react";
 // import Logo from "../assets/img/logo.png";
@@ -174,6 +158,20 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 Support
+              </a>
+              <a 
+                href="/relaxation" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Exercise
+              </a>
+              <a 
+                href="/login" 
+                className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Sign-in
               </a>
             </div>
           </div>
