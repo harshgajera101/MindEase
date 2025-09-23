@@ -209,7 +209,7 @@ export default function Navbar() {
                 <SignedOut>
                   <SignInButton mode="modal">
                     <button
-                      className="block w-full text-left hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
+                      className="block w-full hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
                       onClick={() => setIsOpen(false)}
                     >
                       Sign-in
