@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { 
-  Music, 
-  Wind, 
-  Coffee, 
-  Moon, 
-  Play, 
-  Pause, 
+import {
+  Music,
+  Wind,
+  Coffee,
+  Bird,
+  Play,
+  Pause,
   RotateCcw,
   Heart,
   Sparkles,
@@ -17,25 +17,36 @@ import {
   Lightbulb,
   Waves,
   Sun,
-  Cloud,
-  Leaf,
+  CloudRain,
   Star,
   Camera,
   Edit3,
-  RefreshCw
+  RefreshCw,
+  Smile,
+  Flower2,
+  Move,
+  BookOpen,
+  MessageCircle,
+  Zap,
+  Radio,
 } from "lucide-react";
-
 
 export default function Relaxation() {
   const [isBreathing, setIsBreathing] = useState(false);
   const [breathingPhase, setBreathingPhase] = useState("ready");
   const [breathingTimer, setBreathingTimer] = useState(0);
+
+  // Add these states at the top of your component
   const [selectedMusic, setSelectedMusic] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.7);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
   const [journalEntry, setJournalEntry] = useState("");
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
+
   const [selectedDuration, setSelectedDuration] = useState(60); // 1 minute default
-  
+
   const breathingIntervalRef = useRef<number | null>(null);
   const phaseTimeoutRef = useRef<number | null>(null);
 
@@ -44,27 +55,90 @@ export default function Relaxation() {
     { phase: "inhale", text: "Breathe In", duration: 4000, scale: "scale-125" },
     { phase: "hold", text: "Hold", duration: 2000, scale: "scale-125" },
     { phase: "exhale", text: "Breathe Out", duration: 6000, scale: "scale-90" },
-    { phase: "rest", text: "Rest", duration: 1000, scale: "scale-100" }
+    { phase: "rest", text: "Rest", duration: 1000, scale: "scale-100" },
   ];
 
   // Music/Sound options
   const musicOptions = [
-    { id: 1, name: "Ocean Waves", icon: Waves, color: "from-blue-400 to-cyan-400", description: "Calming ocean sounds" },
-    { id: 2, name: "Forest Rain", icon: Cloud, color: "from-green-400 to-emerald-400", description: "Gentle rainfall in nature" },
-    { id: 3, name: "432 Hz Healing", icon: Sparkles, color: "from-purple-400 to-pink-400", description: "Healing frequency music" },
-    { id: 4, name: "Tibetan Bowls", icon: Sun, color: "from-orange-400 to-red-400", description: "Sacred singing bowls" },
-    { id: 5, name: "Night Sounds", icon: Moon, color: "from-indigo-400 to-purple-400", description: "Peaceful evening ambience" },
-    { id: 6, name: "Bird Songs", icon: Leaf, color: "from-yellow-400 to-green-400", description: "Morning birds chirping" }
+    {
+      id: 1,
+      name: "Ocean Waves",
+      icon: Waves,
+      color: "from-blue-400 to-cyan-400",
+      description: "Calming ocean sounds",
+      audioUrl: "/sounds/ocean-waves.mp3",
+    },
+    {
+      id: 2,
+      name: "Forest Rain",
+      icon: CloudRain,
+      color: "from-green-400 to-emerald-400",
+      description: "Gentle rainfall in nature",
+      audioUrl: "/sounds/forest-rain.mp3",
+    },
+    {
+      id: 3,
+      name: "432 Hz Healing",
+      icon: Sparkles,
+      color: "from-purple-400 to-pink-400",
+      description: "Healing frequency music",
+      audioUrl: "/sounds/432hz-healing.mp3",
+    },
+    {
+      id: 4,
+      name: "Tibetan Bowls",
+      icon: Radio,
+      color: "from-orange-400 to-red-400",
+      description: "Sacred singing bowls",
+      audioUrl: "/sounds/tibetan-bowls.mp3",
+    },
+    {
+      id: 5,
+      name: "Wind Chimes",
+      icon: Wind,
+      color: "from-indigo-400 to-purple-400",
+      description: "Soothing wind chimes",
+      audioUrl: "/sounds/wind-chimes.mp3",
+    },
+    {
+      id: 6,
+      name: "Bird Songs",
+      icon: Bird,
+      color: "from-yellow-400 to-green-400",
+      description: "Morning birds chirping",
+      audioUrl: "/sounds/bird-songs.mp3",
+    },
   ];
 
   // Quick tips for mood uplift
   const quickTips = [
-    { icon: RefreshCw, text: "Take 5 deep breaths and feel your shoulders relax" },
+    {
+      icon: RefreshCw,
+      text: "Take 5 deep breaths and feel your shoulders relax",
+    },
     { icon: Sun, text: "Step outside for 2 minutes and feel the sunlight" },
     { icon: Heart, text: "Think of 3 things you're grateful for right now" },
     { icon: Coffee, text: "Drink a glass of water mindfully, sip by sip" },
-    { icon: Star, text: "Stretch your arms above your head and twist gently" },
-    { icon: Camera, text: "Look around and notice 5 beautiful details" }
+    { icon: Move, text: "Stretch your arms above your head and twist gently" },
+    { icon: Camera, text: "Look around and notice 5 beautiful details" },
+    {
+      icon: Music,
+      text: "Play a song that makes you smile and move with the rhythm",
+    },
+    {
+      icon: MessageCircle,
+      text: "Text or call someone and share a kind word or compliment",
+    },
+    {
+      icon: Smile,
+      text: "Smile for 30 seconds - even a fake smile can boost your mood",
+    },
+    {
+      icon: Flower2,
+      text: "Inhale the scent of a flower, fruit, or your favorite fragrance",
+    },
+    { icon: Zap, text: "Do 10 jumping jacks or dance to release energy" },
+    { icon: BookOpen, text: "Read one page of an uplifting book or quote" },
   ];
 
   // Journaling prompts
@@ -74,7 +148,7 @@ export default function Relaxation() {
     "What are you most grateful for in this moment?",
     "Describe a place where you feel most relaxed.",
     "What would you tell a friend who was feeling anxious?",
-    "Write down three things you appreciate about yourself."
+    "Write down three things you appreciate about yourself.",
   ];
 
   // Start breathing exercise
@@ -82,10 +156,10 @@ export default function Relaxation() {
     setIsBreathing(true);
     setBreathingTimer(selectedDuration);
     cycleBreathingPhases();
-    
+
     // Timer countdown
     const timerInterval = setInterval(() => {
-      setBreathingTimer(prev => {
+      setBreathingTimer((prev) => {
         if (prev <= 1) {
           stopBreathing();
           return 0;
@@ -93,25 +167,25 @@ export default function Relaxation() {
         return prev - 1;
       });
     }, 1000);
-    
+
     breathingIntervalRef.current = timerInterval;
   };
 
   const cycleBreathingPhases = () => {
     let currentPhaseIndex = 0;
-    
+
     const nextPhase = () => {
       if (!isBreathing && breathingTimer <= 0) return;
-      
+
       const phase = breathingPhases[currentPhaseIndex];
       setBreathingPhase(phase.phase);
-      
+
       phaseTimeoutRef.current = setTimeout(() => {
         currentPhaseIndex = (currentPhaseIndex + 1) % breathingPhases.length;
         nextPhase();
       }, phase.duration);
     };
-    
+
     nextPhase();
   };
 
@@ -128,22 +202,69 @@ export default function Relaxation() {
   };
 
   const getCurrentBreathingPhase = () => {
-    const phase = breathingPhases.find(p => p.phase === breathingPhase);
+    const phase = breathingPhases.find((p) => p.phase === breathingPhase);
     return phase || { text: "Ready to Begin", scale: "scale-100" };
   };
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
   useEffect(() => {
     return () => {
-      if (breathingIntervalRef.current) clearInterval(breathingIntervalRef.current);
+      if (breathingIntervalRef.current)
+        clearInterval(breathingIntervalRef.current);
       if (phaseTimeoutRef.current) clearTimeout(phaseTimeoutRef.current);
     };
   }, []);
+
+  // Initialize audio element
+  useEffect(() => {
+    audioRef.current = new Audio();
+    audioRef.current.loop = true; // Loop the music
+    audioRef.current.volume = volume;
+
+    // Cleanup on unmount
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  // Handle play/pause
+  const togglePlayPause = (music: (typeof musicOptions)[0]) => {
+    if (!audioRef.current) return;
+
+    // If clicking on a different song
+    if (selectedMusic !== music.id) {
+      audioRef.current.src = music.audioUrl;
+      audioRef.current.play();
+      setSelectedMusic(music.id);
+      setIsPlaying(true);
+    }
+    // If clicking the same song
+    else {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  // Handle volume change
+  const handleVolumeChange = (newVolume: number) => {
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+  };
 
   return (
     <>
@@ -168,7 +289,8 @@ export default function Relaxation() {
             Find Your Peace
           </h1>
           <p className="text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto animate-fade-in-delayed">
-            Discover tranquility through mindful breathing, soothing sounds, and gentle practices designed to ease anxiety and bring inner calm.
+            Discover tranquility through mindful breathing, soothing sounds, and
+            gentle practices designed to ease anxiety and bring inner calm.
           </p>
         </section>
 
@@ -181,23 +303,25 @@ export default function Relaxation() {
                   <Wind className="w-6 sm:w-8 h-6 sm:h-8 mr-2 sm:mr-3 text-blue-600" />
                   Guided Breathing
                 </h2>
-                <p className="text-sm sm:text-base text-gray-700 px-2">Choose your duration and let the rhythm guide you to calmness</p>
+                <p className="text-sm sm:text-base text-gray-700 px-2">
+                  Choose your duration and let the rhythm guide you to calmness
+                </p>
               </div>
 
               {/* Duration Selection */}
               <div className="flex justify-center mb-6 sm:mb-8 space-x-2 sm:space-x-4">
                 {[
-                  { duration: 60, label: '1m' },
-                  { duration: 180, label: '3m' },
-                  { duration: 300, label: '5m' }
+                  { duration: 60, label: "1m" },
+                  { duration: 180, label: "3m" },
+                  { duration: 300, label: "5m" },
                 ].map((option) => (
                   <button
                     key={option.duration}
                     onClick={() => setSelectedDuration(option.duration)}
                     className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl transition-all text-sm sm:text-base font-medium ${
                       selectedDuration === option.duration
-                        ? 'bg-blue-500 text-white shadow-lg scale-105'
-                        : 'bg-blue-100 text-blue-800 hover:bg-blue-200'
+                        ? "bg-blue-500 text-white shadow-lg scale-105"
+                        : "bg-blue-100 text-blue-800 hover:bg-blue-200"
                     }`}
                     disabled={isBreathing}
                   >
@@ -224,15 +348,19 @@ export default function Relaxation() {
                     )}
                     {!isBreathing && (
                       <div className="text-xs sm:text-sm font-normal text-gray-600 text-center px-4">
-                        {selectedDuration / 60} minute{selectedDuration > 60 ? 's' : ''} session
+                        {selectedDuration / 60} minute
+                        {selectedDuration > 60 ? "s" : ""} session
                       </div>
                     )}
                   </div>
-                  
+
                   {/* Progress ring */}
                   {isBreathing && (
                     <div className="absolute inset-0 rounded-full">
-                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                      <svg
+                        className="w-full h-full transform -rotate-90"
+                        viewBox="0 0 100 100"
+                      >
                         <circle
                           cx="50"
                           cy="50"
@@ -250,7 +378,12 @@ export default function Relaxation() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeDasharray={`${2 * Math.PI * 48}`}
-                          strokeDashoffset={`${2 * Math.PI * 48 * (breathingTimer / selectedDuration)}`}
+                          strokeDashoffset={`${
+                            2 *
+                            Math.PI *
+                            48 *
+                            (breathingTimer / selectedDuration)
+                          }`}
                           className="transition-all duration-1000"
                         />
                       </svg>
@@ -300,7 +433,7 @@ export default function Relaxation() {
                       Stop Session
                     </button>
                   )}
-                  
+
                   {isBreathing && (
                     <button
                       onClick={stopBreathing}
@@ -324,39 +457,82 @@ export default function Relaxation() {
                 <Music className="w-8 sm:w-10 h-8 sm:h-10 mr-3 sm:mr-4 text-purple-600" />
                 Healing Sounds
               </h2>
-              <p className="text-gray-700 text-base sm:text-lg">Immerse yourself in carefully selected frequencies for deep relaxation</p>
+              <p className="text-gray-700 text-base sm:text-lg">
+                Immerse yourself in carefully selected frequencies for deep
+                relaxation
+              </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {musicOptions.map((music) => (
-                <div key={music.id} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${music.color} rounded-full flex items-center justify-center mb-4 mx-auto`}>
+                <div
+                  key={music.id}
+                  className={`bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border ${
+                    selectedMusic === music.id && isPlaying
+                      ? "border-purple-300 ring-1 ring-purple-200"
+                      : "border-white/20"
+                  }`}
+                >
+                  <div
+                    className={`w-16 h-16 bg-gradient-to-br ${
+                      music.color
+                    } rounded-full flex items-center justify-center mb-4 mx-auto ${
+                      selectedMusic === music.id && isPlaying
+                        ? "animate-pulse"
+                        : ""
+                    }`}
+                  >
                     <music.icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800 text-center mb-2">{music.name}</h3>
-                  <p className="text-gray-600 text-center mb-4">{music.description}</p>
-                  
+                  <h3 className="text-xl font-semibold text-gray-800 text-center mb-2">
+                    {music.name}
+                  </h3>
+                  <p className="text-gray-600 text-center mb-4">
+                    {music.description}
+                  </p>
+
                   <div className="flex justify-center space-x-2">
                     <button
-                      onClick={() => {
-                        setSelectedMusic(music.id);
-                        setIsPlaying(!isPlaying);
-                      }}
-                      className="flex items-center px-6 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                      onClick={() => togglePlayPause(music)}
+                      className="flex items-center px-6 py-2 bg-gray-100 hover:bg-gray-200 border border-gray-200 hover:border-gray-300 rounded-lg transition-all duration-200 shadow-sm hover:shadow text-gray-700"
                     >
                       {selectedMusic === music.id && isPlaying ? (
-                        <><Pause className="w-4 h-4 mr-2" /> Pause</>
+                        <>
+                          <Pause className="w-4 h-4 mr-2" /> Pause
+                        </>
                       ) : (
-                        <><Play className="w-4 h-4 mr-2" /> Play</>
+                        <>
+                          <Play className="w-4 h-4 mr-2" /> Play
+                        </>
                       )}
-                    </button>
-                    <button className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                      <Volume2 className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
               ))}
             </div>
+
+            {/* Global Volume Control */}
+            {selectedMusic && (
+              <div className="mt-8 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg max-w-md mx-auto border border-gray-200">
+                <div className="flex items-center space-x-4">
+                  <Volume2 className="w-5 h-5 text-gray-600" />
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value={volume}
+                    onChange={(e) =>
+                      handleVolumeChange(parseFloat(e.target.value))
+                    }
+                    className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                  <span className="text-sm text-gray-600 font-medium w-12 text-right">
+                    {Math.round(volume * 100)}%
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -369,26 +545,38 @@ export default function Relaxation() {
                   <Edit3 className="w-6 sm:w-8 h-6 sm:h-8 mr-2 sm:mr-3 text-green-600" />
                   Mindful Journaling
                 </h2>
-                <p className="text-gray-700 text-sm sm:text-base">Express your thoughts and feelings in a safe, private space</p>
+                <p className="text-gray-700 text-sm sm:text-base">
+                  Express your thoughts and feelings in a safe, private space
+                </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">Today's Prompt:</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">
+                    Today's Prompt:
+                  </h3>
                   <div className="bg-green-100 p-4 sm:p-6 rounded-xl border-l-4 border-green-400 mb-4">
-                    <p className="text-gray-700 italic text-sm sm:text-base">"{journalingPrompts[currentPromptIndex]}"</p>
+                    <p className="text-gray-700 italic text-sm sm:text-base">
+                      "{journalingPrompts[currentPromptIndex]}"
+                    </p>
                   </div>
-                  <button 
-                    onClick={() => setCurrentPromptIndex((prev) => (prev + 1) % journalingPrompts.length)}
+                  <button
+                    onClick={() =>
+                      setCurrentPromptIndex(
+                        (prev) => (prev + 1) % journalingPrompts.length
+                      )
+                    }
                     className="text-green-600 hover:text-green-700 flex items-center text-sm transition-colors"
                   >
                     <RefreshCw className="w-4 h-4 mr-1" />
                     New Prompt
                   </button>
                 </div>
-                
+
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">Your Thoughts:</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">
+                    Your Thoughts:
+                  </h3>
                   <textarea
                     value={journalEntry}
                     onChange={(e) => setJournalEntry(e.target.value)}
@@ -416,12 +604,17 @@ export default function Relaxation() {
                 <Lightbulb className="w-8 sm:w-10 h-8 sm:h-10 mr-3 sm:mr-4 text-orange-600" />
                 Instant Mood Boosters
               </h2>
-              <p className="text-gray-700 text-base sm:text-lg">Simple actions that can shift your energy in just minutes</p>
+              <p className="text-gray-700 text-base sm:text-lg">
+                Simple actions that can shift your energy in just minutes
+              </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {quickTips.map((tip, index) => (
-                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20 cursor-pointer group">
+                <div
+                  key={index}
+                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20 cursor-pointer group"
+                >
                   <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <tip.icon className="w-6 h-6 text-white" />
                   </div>
@@ -444,29 +637,47 @@ export default function Relaxation() {
                   <Star className="w-6 sm:w-8 h-6 sm:h-8 mr-2 sm:mr-3 text-indigo-600" />
                   5-4-3-2-1 Grounding
                 </h2>
-                <p className="text-gray-700 text-sm sm:text-base">Use your senses to anchor yourself in the present moment</p>
+                <p className="text-gray-700 text-sm sm:text-base">
+                  Use your senses to anchor yourself in the present moment
+                </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 text-center mb-6 sm:mb-8">
                 <div className="bg-white/80 p-4 rounded-xl shadow-sm">
                   <div className="text-2xl font-bold text-blue-600 mb-2">5</div>
-                  <p className="text-sm text-gray-600">Things you can <strong>see</strong></p>
+                  <p className="text-sm text-gray-600">
+                    Things you can <strong>see</strong>
+                  </p>
                 </div>
                 <div className="bg-white/80 p-4 rounded-xl shadow-sm">
-                  <div className="text-2xl font-bold text-green-600 mb-2">4</div>
-                  <p className="text-sm text-gray-600">Things you can <strong>touch</strong></p>
+                  <div className="text-2xl font-bold text-green-600 mb-2">
+                    4
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Things you can <strong>touch</strong>
+                  </p>
                 </div>
                 <div className="bg-white/80 p-4 rounded-xl shadow-sm">
-                  <div className="text-2xl font-bold text-yellow-600 mb-2">3</div>
-                  <p className="text-sm text-gray-600">Things you can <strong>hear</strong></p>
+                  <div className="text-2xl font-bold text-yellow-600 mb-2">
+                    3
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Things you can <strong>hear</strong>
+                  </p>
                 </div>
                 <div className="bg-white/80 p-4 rounded-xl shadow-sm">
                   <div className="text-2xl font-bold text-pink-600 mb-2">2</div>
-                  <p className="text-sm text-gray-600">Things you can <strong>smell</strong></p>
+                  <p className="text-sm text-gray-600">
+                    Things you can <strong>smell</strong>
+                  </p>
                 </div>
                 <div className="bg-white/80 p-4 rounded-xl shadow-sm">
-                  <div className="text-2xl font-bold text-purple-600 mb-2">1</div>
-                  <p className="text-sm text-gray-600">Thing you can <strong>taste</strong></p>
+                  <div className="text-2xl font-bold text-purple-600 mb-2">
+                    1
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Thing you can <strong>taste</strong>
+                  </p>
                 </div>
               </div>
 
@@ -518,6 +729,34 @@ export default function Relaxation() {
         
         .animate-fade-in-delayed {
           animation: fade-in-delayed 1.2s ease-out;
+        }
+
+        .slider::-webkit-slider-thumb {
+          appearance: none;
+          width: 16px;
+          height: 16px;
+          background: #4b5563; /* gray-600 */
+          border-radius: 50%;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+          background: #1f2937; /* gray-800 */
+        }
+
+        .slider::-moz-range-thumb {
+          width: 16px;
+          height: 16px;
+          background: #4b5563;
+          border-radius: 50%;
+          cursor: pointer;
+          border: none;
+          transition: background 0.2s;
+        }
+
+        .slider::-moz-range-thumb:hover {
+          background: #1f2937;
         }
       `}</style>
     </>
