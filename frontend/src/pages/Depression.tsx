@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
@@ -30,9 +31,20 @@ import {
 } from "lucide-react";
 
 export default function DepressionPage() {
+  const { isSignedIn } = useAuth(); // check login status
+  const navigate = useNavigate(); // for redirection
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleTestClick = (path: string) => {
+    if (isSignedIn) {
+      navigate(path); // go to quiz if logged in
+    } else {
+      navigate(`/login?redirect=${path}`); // go to login page if not logged in
+    }
+  };
 
   //   const scrollToTop = () => {
   //     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -73,9 +85,9 @@ export default function DepressionPage() {
             condition. Here you can learn more, find coping strategies, and take
             a test to reflect on your wellbeing.
           </p>
-          <button className="group px-8 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+          <button onClick={() => handleTestClick("/quiz/depression")} className="group px-8 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              <Link to="/quiz/depression">Take the Test</Link>
+                Take the Test
               <FileText className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>
@@ -306,9 +318,9 @@ export default function DepressionPage() {
             Answer a few simple questions to better understand your mental
             health. This is not a diagnosis but a self-reflection tool.
           </p>
-          <button className="group px-10 py-5 bg-gradient-to-r from-blue-400 to-purple-500 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
+          <button onClick={() => handleTestClick("/quiz/depression")} className="group px-10 py-5 bg-gradient-to-r from-blue-400 to-purple-500 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
-              <Link to="/quiz/depression">Start Test</Link>
+                Start Test
               <Sparkles className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
             </span>
           </button>
