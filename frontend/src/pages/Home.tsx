@@ -26,6 +26,7 @@ import {
   Waves,
   Compass,
   ArrowUp,
+  Edit3,
 } from "lucide-react";
 
 const faqs = [
@@ -487,9 +488,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Relaxation Preview */}
-      <section className="px-6 md:px-12 py-20 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
+      {/* Quick Relaxation Exercises */}
+      <section className="px-6 md:px-12 py-20 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 relative">
         <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-200 to-blue-200 rounded-full mb-6">
               <Waves className="w-8 h-8 text-green-700" />
@@ -509,8 +511,17 @@ export default function Home() {
                 icon: <Wind className="w-8 h-8 text-cyan-600" />,
                 title: "Breathing Exercises",
                 desc: "Simple breathing techniques to calm anxiety and reduce stress instantly.",
-                duration: "2-5 minutes",
+                duration: "1-5 minutes",
                 bgColor: "from-cyan-100 to-cyan-200",
+                comingSoon: false,
+              },
+              {
+                icon: <Edit3 className="w-8 h-8 text-green-600" />,
+                title: "Mindful Journaling",
+                desc: "Express your thoughts and feelings in a safe, private space.",
+                duration: "5-10 minutes",
+                bgColor: "from-green-100 to-green-200",
+                comingSoon: false,
               },
               {
                 icon: <Eye className="w-8 h-8 text-purple-600" />,
@@ -518,40 +529,60 @@ export default function Home() {
                 desc: "Short mindfulness sessions to center your thoughts and find peace.",
                 duration: "5-10 minutes",
                 bgColor: "from-purple-100 to-purple-200",
+                comingSoon: true,
               },
-              {
-                icon: <Activity className="w-8 h-8 text-green-600" />,
-                title: "Progressive Relaxation",
-                desc: "Step-by-step muscle relaxation to release physical tension.",
-                duration: "10-15 minutes",
-                bgColor: "from-green-100 to-green-200",
-              },
+              // {
+              //   icon: <Activity className="w-8 h-8 text-green-600" />,
+              //   title: "Progressive Relaxation",
+              //   desc: "Step-by-step muscle relaxation to release physical tension.",
+              //   duration: "10-15 minutes",
+              //   bgColor: "from-green-100 to-green-200",
+              //   comingSoon: true,
+              // },
             ].map((exercise, i) => (
               <div
                 key={i}
-                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center"
+                className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center group overflow-hidden"
               >
+                {/* Coming Soon Tag - Top Right */}
+                {exercise.comingSoon && (
+                  <span className="absolute top-4 right-4 text-xs font-medium text-gray-400 border border-gray-300 px-2.5 py-1 rounded-md animate-pulse">
+                    Soon
+                  </span>
+                )}
+
+                {/* Icon */}
                 <div
                   className={`w-16 h-16 bg-gradient-to-br ${exercise.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200`}
                 >
                   {exercise.icon}
                 </div>
 
-                <h3 className="text-xl font-bold text-amber-900 mb-3">
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-amber-900 mb-4">
                   {exercise.title}
                 </h3>
-                <p className="text-gray-700 mb-4 leading-relaxed">
+
+                {/* Description */}
+                <p className="text-gray-700 leading-relaxed mb-6">
                   {exercise.desc}
                 </p>
 
-                <div className="inline-flex items-center bg-amber-100 px-3 py-1 rounded-full text-amber-800 text-sm font-medium mb-6">
-                  <Clock className="w-3 h-3 mr-1" />
+                {/* Duration Badge */}
+                <div className="inline-flex items-center bg-amber-50 text-amber-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                  <Clock className="w-4 h-4 mr-2" />
                   {exercise.duration}
                 </div>
 
-                <button className="group w-full bg-gradient-to-r from-amber-400 to-amber-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center">
+                {/* Try Now Button */}
+                <button
+                  className={`group w-full bg-gradient-to-r from-amber-400 to-amber-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center ${
+                    exercise.comingSoon ? "opacity-60 cursor-not-allowed" : ""
+                  }`}
+                  disabled={exercise.comingSoon}
+                >
                   <Play className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                  Try Now
+                  {exercise.comingSoon ? "Coming Soon" : "Try Now"}
                 </button>
               </div>
             ))}
