@@ -15,7 +15,7 @@ import {
   FileText,
   Activity,
   Sunrise,
-  Bed,
+  // Bed,
   MessageCircle,
   Stethoscope,
   Bot,
@@ -26,6 +26,7 @@ import {
   Cloud,
   Star,
   Sparkles,
+  Target,
   //   ArrowUp,
 } from "lucide-react";
 
@@ -183,10 +184,10 @@ export default function DepressionPage() {
                 bgColor: "from-orange-100 to-orange-200",
               },
               {
-                icon: <Bed className="w-8 h-8 text-purple-600" />,
+                icon: <Moon className="w-8 h-8 text-indigo-600" />,
                 title: "Sleep Routine",
                 desc: "Consistent rest helps regulate mood and energy.",
-                bgColor: "from-purple-100 to-purple-200",
+                bgColor: "from-indigo-100 to-indigo-200",
               },
               {
                 icon: <MessageCircle className="w-8 h-8 text-pink-600" />,
@@ -195,10 +196,29 @@ export default function DepressionPage() {
                 bgColor: "from-pink-100 to-pink-200",
               },
               {
-                icon: <Stethoscope className="w-8 h-8 text-indigo-600" />,
+                icon: <Stethoscope className="w-8 h-8 text-purple-600" />,
                 title: "Therapy",
                 desc: "CBT and counseling provide professional guidance for recovery.",
-                bgColor: "from-indigo-100 to-indigo-200",
+                bgColor: "from-purple-100 to-purple-200",
+              },
+              // NEW CARDS BELOW
+              {
+                icon: <Sun className="w-8 h-8 text-yellow-600" />,
+                title: "Sunlight Exposure",
+                desc: "Natural light boosts serotonin levels and helps regulate your body clock.",
+                bgColor: "from-yellow-100 to-yellow-200",
+              },
+              {
+                icon: <Users className="w-8 h-8 text-teal-600" />,
+                title: "Social Connection",
+                desc: "Regular interaction with supportive people combats loneliness and isolation.",
+                bgColor: "from-teal-100 to-teal-200",
+              },
+              {
+                icon: <Target className="w-8 h-8 text-rose-600" />,
+                title: "Set Small Goals",
+                desc: "Break tasks into manageable steps to rebuild sense of accomplishment.",
+                bgColor: "from-rose-100 to-rose-200",
               },
             ].map((item) => (
               <div
@@ -333,58 +353,94 @@ export default function DepressionPage() {
               {
                 icon: <Bot className="w-8 h-8 text-blue-600" />,
                 title: "Chat with our Bot",
+                description:
+                  "Get instant support and guidance from our AI companion anytime you need it.",
                 link: "/chat",
                 bgColor: "from-blue-100 to-blue-200",
+                comingSoon: false,
               },
               {
                 icon: <BookOpen className="w-8 h-8 text-green-600" />,
                 title: "Read Helpful Blogs",
+                description:
+                  "Explore articles and resources about mental health and wellness.",
                 link: "/blog",
                 bgColor: "from-green-100 to-green-200",
+                comingSoon: true,
               },
               {
                 icon: <Headphones className="w-8 h-8 text-purple-600" />,
                 title: "Relaxation Exercises",
+                description:
+                  "Practice guided breathing, meditation, and calming techniques.",
                 link: "/relaxation",
                 bgColor: "from-purple-100 to-purple-200",
+                comingSoon: false,
               },
               {
                 icon: <UserCheck className="w-8 h-8 text-orange-600" />,
                 title: "Seek Professional Help",
+                description:
+                  "Find professional mental health resources and support services.",
                 link: "/support",
                 bgColor: "from-orange-100 to-orange-200",
+                comingSoon: true,
               },
             ].map((item) => (
               <a
                 href={item.link}
                 key={item.title}
-                className="group p-8 bg-[#fcf9f4] rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border border-amber-100"
+                className="relative group p-8 bg-[#fcf9f4] rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border border-amber-100 overflow-hidden flex flex-col"
               >
+                {/* Coming Soon Tag */}
+                {item.comingSoon && (
+                  <span className="absolute top-4 right-4 text-xs font-medium text-gray-400 border border-gray-300 px-2.5 py-1 rounded-md animate-pulse">
+                    Soon
+                  </span>
+                )}
+
+                {/* Icon */}
                 <div
                   className={`w-16 h-16 bg-gradient-to-br ${item.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200`}
                 >
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold text-amber-900 mb-4">
+
+                {/* Title */}
+                <h3 className="text-lg font-bold text-amber-900 mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-200">
-                  Click to explore
+
+                {/* Description - with flex-grow to push button down */}
+                <p className="text-sm text-gray-600 mb-6 leading-relaxed px-2 flex-grow">
+                  {item.description}
                 </p>
+
+                {/* Enhanced "Explore" button - stays at bottom */}
+                <div className="mt-auto">
+                  <div className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-800 rounded-lg text-sm font-semibold group-hover:from-amber-200 group-hover:to-yellow-200 transition-all duration-200 group-hover:gap-3">
+                    <span>Explore</span>
+                    <svg
+                      className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </div>
+                </div>
               </a>
             ))}
           </div>
         </div>
         {/* Bottom */}
         <BackToTop />
-        {/* <div className="text-center py-4 border-gray-300">
-          <button
-            onClick={scrollToTop}
-            className="mt-6 flex items-center justify-center mx-auto px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300"
-          >
-            <ArrowUp size={18} className="mr-2" /> Back to Top
-          </button>
-        </div> */}
       </section>
 
       {/* Footer */}
