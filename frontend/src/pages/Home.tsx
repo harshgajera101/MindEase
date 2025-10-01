@@ -13,7 +13,6 @@ import {
   Sparkles,
   Star,
   Wind,
-  Activity,
   Eye,
   Globe,
   Lightbulb,
