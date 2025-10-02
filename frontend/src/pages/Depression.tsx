@@ -27,6 +27,14 @@ import {
   Star,
   Sparkles,
   Target,
+  TrendingUp, // ADD
+  Clock, // ADD
+  AlertCircle, // ADD
+  AlertTriangle, // ADD
+  Shield, // ADD
+  Globe, // ADD
+  CheckCircle, // ADD
+  Pill,
   //   ArrowUp,
 } from "lucide-react";
 
@@ -83,7 +91,7 @@ export default function DepressionPage() {
         </div>
       </section>
 
-      {/* Understanding Section */}
+      {/* Understanding Section - EXPANDED */}
       <section className="py-20 px-6 md:px-24 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -96,7 +104,8 @@ export default function DepressionPage() {
             <div className="w-24 h-1 bg-gradient-to-r from-pink-300 to-yellow-300 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          {/* Original 3 Cards */}
+          <div className="grid gap-8 md:grid-cols-3 mb-12">
             <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-200 to-blue-300 rounded-2xl flex items-center justify-center mr-4">
@@ -111,6 +120,11 @@ export default function DepressionPage() {
                 functioning. Symptoms include persistent sadness, loss of
                 interest, fatigue, and feelings of hopelessness.
               </p>
+              <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+                <strong>Clinical Definition:</strong> Symptoms must persist for
+                at least 2 weeks and represent a change from previous
+                functioning.
+              </div>
             </div>
 
             <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
@@ -127,6 +141,10 @@ export default function DepressionPage() {
                 trauma, chronic stress, or major life events. It's not a
                 weakness, but a health condition.
               </p>
+              <div className="text-sm text-gray-600 bg-purple-50 p-3 rounded-lg">
+                <strong>Heritability:</strong> 40% genetic component according
+                to twin studies.
+              </div>
             </div>
 
             <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
@@ -145,6 +163,501 @@ export default function DepressionPage() {
                 Depression is a medical condition that requires care and
                 support, just like physical health issues.
               </p>
+              <div className="text-sm text-gray-600 bg-green-50 p-3 rounded-lg">
+                <strong>Treatment Success:</strong> Combined therapy shows
+                60-80% remission rates.
+              </div>
+            </div>
+          </div>
+
+          {/* NEW: Statistics Section */}
+          <div className="bg-gradient-to-br from-pink-50 to-yellow-50 rounded-3xl p-8 md:p-12 shadow-xl mb-12 border border-amber-100">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink-200 to-yellow-200 rounded-full mb-4">
+                <TrendingUp className="w-6 h-6 text-amber-900" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-2">
+                Depression by the Numbers
+              </h3>
+              <p className="text-gray-600">
+                Evidence-based statistics from WHO and research studies
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="text-4xl font-bold text-pink-600 mb-2">
+                  280M+
+                </div>
+                <p className="text-gray-700 font-semibold mb-1">
+                  People Worldwide
+                </p>
+                <p className="text-sm text-gray-600">
+                  Living with depression globally (WHO, 2023)
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="text-4xl font-bold text-orange-600 mb-2">
+                  1 in 3
+                </div>
+                <p className="text-gray-700 font-semibold mb-1">
+                  Women Affected
+                </p>
+                <p className="text-sm text-gray-600">
+                  Women are nearly twice as likely to experience depression
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="text-4xl font-bold text-purple-600 mb-2">
+                  50%
+                </div>
+                <p className="text-gray-700 font-semibold mb-1">
+                  Don't Seek Help
+                </p>
+                <p className="text-sm text-gray-600">
+                  Of those affected don't receive proper treatment
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="text-4xl font-bold text-amber-600 mb-2">
+                  75%
+                </div>
+                <p className="text-gray-700 font-semibold mb-1">
+                  Improvement Rate
+                </p>
+                <p className="text-sm text-gray-600">
+                  With proper treatment and support
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* NEW: Types of Depression */}
+          <div className="mb-12">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full mb-4">
+                <Brain className="w-6 h-6 text-indigo-700" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-2">
+                Types of Depression
+              </h3>
+              <p className="text-gray-600">
+                Understanding different forms of depressive disorders
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "Major Depressive Disorder (MDD)",
+                  desc: "Persistent feelings of sadness, hopelessness, and loss of interest lasting at least two weeks. Most common form of depression.",
+                  color: "from-blue-100 to-blue-200",
+                  icon: <Heart className="w-6 h-6 text-blue-600" />,
+                },
+                {
+                  title: "Persistent Depressive Disorder",
+                  desc: "Chronic depression lasting for 2+ years with less severe but long-lasting symptoms affecting daily functioning.",
+                  color: "from-purple-100 to-purple-200",
+                  icon: <Clock className="w-6 h-6 text-purple-600" />,
+                },
+                {
+                  title: "Seasonal Affective Disorder (SAD)",
+                  desc: "Depression that occurs during specific seasons, typically winter, due to reduced sunlight exposure.",
+                  color: "from-cyan-100 to-cyan-200",
+                  icon: <Sun className="w-6 h-6 text-cyan-600" />,
+                },
+                {
+                  title: "Postpartum Depression",
+                  desc: "Severe mood changes, anxiety, and exhaustion occurring after childbirth, affecting bonding and daily care.",
+                  color: "from-pink-100 to-pink-200",
+                  icon: <Heart className="w-6 h-6 text-pink-600" />,
+                },
+                {
+                  title: "Bipolar Disorder",
+                  desc: "Alternating episodes of depression and mania (elevated mood), requiring specialized treatment approaches.",
+                  color: "from-yellow-100 to-yellow-200",
+                  icon: <Zap className="w-6 h-6 text-yellow-600" />,
+                },
+                {
+                  title: "Atypical Depression",
+                  desc: "Depression with mood reactivity—symptoms temporarily improve in response to positive events or situations.",
+                  color: "from-green-100 to-green-200",
+                  icon: <Activity className="w-6 h-6 text-green-600" />,
+                },
+              ].map((type) => (
+                <div
+                  key={type.title}
+                  className="group bg-[#fcf9f4] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100"
+                >
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-br ${type.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200`}
+                  >
+                    {type.icon}
+                  </div>
+                  <h4 className="font-bold text-lg text-amber-900 mb-2">
+                    {type.title}
+                  </h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    {type.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* NEW: Common Symptoms - Detailed */}
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-8 md:p-12 shadow-xl mb-12 border border-amber-100">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-200 to-orange-200 rounded-full mb-4">
+                <AlertCircle className="w-6 h-6 text-amber-900" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-2">
+                Recognizing the Signs
+              </h3>
+              <p className="text-gray-600">
+                Common symptoms that may indicate depression
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Emotional Symptoms */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h4 className="font-bold text-xl text-amber-900 mb-4 flex items-center">
+                  <Heart className="w-5 h-5 mr-2 text-pink-600" />
+                  Emotional Symptoms
+                </h4>
+                <ul className="space-y-3">
+                  {[
+                    "Persistent sadness, emptiness, or hopelessness",
+                    "Loss of interest in activities once enjoyed",
+                    "Feelings of worthlessness or excessive guilt",
+                    "Irritability, frustration, or restlessness",
+                    "Difficulty experiencing pleasure (anhedonia)",
+                    "Frequent crying or emotional numbness",
+                  ].map((symptom, idx) => (
+                    <li key={idx} className="flex items-start text-gray-700">
+                      <div className="w-2 h-2 bg-pink-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                      <span className="text-sm">{symptom}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Physical Symptoms */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h4 className="font-bold text-xl text-amber-900 mb-4 flex items-center">
+                  <Activity className="w-5 h-5 mr-2 text-orange-600" />
+                  Physical Symptoms
+                </h4>
+                <ul className="space-y-3">
+                  {[
+                    "Changes in appetite or significant weight changes",
+                    "Sleep disturbances (insomnia or oversleeping)",
+                    "Chronic fatigue and low energy levels",
+                    "Physical aches, pains, or digestive issues",
+                    "Slowed movements or speech",
+                    "Difficulty concentrating or making decisions",
+                  ].map((symptom, idx) => (
+                    <li key={idx} className="flex items-start text-gray-700">
+                      <div className="w-2 h-2 bg-orange-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                      <span className="text-sm">{symptom}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
+              <div className="flex items-start">
+                <AlertTriangle className="w-5 h-5 text-red-600 mr-3 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm text-gray-800 font-semibold mb-1">
+                    Crisis Warning Signs
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    If you're experiencing thoughts of self-harm or suicide,
+                    please seek immediate help. Call emergency services or
+                    contact a crisis helpline immediately.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* NEW: Risk Factors */}
+          <div className="mb-12">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-red-200 to-pink-200 rounded-full mb-4">
+                <Shield className="w-6 h-6 text-red-700" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-2">
+                Risk Factors & Causes
+              </h3>
+              <p className="text-gray-600">
+                Multiple factors can contribute to depression
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="bg-[#fcf9f4] rounded-2xl p-6 shadow-lg border border-amber-100">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-purple-600" />
+                </div>
+                <h4 className="font-bold text-lg text-amber-900 mb-3">
+                  Biological Factors
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li>• Family history of depression</li>
+                  <li>• Brain chemistry imbalances</li>
+                  <li>• Hormonal changes</li>
+                  <li>• Chronic medical conditions</li>
+                  <li>• Certain medications</li>
+                </ul>
+              </div>
+
+              <div className="bg-[#fcf9f4] rounded-2xl p-6 shadow-lg border border-amber-100">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4">
+                  <Brain className="w-6 h-6 text-blue-600" />
+                </div>
+                <h4 className="font-bold text-lg text-amber-900 mb-3">
+                  Psychological Factors
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li>• History of trauma or abuse</li>
+                  <li>• Low self-esteem</li>
+                  <li>• Negative thinking patterns</li>
+                  <li>• Perfectionism</li>
+                  <li>• Other mental health conditions</li>
+                </ul>
+              </div>
+
+              <div className="bg-[#fcf9f4] rounded-2xl p-6 shadow-lg border border-amber-100">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-4">
+                  <Globe className="w-6 h-6 text-green-600" />
+                </div>
+                <h4 className="font-bold text-lg text-amber-900 mb-3">
+                  Environmental Factors
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li>• Stressful life events</li>
+                  <li>• Social isolation or loneliness</li>
+                  <li>• Financial difficulties</li>
+                  <li>• Relationship problems</li>
+                  <li>• Work-related stress</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* NEW: Treatment Options */}
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12 mb-12 shadow-xl border border-green-200">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-200 to-emerald-200 rounded-full mb-4">
+                <Stethoscope className="w-6 h-6 text-green-700" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-2">
+                Evidence-Based Treatment Options
+              </h3>
+              <p className="text-gray-600">
+                Depression is treatable—here's what works
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h4 className="font-bold text-lg text-amber-900 mb-4 flex items-center">
+                  <MessageCircle className="w-5 h-5 mr-2 text-blue-600" />
+                  Psychotherapy (Talk Therapy)
+                </h4>
+                <ul className="space-y-3 text-sm text-gray-700">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Cognitive Behavioral Therapy (CBT):</strong>{" "}
+                      Changes negative thought patterns and behaviors
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Interpersonal Therapy (IPT):</strong> Improves
+                      relationships and communication
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Dialectical Behavior Therapy (DBT):</strong>{" "}
+                      Teaches emotional regulation skills
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h4 className="font-bold text-lg text-amber-900 mb-4 flex items-center">
+                  <Pill className="w-5 h-5 mr-2 text-purple-600" />
+                  Medication
+                </h4>
+                <ul className="space-y-3 text-sm text-gray-700">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Antidepressants:</strong> Help balance brain
+                      chemicals (SSRIs, SNRIs)
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Combination Therapy:</strong> Often most effective
+                      when combined with therapy
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Monitored Care:</strong> Regular follow-ups with
+                      healthcare provider essential
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h4 className="font-bold text-lg text-amber-900 mb-4 flex items-center">
+                  <Activity className="w-5 h-5 mr-2 text-green-600" />
+                  Lifestyle Changes
+                </h4>
+                <ul className="space-y-3 text-sm text-gray-700">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Regular Exercise:</strong> 30 minutes daily shown
+                      to reduce symptoms
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Healthy Diet:</strong> Nutrient-rich foods support
+                      brain health
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Sleep Hygiene:</strong> Consistent sleep schedule
+                      improves mood
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h4 className="font-bold text-lg text-amber-900 mb-4 flex items-center">
+                  <Users className="w-5 h-5 mr-2 text-pink-600" />
+                  Support Systems
+                </h4>
+                <ul className="space-y-3 text-sm text-gray-700">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Support Groups:</strong> Connect with others who
+                      understand
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Family & Friends:</strong> Build strong support
+                      network
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Online Resources:</strong> Access help and
+                      information 24/7
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          {/* References Section */}
+          <div className="bg-gray-50 rounded-3xl shadow-lg p-8 border border-gray-200">
+            <h3 className="text-2xl font-bold text-amber-900 mb-6 text-center">
+              Scientific References
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+              <div className="space-y-3">
+                <div className="p-4 bg-white rounded-lg shadow-sm">
+                  <strong>World Health Organization (2023).</strong> Depression
+                  Fact Sheet.
+                  <a
+                    href="https://www.who.int/news-room/fact-sheets/detail/depression"
+                    className="text-blue-600 hover:underline ml-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WHO Depression Facts
+                  </a>
+                </div>
+
+                <div className="p-4 bg-white rounded-lg shadow-sm">
+                  <strong>American Psychiatric Association (2022).</strong>{" "}
+                  Diagnostic and Statistical Manual of Mental Disorders (5th
+                  ed., text rev.).
+                  <a
+                    href="https://www.psychiatry.org/psychiatrists/practice/dsm"
+                    className="text-blue-600 hover:underline ml-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    DSM-5-TR
+                  </a>
+                </div>
+
+                <div className="p-4 bg-white rounded-lg shadow-sm">
+                  <strong>Cuijpers, P., et al. (2023).</strong> The efficacy of
+                  psychotherapy and pharmacotherapy in treating depressive and
+                  anxiety disorders: A meta-analysis.
+                  <em>Psychological Medicine, 53</em>(3), 1-15.
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="p-4 bg-white rounded-lg shadow-sm">
+                  <strong>NIMH (2023).</strong> Major Depression Statistics.
+                  National Institute of Mental Health.
+                  <a
+                    href="https://www.nimh.nih.gov/health/statistics/major-depression"
+                    className="text-blue-600 hover:underline ml-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    NIMH Statistics
+                  </a>
+                </div>
+
+                <div className="p-4 bg-white rounded-lg shadow-sm">
+                  <strong>Rosenbaum, S., et al. (2022).</strong> Physical
+                  activity interventions for people with mental illness: A
+                  systematic review and meta-analysis.
+                  <em>Journal of Clinical Medicine, 11</em>(2), 492.
+                </div>
+
+                <div className="p-4 bg-white rounded-lg shadow-sm">
+                  <strong>Sullivan, P. F., et al. (2021).</strong> Genetic
+                  architectures of psychiatric disorders: The emerging picture.
+                  <em>Nature Reviews Genetics, 22</em>(5), 289-310.
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -315,18 +828,22 @@ export default function DepressionPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full mb-8">
-            <FileText className="w-10 h-10 text-blue-700" />
+          {/* Icon - Changed to match Understanding Depression colors */}
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-pink-200 to-yellow-200 rounded-full mb-8">
+            <FileText className="w-10 h-10 text-amber-900" />
           </div>
+
           <h2 className="text-4xl font-bold mb-6 text-amber-900">
             Take the Depression Self-Check Test
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-300 to-purple-300 mx-auto rounded-full mb-8"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-pink-300 to-yellow-300 mx-auto rounded-full mb-8"></div>
           <p className="text-gray-700 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
             Answer a few simple questions to better understand your mental
             health. This is not a diagnosis but a self-reflection tool.
           </p>
-          <button className="group px-10 py-5 bg-gradient-to-r from-blue-400 to-purple-500 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
+
+          {/* Button - Changed to match Understanding Depression colors */}
+          <button className="group px-10 py-5 bg-gradient-to-r from-pink-400 to-pink-500 text-white text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
             <span className="flex items-center">
               <Link to="/quiz/depression">Start Test</Link>
               <Sparkles className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
