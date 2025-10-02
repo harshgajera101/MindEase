@@ -27,14 +27,16 @@ import {
   Star,
   Sparkles,
   Target,
-  TrendingUp, // ADD
-  Clock, // ADD
-  AlertCircle, // ADD
-  AlertTriangle, // ADD
-  Shield, // ADD
-  Globe, // ADD
-  CheckCircle, // ADD
+  TrendingUp,
+  Clock,
+  AlertCircle,
+  AlertTriangle,
+  Shield,
+  Globe,
+  CheckCircle,
   Pill,
+  // Award,
+  BarChart3,
   //   ArrowUp,
 } from "lucide-react";
 
@@ -106,7 +108,8 @@ export default function DepressionPage() {
 
           {/* Original 3 Cards */}
           <div className="grid gap-8 md:grid-cols-3 mb-12">
-            <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
+            {/* Card 1 */}
+            <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-200 to-blue-300 rounded-2xl flex items-center justify-center mr-4">
                   <Lightbulb className="w-6 h-6 text-blue-700" />
@@ -115,19 +118,20 @@ export default function DepressionPage() {
                   What is Depression?
                 </h3>
               </div>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed mb-4 flex-grow">
                 A condition that affects mood, thoughts, and overall
                 functioning. Symptoms include persistent sadness, loss of
                 interest, fatigue, and feelings of hopelessness.
               </p>
-              <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+              <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg mt-auto">
                 <strong>Clinical Definition:</strong> Symptoms must persist for
                 at least 2 weeks and represent a change from previous
                 functioning.
               </div>
             </div>
 
-            <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
+            {/* Card 2 */}
+            <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-200 to-purple-300 rounded-2xl flex items-center justify-center mr-4">
                   <Zap className="w-6 h-6 text-purple-700" />
@@ -136,18 +140,19 @@ export default function DepressionPage() {
                   How Does it Happen?
                 </h3>
               </div>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed mb-4 flex-grow">
                 Depression can be triggered by genetic factors, brain chemistry,
                 trauma, chronic stress, or major life events. It's not a
                 weakness, but a health condition.
               </p>
-              <div className="text-sm text-gray-600 bg-purple-50 p-3 rounded-lg">
+              <div className="text-sm text-gray-600 bg-purple-50 p-3 rounded-lg mt-auto">
                 <strong>Heritability:</strong> 40% genetic component according
                 to twin studies.
               </div>
             </div>
 
-            <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
+            {/* Card 3 */}
+            <div className="group bg-[#fcf9f4] rounded-3xl shadow-lg p-8 flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-amber-100">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-red-200 to-pink-300 rounded-2xl flex items-center justify-center mr-4">
                   <X className="w-6 h-6 text-red-700" />
@@ -156,14 +161,14 @@ export default function DepressionPage() {
                   Myths vs Facts
                 </h3>
               </div>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed mb-4 flex-grow">
                 <span className="font-semibold text-red-600">Myth:</span>{" "}
                 Depression means being weak. <br />
                 <span className="font-semibold text-green-600">Fact:</span>{" "}
                 Depression is a medical condition that requires care and
                 support, just like physical health issues.
               </p>
-              <div className="text-sm text-gray-600 bg-green-50 p-3 rounded-lg">
+              <div className="text-sm text-gray-600 bg-green-50 p-3 rounded-lg mt-auto">
                 <strong>Treatment Success:</strong> Combined therapy shows
                 60-80% remission rates.
               </div>
@@ -588,76 +593,207 @@ export default function DepressionPage() {
               </div>
             </div>
           </div>
-          
-          {/* References Section */}
-          <div className="bg-gray-50 rounded-3xl shadow-lg p-8 border border-gray-200">
-            <h3 className="text-2xl font-bold text-amber-900 mb-6 text-center">
-              Scientific References
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
-              <div className="space-y-3">
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <strong>World Health Organization (2023).</strong> Depression
-                  Fact Sheet.
-                  <a
-                    href="https://www.who.int/news-room/fact-sheets/detail/depression"
-                    className="text-blue-600 hover:underline ml-2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    WHO Depression Facts
-                  </a>
-                </div>
 
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <strong>American Psychiatric Association (2022).</strong>{" "}
-                  Diagnostic and Statistical Manual of Mental Disorders (5th
-                  ed., text rev.).
-                  <a
-                    href="https://www.psychiatry.org/psychiatrists/practice/dsm"
-                    className="text-blue-600 hover:underline ml-2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    DSM-5-TR
-                  </a>
-                </div>
+          {/* Subtle Scientific References Section */}
+          <div className="bg-gradient-to-br from-[#fcf9f4] to-amber-50 rounded-2xl p-8 border border-amber-100">
+            {/* Simple header */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-amber-100 rounded-full mb-4">
+                <BookOpen className="w-6 h-6 text-amber-700" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-2">
+                Scientific References
+              </h3>
+              <p className="text-gray-600">
+                Evidence-based sources supporting this content • Peer-reviewed
+                research • Authoritative guidelines
+              </p>
+            </div>
 
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <strong>Cuijpers, P., et al. (2023).</strong> The efficacy of
-                  psychotherapy and pharmacotherapy in treating depressive and
-                  anxiety disorders: A meta-analysis.
-                  <em>Psychological Medicine, 53</em>(3), 1-15.
+            {/* Clean references list */}
+            <div className="grid md:grid-cols-2 gap-4 text-sm relative z-10">
+              <div className="group p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm border border-amber-100/50 hover:shadow-md hover:bg-white/80 transition-all duration-300">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-blue-100/80 rounded-lg flex items-center justify-center mt-0.5">
+                    <Globe className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <strong className="text-blue-800 block mb-1">
+                      World Health Organization (2023)
+                    </strong>
+                    <p className="text-gray-700 mb-2">Depression Fact Sheet</p>
+                    <a
+                      href="https://www.who.int/news-room/fact-sheets/detail/depression"
+                      className="inline-flex items-center text-blue-600 hover:text-blue-700 text-xs font-medium hover:underline transition-colors duration-200"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>Visit WHO Source</span>
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <strong>NIMH (2023).</strong> Major Depression Statistics.
-                  National Institute of Mental Health.
-                  <a
-                    href="https://www.nimh.nih.gov/health/statistics/major-depression"
-                    className="text-blue-600 hover:underline ml-2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    NIMH Statistics
-                  </a>
-                </div>
-
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <strong>Rosenbaum, S., et al. (2022).</strong> Physical
-                  activity interventions for people with mental illness: A
-                  systematic review and meta-analysis.
-                  <em>Journal of Clinical Medicine, 11</em>(2), 492.
-                </div>
-
-                <div className="p-4 bg-white rounded-lg shadow-sm">
-                  <strong>Sullivan, P. F., et al. (2021).</strong> Genetic
-                  architectures of psychiatric disorders: The emerging picture.
-                  <em>Nature Reviews Genetics, 22</em>(5), 289-310.
+              <div className="group p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm border border-amber-100/50 hover:shadow-md hover:bg-white/80 transition-all duration-300">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-100/80 rounded-lg flex items-center justify-center mt-0.5">
+                    <Book className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <div className="flex-1">
+                    <strong className="text-purple-800 block mb-1">
+                      American Psychiatric Association (2022)
+                    </strong>
+                    <p className="text-gray-700 mb-2">
+                      Diagnostic and Statistical Manual of Mental Disorders (5th
+                      ed., text rev.)
+                    </p>
+                    <a
+                      href="https://www.psychiatry.org/psychiatrists/practice/dsm"
+                      className="inline-flex items-center text-purple-600 hover:text-purple-700 text-xs font-medium hover:underline transition-colors duration-200"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>Visit DSM-5-TR</span>
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
+
+              <div className="group p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm border border-amber-100/50 hover:shadow-md hover:bg-white/80 transition-all duration-300">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-green-100/80 rounded-lg flex items-center justify-center mt-0.5">
+                    <FileText className="w-4 h-4 text-green-600" />
+                  </div>
+                  <div className="flex-1">
+                    <strong className="text-green-800 block mb-1">
+                      Cuijpers, P., et al. (2023)
+                    </strong>
+                    <p className="text-gray-700">
+                      The efficacy of psychotherapy and pharmacotherapy in
+                      treating depressive and anxiety disorders: A
+                      meta-analysis.{" "}
+                      <em className="text-gray-600">
+                        Psychological Medicine, 53
+                      </em>
+                      (3), 1-15.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm border border-amber-100/50 hover:shadow-md hover:bg-white/80 transition-all duration-300">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-indigo-100/80 rounded-lg flex items-center justify-center mt-0.5">
+                    <BarChart3 className="w-4 h-4 text-indigo-600" />
+                  </div>
+                  <div className="flex-1">
+                    <strong className="text-indigo-800 block mb-1">
+                      NIMH (2023)
+                    </strong>
+                    <p className="text-gray-700 mb-2">
+                      Major Depression Statistics. National Institute of Mental
+                      Health
+                    </p>
+                    <a
+                      href="https://www.nimh.nih.gov/health/statistics/major-depression"
+                      className="inline-flex items-center text-indigo-600 hover:text-indigo-700 text-xs font-medium hover:underline transition-colors duration-200"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>Visit NIMH Statistics</span>
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm border border-amber-100/50 hover:shadow-md hover:bg-white/80 transition-all duration-300">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-orange-100/80 rounded-lg flex items-center justify-center mt-0.5">
+                    <Activity className="w-4 h-4 text-orange-600" />
+                  </div>
+                  <div className="flex-1">
+                    <strong className="text-orange-800 block mb-1">
+                      Rosenbaum, S., et al. (2022)
+                    </strong>
+                    <p className="text-gray-700">
+                      Physical activity interventions for people with mental
+                      illness: A systematic review and meta-analysis.{" "}
+                      <em className="text-gray-600">
+                        Journal of Clinical Medicine, 11
+                      </em>
+                      (2), 492.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm border border-amber-100/50 hover:shadow-md hover:bg-white/80 transition-all duration-300">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-red-100/80 rounded-lg flex items-center justify-center mt-0.5">
+                    <Brain className="w-4 h-4 text-red-600" />
+                  </div>
+                  <div className="flex-1">
+                    <strong className="text-red-800 block mb-1">
+                      Sullivan, P. F., et al. (2021)
+                    </strong>
+                    <p className="text-gray-700">
+                      Genetic architectures of psychiatric disorders: The
+                      emerging picture.{" "}
+                      <em className="text-gray-600">
+                        Nature Reviews Genetics, 22
+                      </em>
+                      (5), 289-310.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Simple footer note */}
+            <div className="mt-6 pt-4 border-t border-amber-100">
+              <p className="text-center text-xs text-gray-500">
+                All content is based on peer-reviewed research and authoritative
+                medical sources
+              </p>
             </div>
           </div>
         </div>
