@@ -128,9 +128,9 @@ export default function About() {
             {[
               {
                 icon: <Users className="w-8 h-8 text-red-600" />,
-                stat: "1 in 4",
-                title: "People Affected",
-                desc: "1 in 4 people will experience mental health issues in their lifetime, yet many never receive support.",
+                stat: "1 in 5",
+                title: "Adults Affected",
+                desc: "1 in 5 Adult will experience mental health issues in their lifetime, yet many never receive support.",
                 bgColor: "from-red-100 to-red-200",
               },
               {
@@ -280,7 +280,7 @@ export default function About() {
                 {
                   icon: <Book className="w-6 h-6 text-orange-600" />,
                   title: "Evidence-Based",
-                  desc: "All our content and approaches are grounded in scientific research and reviewed by licensed mental health professionals.",
+                  desc: "Aligned with National Mental Health Programme (NMHP) and Mental Healthcare Act, 2017 standards for ethical mental healthcare delivery.",
                 },
               ].map((principle, i) => (
                 <div

@@ -104,6 +104,13 @@ export default function DepressionPage() {
               Understanding Depression
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-pink-300 to-yellow-300 mx-auto rounded-full"></div>
+            {/* <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mb-8">
+              Mental health refers to emotional, psychological, and social
+              well-being. Depression is a serious mental health condition that
+              affects how people think, feel, and behave in daily life.
+              According to WHO, the burden of mental health problems in India is
+              2443 disability-adjusted life years (DALYs) per 10000 population.
+            </p> */}
           </div>
 
           {/* Original 3 Cards */}
@@ -141,9 +148,10 @@ export default function DepressionPage() {
                 </h3>
               </div>
               <p className="text-gray-700 leading-relaxed mb-4 flex-grow">
-                Depression can be triggered by genetic factors, brain chemistry,
-                trauma, chronic stress, or major life events. It's not a
-                weakness, but a health condition.
+                Depression can be triggered by various factors including genetic
+                predisposition, brain chemistry, trauma, chronic stress, or
+                major life events. Urban areas show a higher prevalence (13.5%)
+                compared to rural areas (6.9%).
               </p>
               <div className="text-sm text-gray-600 bg-purple-50 p-3 rounded-lg mt-auto">
                 <strong>Heritability:</strong> 40% genetic component according
@@ -169,8 +177,8 @@ export default function DepressionPage() {
                 support, just like physical health issues.
               </p>
               <div className="text-sm text-gray-600 bg-green-50 p-3 rounded-lg mt-auto">
-                <strong>Treatment Success:</strong> Combined therapy shows
-                60-80% remission rates.
+                <strong>Treatment Gap:</strong> 70% to 92% of people with mental
+                disorders in India do not receive proper treatment.
               </div>
             </div>
           </div>
@@ -216,25 +224,25 @@ export default function DepressionPage() {
 
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="text-4xl font-bold text-purple-600 mb-2">
-                  50%
+                  10.6%
                 </div>
                 <p className="text-gray-700 font-semibold mb-1">
-                  Don't Seek Help
+                  Adults Affected
                 </p>
                 <p className="text-sm text-gray-600">
-                  Of those affected don't receive proper treatment
+                  Indian adults suffer from mental disorders
                 </p>
               </div>
 
               <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="text-4xl font-bold text-amber-600 mb-2">
-                  75%
+                  $1.03T
                 </div>
                 <p className="text-gray-700 font-semibold mb-1">
-                  Improvement Rate
+                  Economic Loss
                 </p>
                 <p className="text-sm text-gray-600">
-                  With proper treatment and support
+                  Due to mental health conditions (2012-2030)
                 </p>
               </div>
             </div>
@@ -504,6 +512,36 @@ export default function DepressionPage() {
 
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h4 className="font-bold text-lg text-amber-900 mb-4 flex items-center">
+                  <Users className="w-5 h-5 mr-2 text-pink-600" />
+                  Support Systems
+                </h4>
+                <ul className="space-y-3 text-sm text-gray-700">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Community Support:</strong> Access to mental
+                      health services through primary healthcare centers
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Tele MANAS:</strong> 24/7 mental health helpline
+                      (14416 / 1800-89-14416) available in 20 Indian languages
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>
+                      <strong>Professional Care:</strong> Access mental health
+                      services through Ayushman Bharat Health & Wellness Centres
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h4 className="font-bold text-lg text-amber-900 mb-4 flex items-center">
                   <Pill className="w-5 h-5 mr-2 text-purple-600" />
                   Medication
                 </h4>
@@ -561,36 +599,6 @@ export default function DepressionPage() {
                   </li>
                 </ul>
               </div>
-
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
-                <h4 className="font-bold text-lg text-amber-900 mb-4 flex items-center">
-                  <Users className="w-5 h-5 mr-2 text-pink-600" />
-                  Support Systems
-                </h4>
-                <ul className="space-y-3 text-sm text-gray-700">
-                  <li className="flex items-start">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>
-                      <strong>Support Groups:</strong> Connect with others who
-                      understand
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>
-                      <strong>Family & Friends:</strong> Build strong support
-                      network
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>
-                      <strong>Online Resources:</strong> Access help and
-                      information 24/7
-                    </span>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
 
@@ -619,16 +627,16 @@ export default function DepressionPage() {
                   </div>
                   <div className="flex-1">
                     <strong className="text-blue-800 block mb-1">
-                      World Health Organization (2023)
+                      WHO Data Insight - India (2024)
                     </strong>
-                    <p className="text-gray-700 mb-2">Depression Fact Sheet</p>
+                    <p className="text-gray-700 mb-2">Mental Health Statistics & Impact Assessment</p>
                     <a
-                      href="https://www.who.int/news-room/fact-sheets/detail/depression"
+                      href="https://mohfw.gov.in/?q=en/pressrelease-206"
                       className="inline-flex items-center text-blue-600 hover:text-blue-700 text-xs font-medium hover:underline transition-colors duration-200"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span>Visit WHO Source</span>
+                      View WHO Report
                       <svg
                         className="w-3 h-3 ml-1"
                         fill="none"
@@ -654,14 +662,13 @@ export default function DepressionPage() {
                   </div>
                   <div className="flex-1">
                     <strong className="text-purple-800 block mb-1">
-                      American Psychiatric Association (2022)
+                      NIMHANS National Mental Health Survey (2015-16)
                     </strong>
                     <p className="text-gray-700 mb-2">
-                      Diagnostic and Statistical Manual of Mental Disorders (5th
-                      ed., text rev.)
+                      Comprehensive Mental Health Data Analysis
                     </p>
                     <a
-                      href="https://www.psychiatry.org/psychiatrists/practice/dsm"
+                      href="https://mohfw.gov.in/sites/default/files/National%20Mental%20Health%20Survey%2C%202015-16%20-%20Summary%20Report_0.pdf"
                       className="inline-flex items-center text-purple-600 hover:text-purple-700 text-xs font-medium hover:underline transition-colors duration-200"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -692,17 +699,32 @@ export default function DepressionPage() {
                   </div>
                   <div className="flex-1">
                     <strong className="text-green-800 block mb-1">
-                      Cuijpers, P., et al. (2023)
+                      Economic Survey 2024-25
                     </strong>
-                    <p className="text-gray-700">
-                      The efficacy of psychotherapy and pharmacotherapy in
-                      treating depressive and anxiety disorders: A
-                      meta-analysis.{" "}
-                      <em className="text-gray-600">
-                        Psychological Medicine, 53
-                      </em>
-                      (3), 1-15.
+                    <p className="text-gray-700 mb-2">
+                      Mental Health Economic Impact & Strategies
                     </p>
+                    <a
+                      href="https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2034931"
+                      className="inline-flex items-center text-green-600 hover:text-green-700 text-xs font-medium hover:underline transition-colors duration-200"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Economic Survey
+                      <svg
+                        className="w-3 h-3 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -786,6 +808,7 @@ export default function DepressionPage() {
                   </div>
                 </div>
               </div>
+
             </div>
 
             {/* Simple footer note */}
