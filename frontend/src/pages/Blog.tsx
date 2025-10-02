@@ -128,7 +128,7 @@ export default function Blog() {
           </li>
         </ul>
       </section>
-    </div>
+      </div>
     <Footer/>
     </>
     

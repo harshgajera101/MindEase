@@ -1,19 +1,3 @@
-// import { Link } from 'react-router-dom'
-
-// export default function Navbar(){
-//   return (
-//     <nav className="bg-white shadow">
-//       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-//         <Link to="/" className="text-2xl font-bold text-sky-600">MindEase</Link>
-//         <div className="space-x-4">
-//           <Link to="/" className="text-gray-700 hover:text-sky-600">Home</Link>
-//           <Link to="/chat" className="text-gray-700 hover:text-sky-600">Chat</Link>
-//         </div>
-//       </div>
-//     </nav>
-//   )
-// }
-
 import { useState } from "react";
 import { Menu, X, Heart } from "lucide-react";
 import {
@@ -77,13 +61,13 @@ export default function Navbar() {
               <span className="relative z-10">Anxiety</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
             </a>
-            <a
+            {/* <a
               href="/chat"
               className="relative hover:text-amber-200 transition-all duration-200 group"
             >
               <span className="relative z-10">Chat</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
-            </a>
+            </a> */}
             <a
               href="/relaxation"
               className="relative hover:text-amber-200 transition-all duration-200 group"
@@ -105,6 +89,7 @@ export default function Navbar() {
               <span className="relative z-10">Support</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-200 group-hover:w-full transition-all duration-200"></span>
             </a> */}
+
             {/* 🔑 Clerk Authentication */}
             <div className="relative">
               <SignedOut>
@@ -119,6 +104,7 @@ export default function Navbar() {
                 <UserButton afterSignOutUrl="/" />
               </SignedIn>
             </div>
+
           </div>
 
           {/* Mobile Toggle */}
@@ -176,13 +162,13 @@ export default function Navbar() {
               >
                 Anxiety
               </a>
-              <a
+              {/* <a
                 href="/chat"
                 className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
                 onClick={() => setIsOpen(false)}
               >
                 Chat
-              </a>
+              </a> */}
               {/* <a 
                 href="/blog" 
                 className="block hover:text-amber-200 transition-all duration-200 hover:translate-x-2 hover:bg-amber-700 hover:bg-opacity-30 px-3 py-2 rounded-lg"
