@@ -144,17 +144,17 @@ ANXIETY_TASKS = {
 # Original logic helpers (kept / reused)
 # -----------------------
 def get_depression_level(score):
-    if 0 <= score <= 4: return "Minimal", "Minimal Depression"
-    elif 5 <= score <= 9: return "Mild", "Mild Depression"
-    elif 10 <= score <= 14: return "Moderate", "Moderate Depression"
-    elif 15 <= score <= 30: return "Severe", "Severe Depression"
+    if 0 <= score <= 7: return "Minimal", "Minimal Depression"
+    elif 8 <= score <= 14: return "Mild", "Mild Depression"
+    elif 15 <= score <= 21: return "Moderate", "Moderate Depression"
+    elif 22 <= score <= 30: return "Severe", "Severe Depression"
     else: return None, None
 
 def get_anxiety_level(score):
-    if 0 <= score <= 4: return "Minimal", "Minimal Anxiety"
-    elif 5 <= score <= 9: return "Mild", "Mild Anxiety"
-    elif 10 <= score <= 14: return "Moderate", "Moderate Anxiety"
-    elif 15 <= score <= 21: return "Severe", "Severe Anxiety"
+    if 0 <= score <= 7: return "Minimal", "Minimal Anxiety"
+    elif 8 <= score <= 14: return "Mild", "Mild Anxiety"
+    elif 15 <= score <= 21: return "Moderate", "Moderate Anxiety"
+    elif 22 <= score <= 30: return "Severe", "Severe Anxiety"
     else: return None, None
 
 def get_intent(user_message):

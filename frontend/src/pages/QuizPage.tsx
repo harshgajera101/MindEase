@@ -336,9 +336,9 @@ export default function QuizPage() {
       const percentage = Math.round((score / 30) * 100);
       setSeverityScore(percentage);
 
-      if (score <= 4) setSeverityLevel("Minimal");
-      else if (score <= 9) setSeverityLevel("Mild");
-      else if (score <= 14) setSeverityLevel("Moderate");
+      if (score <= 7) setSeverityLevel("Minimal");
+      else if (score <= 14) setSeverityLevel("Mild");
+      else if (score <= 21) setSeverityLevel("Moderate");
       else if (score <= 30) setSeverityLevel("Severe");
     }
   }, [submitted, answers]);
