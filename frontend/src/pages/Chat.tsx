@@ -40,7 +40,8 @@ export default function Chat() {
       setSessionId(initialChatData.session_id);
       setIsTyping(true);
       
-      const timers: number[] = [];
+      // const timers: number[] = [];
+      const timers: ReturnType<typeof setTimeout>[] = [];
       let delay = 500;
       
       initialChatData.bot_responses.forEach((res, index) => {
@@ -59,6 +60,8 @@ export default function Chat() {
       };
     }
   }, [initialChatData]);
+
+  
 
   // --- FIXED: The sendMessage function with refined timing logic ---
   const sendMessage = async () => {

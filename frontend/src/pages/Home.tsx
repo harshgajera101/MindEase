@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Logo from "../assets/img/logo.png";
-import Logo1 from "../assets/img/logo1.png";
+// import Logo from "../assets/img/logo.png";
+// import Logo1 from "../assets/img/logo1.png";
 import {
   Heart,
   Brain,
@@ -13,7 +13,6 @@ import {
   Sparkles,
   Star,
   Wind,
-  Activity,
   Eye,
   Globe,
   Lightbulb,
@@ -26,6 +25,7 @@ import {
   Waves,
   Compass,
   ArrowUp,
+  Edit3,
 } from "lucide-react";
 
 const faqs = [
@@ -52,7 +52,7 @@ const faqs = [
 ];
 
 export default function Home() {
-  const [isOpen] = useState(false);
+  // const [isOpen] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -258,6 +258,7 @@ export default function Home() {
       {/* How It Works */}
       <section id="how" className="px-6 md:px-12 py-20 bg-[#f5f0e8] relative">
         <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full mb-6">
               <Compass className="w-8 h-8 text-blue-700" />
@@ -267,32 +268,40 @@ export default function Home() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-300 to-purple-300 mx-auto rounded-full mb-6"></div>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Getting started with MindEase is simple and takes less than a
-              minute
+              Your journey to better mental health starts here – simple,
+              private, and supportive
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Steps Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 step: "1",
-                icon: <Globe className="w-8 h-8 text-blue-600" />,
-                title: "Visit MindEase",
-                desc: "Open our website on any device - phone, tablet, or computer. No downloads required.",
-                color: "blue",
+                icon: <Brain className="w-8 h-8 text-purple-600" />,
+                title: "Learn & Understand",
+                desc: "Explore our Depression and Anxiety pages to understand symptoms, causes, and facts backed by research.",
+                color: "purple",
               },
               {
                 step: "2",
-                icon: <MessageCircle className="w-8 h-8 text-green-600" />,
-                title: "Start Conversation",
-                desc: "Click 'Start Your Journey' and begin chatting with our AI companion instantly.",
-                color: "green",
+                icon: <FileText className="w-8 h-8 text-blue-600" />,
+                title: "Take the Assessment",
+                desc: "Complete our self-assessment quiz to understand your current mental health levels and identify areas that need attention.",
+                color: "blue",
               },
               {
                 step: "3",
-                icon: <Heart className="w-8 h-8 text-pink-600" />,
-                title: "Get Support",
-                desc: "Receive personalized guidance, coping strategies, and emotional support tailored to you.",
+                icon: <MessageCircle className="w-8 h-8 text-green-600" />,
+                title: "Chat with AI Support",
+                desc: "Connect with our AI companion for personalized guidance, coping strategies, and emotional support anytime you need it.",
+                color: "green",
+              },
+              {
+                step: "4",
+                icon: <Headphones className="w-8 h-8 text-pink-600" />,
+                title: "Practice Relaxation",
+                desc: "Access guided relaxation techniques, breathing exercises, and healing sounds to manage stress and find calm.",
                 color: "pink",
               },
             ].map((step, i) => (
@@ -300,32 +309,67 @@ export default function Home() {
                 key={i}
                 className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center group"
               >
+                {/* Step Number */}
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
                   <div
-                    className={`w-12 h-12 bg-gradient-to-br from-${step.color}-400 to-${step.color}-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg`}
+                    className={`w-12 h-12 bg-gradient-to-br from-${step.color}-400 to-${step.color}-300 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg`}
                   >
                     {step.step}
                   </div>
                 </div>
 
+                {/* Step Icon */}
                 <div
                   className={`w-16 h-16 bg-gradient-to-br from-${step.color}-100 to-${step.color}-200 rounded-2xl flex items-center justify-center mx-auto mt-6 mb-6 group-hover:scale-110 transition-transform duration-200`}
                 >
                   {step.icon}
                 </div>
 
+                {/* Step Title & Description */}
                 <h3 className="text-xl font-bold text-amber-900 mb-4">
                   {step.title}
                 </h3>
                 <p className="text-gray-700 leading-relaxed">{step.desc}</p>
 
-                {/* {i < 2 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ChevronRight className="w-6 h-6 text-amber-300" />
+                {/* Connector Arrow */}
+                {/* {i < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-full p-2.5 shadow-lg hover:scale-110 transition-transform duration-200">
+                      <ChevronRight className="w-6 h-6 text-white" />
+                    </div>
                   </div>
                 )} */}
               </div>
             ))}
+          </div>
+
+          {/* Additional Information */}
+          <div className="mt-16 bg-white rounded-3xl p-8 md:p-12 shadow-lg text-center max-w-4xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-4">
+              Your Journey, Your Pace
+            </h3>
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              You can start anywhere – whether you want to learn about mental
+              health, take an assessment, chat with our AI, or try relaxation
+              exercises. Every step you take is progress toward better
+              wellbeing.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/depression"
+                className="px-6 py-3 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-2xl font-semibold hover:shadow-lg transition-all duration-200"
+              >
+                Learn About Depression
+              </a>
+              <a
+                href="/anxiety"
+                className="px-6 py-3 bg-gradient-to-r from-blue-400 to-blue-500 text-white rounded-2xl font-semibold hover:shadow-lg transition-all duration-200"
+              >
+                Learn About Anxiety
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -443,9 +487,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Relaxation Preview */}
-      <section className="px-6 md:px-12 py-20 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
+      {/* Quick Relaxation Exercises */}
+      <section className="px-6 md:px-12 py-20 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 relative">
         <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-200 to-blue-200 rounded-full mb-6">
               <Waves className="w-8 h-8 text-green-700" />
@@ -465,8 +510,17 @@ export default function Home() {
                 icon: <Wind className="w-8 h-8 text-cyan-600" />,
                 title: "Breathing Exercises",
                 desc: "Simple breathing techniques to calm anxiety and reduce stress instantly.",
-                duration: "2-5 minutes",
+                duration: "1-5 minutes",
                 bgColor: "from-cyan-100 to-cyan-200",
+                comingSoon: false,
+              },
+              {
+                icon: <Edit3 className="w-8 h-8 text-green-600" />,
+                title: "Mindful Journaling",
+                desc: "Express your thoughts and feelings in a safe, private space.",
+                duration: "5-10 minutes",
+                bgColor: "from-green-100 to-green-200",
+                comingSoon: false,
               },
               {
                 icon: <Eye className="w-8 h-8 text-purple-600" />,
@@ -474,40 +528,60 @@ export default function Home() {
                 desc: "Short mindfulness sessions to center your thoughts and find peace.",
                 duration: "5-10 minutes",
                 bgColor: "from-purple-100 to-purple-200",
+                comingSoon: true,
               },
-              {
-                icon: <Activity className="w-8 h-8 text-green-600" />,
-                title: "Progressive Relaxation",
-                desc: "Step-by-step muscle relaxation to release physical tension.",
-                duration: "10-15 minutes",
-                bgColor: "from-green-100 to-green-200",
-              },
+              // {
+              //   icon: <Activity className="w-8 h-8 text-green-600" />,
+              //   title: "Progressive Relaxation",
+              //   desc: "Step-by-step muscle relaxation to release physical tension.",
+              //   duration: "10-15 minutes",
+              //   bgColor: "from-green-100 to-green-200",
+              //   comingSoon: true,
+              // },
             ].map((exercise, i) => (
               <div
                 key={i}
-                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center"
+                className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center group overflow-hidden"
               >
+                {/* Coming Soon Tag - Top Right */}
+                {exercise.comingSoon && (
+                  <span className="absolute top-4 right-4 text-xs font-medium text-gray-400 border border-gray-300 px-2.5 py-1 rounded-md animate-pulse">
+                    Soon
+                  </span>
+                )}
+
+                {/* Icon */}
                 <div
                   className={`w-16 h-16 bg-gradient-to-br ${exercise.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200`}
                 >
                   {exercise.icon}
                 </div>
 
-                <h3 className="text-xl font-bold text-amber-900 mb-3">
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-amber-900 mb-4">
                   {exercise.title}
                 </h3>
-                <p className="text-gray-700 mb-4 leading-relaxed">
+
+                {/* Description */}
+                <p className="text-gray-700 leading-relaxed mb-6">
                   {exercise.desc}
                 </p>
 
-                <div className="inline-flex items-center bg-amber-100 px-3 py-1 rounded-full text-amber-800 text-sm font-medium mb-6">
-                  <Clock className="w-3 h-3 mr-1" />
+                {/* Duration Badge */}
+                <div className="inline-flex items-center bg-amber-50 text-amber-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                  <Clock className="w-4 h-4 mr-2" />
                   {exercise.duration}
                 </div>
 
-                <button className="group w-full bg-gradient-to-r from-amber-400 to-amber-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center">
+                {/* Try Now Button */}
+                <button
+                  className={`group w-full bg-gradient-to-r from-amber-400 to-amber-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center ${
+                    exercise.comingSoon ? "opacity-60 cursor-not-allowed" : ""
+                  }`}
+                  disabled={exercise.comingSoon}
+                >
                   <Play className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                  Try Now
+                  {exercise.comingSoon ? "Coming Soon" : "Try Now"}
                 </button>
               </div>
             ))}

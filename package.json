@@ -1,0 +1,12 @@
+{
+  "name": "mindease",
+  "version": "1.0.0",
+  "description": "![MindEase Banner](https://via.placeholder.com/800x300/f59e0b/ffffff?text=MindEase+%7C+Mental+Wellness+Platform)",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others-on-fail \"npm --prefix frontend run dev\" \"python backend/app.py\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

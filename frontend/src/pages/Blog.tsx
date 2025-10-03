@@ -2,7 +2,7 @@
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useState } from "react";
+// import { useState } from "react";
 import { BookOpen, Heart, Leaf, Users, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -128,7 +128,7 @@ export default function Blog() {
           </li>
         </ul>
       </section>
-    </div>
+      </div>
     <Footer/>
     </>
     

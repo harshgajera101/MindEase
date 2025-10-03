@@ -8,7 +8,9 @@ import Blog from "./pages/Blog";
 import Support from "./pages/Support";
 import LoginSignup from "./pages/LoginSignup";
 import QuizPage from "./pages/QuizPage";
-import Relaxation from "./pages/Relaxation"
+import Relaxation from "./pages/Relaxation";
+
+import BreathingExercise from "./components/BreathingExercise"
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
       <Route path="/blog" element={<Blog />} />
       <Route path="/support" element={<Support />} />
       <Route path="/login" element={<LoginSignup />} />
+      <Route path="/signup" element={<LoginSignup />} /> 
       <Route path="/relaxation" element={<Relaxation />} />
+      <Route path="/breathing" element={<BreathingExercise />} />
       <Route path="/quiz/:topic" element={<QuizPage />} />
     </Routes>
   );
