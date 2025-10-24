@@ -1,148 +1,265 @@
-# 🌿 MindEase – Your Personal Mental Wellness Companion
+# 🌿 MindEase – AI-Powered Mental Wellness Companion
 
-![MindEase Banner](https://via.placeholder.com/800x300/f59e0b/ffffff?text=MindEase+%7C+Mental+Wellness+Platform)
+<img width="1470" height="832" alt="Screenshot 2025-10-24 at 6 57 23 PM" src="https://github.com/user-attachments/assets/e352e154-8810-4132-88d2-043533953520" />
 
-MindEase is a web-based platform designed to promote **mental well-being** by providing tools, resources, and interactive experiences for stress relief, mindfulness, and healthy living. With a soothing UI, soft color palette, and engaging features, MindEase aims to make mental wellness **accessible, interactive, and enjoyable**.
+> *"Your safe space for mental wellness, powered by AI and compassion."*
 
-> *"Healing is a journey — one step at a time."*
+MindEase is an **AI-powered mental health awareness platform** designed to help individuals understand, manage, and overcome **depression and anxiety**. Through interactive assessments, intelligent chatbot support powered by **Mistral-7B-v0.1 LLM**, and evidence-based relaxation techniques, MindEase provides a comprehensive digital sanctuary for mental wellness.
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-90%25-3178c6?logo=typescript)](https://www.typescriptlang.org/)
+[![Python](https://img.shields.io/badge/Python-9.7%25-3776ab?logo=python)](https://www.python.org/)
+[![React](https://img.shields.io/badge/React-19.1.1-61dafb?logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.1.2-646cff?logo=vite)](https://vitejs.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
 ## 📌 Problem Statement
 
-In today's fast-paced world, mental health is often overlooked. People struggle to find accessible, reliable, and engaging tools to manage stress, practice mindfulness, and build positive habits. MindEase addresses this by offering a **digital safe space** where users can **relax, learn, and grow**.
+Mental health challenges, particularly depression and anxiety, affect millions of people worldwide, yet many face significant barriers to seeking help:
+
+- **Lack of Awareness**: Many individuals struggle to recognize early signs of depression and anxiety
+- **Limited Access**: Professional mental health support is often expensive, time-consuming, or geographically inaccessible
+- **Stigma**: Fear of judgment prevents people from discussing their mental health concerns
+- **Delayed Intervention**: Without proper assessment tools, mental health issues may worsen before being addressed
+- **Insufficient Resources**: Limited availability of 24/7 support during crisis moments
+- **Knowledge Gap**: Lack of accessible, reliable information about mental health conditions and coping strategies
 
 ---
 
-## 🎯 Objectives
+## 💡 Solution
 
-- Provide users with **guided relaxation exercises** and stress relief techniques
-- Share **educational blogs and resources** about mindfulness and mental health awareness
-- Offer an **interactive AI chat support** for personalized mental wellness guidance
-- Create a **responsive, user-friendly interface** accessible on all devices
-- Foster a **community-driven environment** with support and shared learning
-- Make mental health resources **accessible to everyone, anytime, anywhere**
+MindEase addresses these challenges through a comprehensive, AI-powered digital platform:
+
+### **🎯 Core Solutions**
+
+1. **Interactive Assessment Quizzes**
+   - Evidence-based questionnaires to help users understand their depression and anxiety levels
+   - Personalized results with actionable insights and recommendations
+   - Track mental health patterns over time
+
+2. **AI-Powered Chatbot Support**
+   - 24/7 conversational support using **Mistral-7B-v0.1 LLM** for context-aware, empathetic responses
+   - Personalized mental wellness guidance based on user conversations
+   - Safe, judgment-free space for expressing feelings and concerns
+
+3. **Educational Resources**
+   - Comprehensive information about depression and anxiety symptoms, causes, and treatments
+   - Expert-backed articles and blog posts on mental health topics
+   - Evidence-based coping strategies and self-help techniques
+
+4. **Relaxation & Mindfulness Tools**
+   - Guided breathing exercises with visual animations
+   - Healing sound library (ocean waves, forest rain, 432 Hz healing frequencies, Tibetan bowls)
+   - Meditation and mindfulness practices for stress reduction
+
+5. **Crisis Support Resources**
+   - Immediate access to emergency hotlines and professional help
+   - Clear guidance on when and how to seek professional intervention
+   - Community support information and mental health services directory
 
 ---
 
-## 📂 Project Structure & Flow
+## ✨ Key Features
+
+### 🤖 **AI-Powered Chatbot (Mistral-7B-v0.1)**
+- Real-time conversations with empathetic, context-aware AI responses
+- Natural language understanding for personalized mental wellness support
+- Typing indicators and smooth message animations for natural interaction
+- Privacy-focused conversations with no judgment
+
+### 📊 **Mental Health Assessment**
+- Comprehensive depression and anxiety screening questionnaires
+- Science-backed evaluation criteria (PHQ-9, GAD-7 inspired)
+- Instant results with severity level classification (Minimal, Mild, Moderate, Severe)
+- Personalized recommendations based on assessment scores
+
+### 🧘 **Relaxation Suite**
+- **Guided Breathing Exercises**: Visual breathing circle with customizable durations (1, 3, 5 minutes)
+- **Healing Audio Library**: Curated soundscapes for meditation and stress relief
+- **Progress Tracking**: Monitor relaxation session completion and consistency
+
+### 📚 **Mental Health Education**
+- **Depression Resources**: Symptoms, types, causes, and treatment options
+- **Anxiety Resources**: Understanding anxiety disorders and management techniques
+- **Blog Articles**: Expert-curated content on mental wellness topics
+- **Self-Help Strategies**: Practical tips for daily mental health maintenance
+
+### 🔐 **User Authentication**
+- Secure sign-in/sign-up with Clerk authentication
+- Protected user data and personalized experiences
+- Session management for continuous support
+
+### 📱 **Responsive Design**
+- Mobile-first approach for accessibility on all devices
+- Smooth animations powered by Framer Motion
+- Intuitive navigation with modern UI/UX principles
+- Accessibility features for inclusive design
+
+---
+
+## 🏗️ Project Structure
 
 ```
 MindEase/
 │
-├── frontend/
+├── frontend/                          # React + TypeScript Frontend
 │   ├── src/
-│   │   ├── components/
-│   │   │   ├── BackToTop.tsx       # Scroll to top utility
-│   │   │   ├── BreathingExer...tsx # Breathing exercise component
-│   │   │   ├── ChatBox.tsx         # Chat interface component
-│   │   │   ├── Footer.tsx          # Footer with links and info
-│   │   │   └── Navbar.tsx          # Navigation component
+│   │   ├── components/               # Reusable UI Components
+│   │   │   ├── BackToTop.tsx        # Scroll-to-top button utility
+│   │   │   ├── BreathingExercise.tsx # Visual breathing guide component
+│   │   │   ├── Footer.tsx           # Footer with links & resources
+│   │   │   └── Navbar.tsx           # Navigation bar with auth integration
 │   │   │
-│   │   ├── pages/
-│   │   │   ├── About.tsx           # Mission, vision, team info
-│   │   │   ├── Anxiety.tsx         # Anxiety resources & support
-│   │   │   ├── Blog.tsx            # Mental health articles
-│   │   │   ├── Chat.tsx            # AI chatbot interface
-│   │   │   ├── Depression.tsx      # Depression resources & support
-│   │   │   ├── Home.tsx            # Landing page with hero section
-│   │   │   ├── LoginSignup.tsx     # User authentication
-│   │   │   ├── QuizPage.tsx        # Mental health assessment
-│   │   │   ├── Relaxation.tsx      # Mindfulness & relaxation tools
-│   │   │   └── Support.tsx         # Help center & crisis resources
+│   │   ├── pages/                    # Main Application Pages
+│   │   │   ├── Home.tsx             # Landing page with hero section
+│   │   │   ├── About.tsx            # Mission, vision, team info
+│   │   │   ├── Depression.tsx       # Depression awareness & resources
+│   │   │   ├── Anxiety.tsx          # Anxiety awareness & resources
+│   │   │   ├── QuizPage.tsx         # Mental health assessment quiz
+│   │   │   ├── Chat.tsx             # AI chatbot interface (Mistral-7B)
+│   │   │   ├── Relaxation.tsx       # Breathing exercises & healing sounds
+│   │   │   ├── Blog.tsx             # Mental health articles & resources
+│   │   │   ├── Support.tsx          # Crisis resources & help center
+│   │   │   └── LoginSignup.tsx      # Authentication page
 │   │   │
-│   │   ├── assets/                 # Images, audio files, graphics
-│   │   ├── App.tsx                 # Main application component
-│   │   ├── App.css                 # Global styles
-│   │   ├── index.css               # Base CSS styles
-│   │   └── main.tsx                # React application entry point
+│   │   ├── App.tsx                   # Main app component with routing
+│   │   ├── App.css                   # Global styles
+│   │   ├── index.css                 # Base CSS styles
+│   │   └── main.tsx                  # Application entry point
 │   │
-│   ├── public/                     # Static files & audio resources
-│   ├── node_modules/               # Dependencies
-│   ├── .gitignore                  # Git ignore rules
-│   ├── eslint.config.js            # ESLint configuration
-│   ├── package.json                # Dependencies and scripts
-│   └── vite-env.d.ts              # Vite environment types
+│   ├── public/                       # Static assets & audio files
+│   ├── package.json                  # Frontend dependencies
+│   ├── vite.config.ts               # Vite configuration
+│   ├── tsconfig.json                # TypeScript configuration
+│   └── tailwind.config.js           # Tailwind CSS configuration
 │
-├── backend/                        # Future API implementation
-└── README.md                       # Project documentation
+├── backend/                          # Python Backend (API & LLM)
+│   ├── app.py                       # Flask/FastAPI server (LLM integration)
+│   ├── models/                      # Mistral-7B-v0.1 model files
+│   ├── requirements.txt             # Python dependencies
+│   └── utils/                       # Helper functions & utilities
+│
+├── .gitignore
+├── LICENSE
+└── README.md                         # Project documentation
 ```
 
 ---
 
 ## 🛠️ Tech Stack
 
-### **Frontend**
-- **React 18** with TypeScript for type-safe development
-- **Vite** for fast build tooling and development server
-- **Tailwind CSS** for utility-first styling and responsive design
-- **Lucide React** for consistent, beautiful icons
-- **HTML5 Audio API** for healing sounds and meditation music
+### **Frontend Technologies**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React** | 19.1.1 | UI framework for building interactive components |
+| **TypeScript** | 5.8.3 | Type-safe development and enhanced code quality |
+| **Vite** | 7.1.2 | Fast build tooling and development server |
+| **Tailwind CSS** | 4.1.13 | Utility-first CSS framework for responsive design |
+| **React Router DOM** | 7.8.2 | Client-side routing and navigation |
+| **Framer Motion** | 12.23.12 | Smooth animations and transitions |
+| **Clerk** | 5.47.0 | User authentication and session management |
+| **Lucide React** | 0.542.0 | Beautiful, consistent icon library |
+| **Axios** | 1.11.0 | HTTP client for API requests |
 
-### **Features & Integrations**
-- **State Management** - React Hooks (useState, useEffect, useRef)
-- **Audio Processing** - Real-time playback with volume controls
-- **Responsive Animations** - CSS transitions and transform animations
-- **Form Handling** - Interactive quizzes and contact forms
-- **Local Storage** - User preferences and session data
+### **Backend Technologies**
+| Technology | Purpose |
+|------------|---------|
+| **Python** | Backend server and API development |
+| **Mistral-7B-v0.1** | Large Language Model for AI chatbot responses |
+| **Flask/FastAPI** | RESTful API framework |
+| **Transformers** | Hugging Face library for LLM integration |
+| **PyTorch** | Deep learning framework for model inference |
 
 ### **Development Tools**
-- **ESLint** for code quality and consistency
-- **TypeScript** for enhanced development experience
-- **Git** for version control
-- **Modern Browser APIs** for enhanced functionality
-
-### **Deployment**
-- **Vercel** / **Netlify** for frontend hosting
-- **CDN Integration** for audio file delivery
-- **Progressive Web App** capabilities
+- **ESLint** - Code quality and consistency enforcement
+- **TypeScript ESLint** - TypeScript-specific linting rules
+- **Git** - Version control system
+- **npm** - Package management
+- **Vite Plugin React** - Hot Module Replacement (HMR) for React
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- **Node.js** (v16 or higher)
+### **Prerequisites**
+- **Node.js** (v18 or higher)
 - **npm** or **yarn** package manager
+- **Python** 3.9+ (for backend)
+- **Git** for version control
 - Modern web browser (Chrome, Firefox, Safari, Edge)
 
-### 1. Clone the Repository
+### **Installation & Setup**
+
+#### **1. Clone the Repository**
 ```bash
-git clone https://github.com/your-username/mindease.git
-cd mindease
+git clone https://github.com/harshgajera101/MindEase.git
+cd MindEase
 ```
 
-### 2. Navigate to Frontend Directory
+#### **2. Frontend Setup**
 ```bash
+# Navigate to frontend directory
 cd frontend
-```
 
-### 3. Install Dependencies
-```bash
+# Install dependencies
 npm install
 # or
 yarn install
-```
 
-### 4. Run Development Server
-```bash
+# Start development server
 npm run dev
 # or
 yarn dev
 ```
 
-### 5. Open Your Browser
-Navigate to `http://localhost:5173` (Vite default port)
+The frontend will be available at `http://localhost:5173`
 
-### 6. Build for Production
+#### **3. Backend Setup (AI Chatbot)**
 ```bash
+# Navigate to backend directory
+cd backend
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the backend server
+python app.py
+```
+
+The backend API will be available at `http://localhost:5000`
+
+#### **4. Environment Variables**
+Create a `.env` file in the frontend directory:
+```env
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+VITE_API_BASE_URL=http://localhost:5000
+```
+
+Create a `.env` file in the backend directory:
+```env
+MODEL_PATH=./models/mistral-7b-v0.1
+HUGGINGFACE_TOKEN=your_hf_token
+```
+
+#### **5. Build for Production**
+```bash
+# Frontend build
+cd frontend
 npm run build
 # or
 yarn build
-```
 
-### 7. Preview Production Build
-```bash
+# Preview production build
 npm run preview
 # or
 yarn preview
@@ -150,170 +267,304 @@ yarn preview
 
 ---
 
-## 📱 Responsive Design
+## 🎨 Core Features Deep Dive
 
-MindEase is built with a **mobile-first** approach:
+### **1. AI Chatbot (Mistral-7B-v0.1)**
+The heart of MindEase is its intelligent, empathetic AI companion:
 
-- **Breakpoints**: `sm` (640px), `md` (768px), `lg` (1024px), `xl` (1280px)
-- **Flexible Layouts**: CSS Grid and Flexbox for adaptive design
-- **Touch-Friendly**: Optimized button sizes and spacing for mobile
-- **Performance**: Optimized images and lazy loading
-- **Cross-Browser**: Compatible with all modern browsers
-
----
-
-## 🎯 Key Interactive Features
-
-### 🌬️ **Guided Breathing Exercise**
-- **Visual breathing circle** that expands and contracts naturally
-- **Customizable durations**: 1, 3, or 5-minute sessions
-- **Phase indicators**: Inhale (4s) → Hold (2s) → Exhale (6s) → Rest (1s)
-- **Progress tracking** with visual timer and completion percentage
-- **Responsive animations** that work smoothly across devices
-
-### 🎵 **Healing Sounds Library**
 ```typescript
-// Six carefully curated soundscapes:
-- Ocean Waves (Calming water sounds)
-- Forest Rain (Gentle rainfall in nature)
-- 432 Hz Healing (Therapeutic frequency music)
-- Tibetan Bowls (Sacred singing bowls)
-- Night Sounds (Peaceful evening ambience)
-- Bird Songs (Morning birds chirping)
+// Key Features:
+- Context-aware responses based on conversation history
+- Emotional intelligence and empathetic language
+- Crisis detection and appropriate resource recommendations
+- Natural conversation flow with typing indicators
+- Secure, private conversations
 ```
 
-### 💬 **AI Chatbot Interface**
-- **Real-time conversations** with empathetic AI responses
-- **Varied response library** - 8+ different supportive messages
-- **Typing indicators** and smooth message animations
-- **User/Bot differentiation** - Clear visual conversation flow
-- **Auto-scroll** to latest messages without footer interference
+**LLM Model**: Mistral-7B-v0.1
+- 7 billion parameters for nuanced understanding
+- Fine-tuned for mental health support conversations
+- Generates personalized, supportive, context-aware responses
+- Trained to recognize crisis situations and provide appropriate resources
+
+### **2. Mental Health Assessment Quiz**
+Evidence-based screening tools:
+
+```typescript
+// Assessment Categories:
+- Depression Screening (PHQ-9 inspired)
+- Anxiety Screening (GAD-7 inspired)
+- Severity Classification: Minimal | Mild | Moderate | Severe
+- Personalized recommendations based on results
+- Track progress over multiple assessments
+```
+
+### **3. Guided Breathing Exercises**
+Visual, interactive breathing guidance:
+
+```typescript
+// Breathing Cycle:
+- Inhale: 4 seconds (circle expands)
+- Hold: 2 seconds (circle stable)
+- Exhale: 6 seconds (circle contracts)
+- Rest: 1 second (pause)
+- Customizable durations: 1, 3, or 5 minutes
+- Progress tracking with completion percentage
+```
+
+### **4. Healing Audio Library**
+Curated soundscapes for relaxation:
+
+```typescript
+const soundLibrary = [
+  "Ocean Waves - Calming coastal sounds",
+  "Forest Rain - Gentle rainfall in nature",
+  "432 Hz Healing - Therapeutic frequency music",
+  "Tibetan Singing Bowls - Sacred meditation sounds",
+  "Night Ambience - Peaceful evening sounds",
+  "Morning Birds - Uplifting nature sounds"
+];
+```
+
+### **5. Educational Resources**
+Comprehensive mental health information:
+
+- **Depression Page**: Types, symptoms, causes, treatment options, self-care strategies
+- **Anxiety Page**: Anxiety disorders, panic attacks, coping mechanisms, professional help
+- **Blog Section**: Expert articles, personal stories, recovery journeys, wellness tips
+- **Support Resources**: Crisis hotlines, therapy directories, emergency contacts
 
 ---
 
-## 🔮 Future Enhancements
+## 📱 Responsive Design
 
-### **Phase 1: Core Improvements**
-- [ ] **User Authentication** - Account creation and login system
-- [ ] **Progress Tracking** - Mood logging and wellness journey tracking
-- [ ] **Enhanced AI** - More sophisticated chatbot with NLP integration
-- [ ] **Audio Library Expansion** - More healing sounds and guided meditations
+MindEase is built with a **mobile-first approach**:
 
-### **Phase 2: Advanced Features**
-- [ ] **Community Forums** - Anonymous support groups and discussions
-- [ ] **Professional Integration** - Direct connections to licensed therapists
-- [ ] **Gamification** - Rewards for completing wellness activities
-- [ ] **Calendar Integration** - Scheduled relaxation reminders
+### **Breakpoints**
+```css
+sm: 640px   /* Small devices (phones) */
+md: 768px   /* Medium devices (tablets) */
+lg: 1024px  /* Large devices (laptops) */
+xl: 1280px  /* Extra large devices (desktops) */
+2xl: 1536px /* Ultra-wide displays */
+```
 
-### **Phase 3: Platform Expansion**
+### **Design Principles**
+- ✅ Touch-friendly interface with adequate tap targets
+- ✅ Optimized images and lazy loading for performance
+- ✅ Flexible layouts using CSS Grid and Flexbox
+- ✅ Consistent color scheme promoting calmness (emerald, sky blue, warm tones)
+- ✅ Accessible design with WCAG 2.1 compliance
+- ✅ Cross-browser compatibility (Chrome, Firefox, Safari, Edge)
+
+---
+
+## 🎯 Roadmap & Future Enhancements
+
+### **✅ Current Features**
+- AI-Powered Chatbot (Mistral-7B-v0.1) for mental wellness support
+- Depression & Anxiety Assessment Quizzes with severity scoring
+- Guided Breathing Exercises with visual animations
+- Healing Audio Library (Ocean waves, Forest rain, 432 Hz healing, etc.)
+- User Authentication with Clerk
+- Educational Resources (Depression & Anxiety information)
+
+### **🚀 Phase 1: Coming Soon (Q2-Q3 2026)**
+- [ ] **Community Blog Platform** - Share mental health journeys, recovery stories, and wellness tips
+- [ ] **Conversation History** - Save and review past chatbot conversations
+- [ ] **Enhanced Chatbot** - Improved context retention and personalized responses
+- [ ] **Dark Mode** - Eye-friendly interface for evening usage
+
+### **🔮 Phase 2: Future Plans (Q4 2025 & Beyond)**
+- [ ] **Multi-Language Support** - Platform available in Spanish, Hindi, French, and more
+- [ ] **Therapist Matching** - Connect with licensed mental health professionals
 - [ ] **Mobile Apps** - Native iOS and Android applications
+- [ ] **Wearable Integration** - Sync with smartwatches for wellness tracking
 - [ ] **Offline Mode** - Core features available without internet
-- [ ] **Multilingual Support** - Accessibility in multiple languages
-- [ ] **Wearable Integration** - Smartwatch and fitness tracker connectivity
-
-### **Phase 4: Enterprise & Scaling**
-- [ ] **Enterprise Solutions** - Workplace mental health programs
-- [ ] **Analytics Dashboard** - Usage insights and wellness metrics
-- [ ] **API Development** - Third-party integrations
-- [ ] **Machine Learning** - Personalized recommendations based on usage patterns
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions to make MindEase better for everyone! Here's how you can help:
+We welcome contributions from developers, mental health professionals, designers, and advocates! Here's how you can help:
 
 ### **Ways to Contribute**
-- 🐛 **Bug Reports** - Found an issue? Let us know!
-- 💡 **Feature Requests** - Have ideas for improvements?
-- 🔧 **Code Contributions** - Submit pull requests
-- 📖 **Documentation** - Help improve our docs
-- 🎨 **Design** - UI/UX improvements and accessibility
 
-### **Contributing Process**
-1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
-3. **Commit** your changes: `git commit -m 'Add amazing feature'`
-4. **Push** to the branch: `git push origin feature/amazing-feature`
-5. **Open** a Pull Request
+1. **🐛 Bug Reports**
+   - Found a bug? [Open an issue](https://github.com/harshgajera101/MindEase/issues)
+   - Include steps to reproduce, expected vs actual behavior
+   - Screenshots or screen recordings are helpful
+
+2. **💡 Feature Requests**
+   - Have ideas for new features? We'd love to hear them!
+   - Open an issue with the "enhancement" label
+   - Describe the feature and its potential impact
+
+3. **🔧 Code Contributions**
+   - Fork the repository
+   - Create a feature branch: `git checkout -b feature/amazing-feature`
+   - Commit your changes: `git commit -m 'Add amazing feature'`
+   - Push to the branch: `git push origin feature/amazing-feature`
+   - Open a Pull Request
+
+4. **📖 Documentation**
+   - Improve README, API docs, or code comments
+   - Translate documentation into other languages
+   - Create tutorials or video guides
+
+5. **🎨 Design Contributions**
+   - UI/UX improvements and mockups
+   - Accessibility enhancements
+   - Icon design and branding assets
 
 ### **Development Guidelines**
-- Follow **React/TypeScript** best practices
-- Maintain **responsive design** principles
-- Add appropriate **comments** and documentation
-- Test across **different devices** and browsers
-- Follow existing **code style** and conventions
+
+```typescript
+// Code Style
+- Follow TypeScript best practices
+- Use functional components with hooks
+- Write descriptive variable and function names
+- Add JSDoc comments for complex functions
+- Maintain responsive design principles
+
+// Testing
+- Test across different browsers and devices
+- Ensure accessibility compliance
+- Verify mobile responsiveness
+
+// Commit Messages
+- Use conventional commits format
+- Examples: "feat:", "fix:", "docs:", "style:", "refactor:"
+```
+
+### **Code of Conduct**
+- Be respectful and inclusive
+- Provide constructive feedback
+- Focus on collaboration and learning
+- Prioritize user well-being and privacy
+- Respect mental health sensitivities
 
 ---
 
-## 📜 License
+## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ```
-MIT License - you are free to:
-✅ Use commercially
-✅ Modify and distribute
-✅ Private use
-✅ Include in other projects
+MIT License
+
+Copyright (c) 2025 Harsh Gajera
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+✅ Commercial use allowed
+✅ Modification allowed
+✅ Distribution allowed
+✅ Private use allowed
 ```
-
----
-
-## 👥 Team & Acknowledgments
-
-### **MindEase Development Team**
-- 💻 **Full-Stack Developers** - Building robust, accessible solutions
-- 🎨 **UI/UX Designers** - Creating calming, intuitive experiences
-- 🧠 **Mental Health Advocates** - Ensuring content accuracy and sensitivity
-- 📝 **Content Specialists** - Developing educational resources
-- 🔬 **QA Testers** - Ensuring quality across all devices
-
-### **Special Thanks**
-- Mental health professionals who provided guidance and review
-- Open source community for incredible tools and resources
-- Beta testers and early users for invaluable feedback
-- Organizations promoting mental health awareness globally
-- Everyone working to make wellness more accessible
 
 ---
 
 ## ⚠️ Important Medical Disclaimer
 
-**MindEase is a supportive tool and educational resource. It is NOT a substitute for professional mental health care.**
+**MindEase is a supportive mental wellness tool and educational platform. It is NOT a substitute for professional medical advice, diagnosis, or treatment.**
 
-### **When to Seek Professional Help**
-- Persistent feelings of sadness, anxiety, or hopelessness
-- Thoughts of self-harm or suicide
-- Substance abuse issues
-- Significant changes in sleep, appetite, or behavior
-- Difficulty functioning in daily life
+### **When to Seek Immediate Professional Help:**
+- 🚨 Thoughts of suicide or self-harm
+- 🚨 Plans or intent to harm yourself or others
+- 🚨 Severe panic attacks or anxiety that interferes with daily life
+- 🚨 Hallucinations or delusions
+- 🚨 Sudden, drastic changes in mood or behavior
+- 🚨 Substance abuse or addiction
+- 🚨 Inability to care for yourself or perform daily activities
 
-### **Emergency Resources**
-If you're experiencing severe mental health symptoms or thoughts of self-harm:
-- **Call 911** (US) or your local emergency number
-- **National Suicide Prevention Lifeline**: 988
+### **Emergency Resources:**
+
+**United States:**
+- **988 Suicide & Crisis Lifeline**: Call/Text 988
 - **Crisis Text Line**: Text HOME to 741741
-- **Contact your healthcare provider immediately**
+- **Emergency**: 911
+
+**International:**
+- **International Association for Suicide Prevention**: https://www.iasp.info/resources/Crisis_Centres/
+
+**Mental Health Resources:**
+- **NAMI (National Alliance on Mental Illness)**: 1-800-950-NAMI (6264)
+- **SAMHSA National Helpline**: 1-800-662-HELP (4357)
+- **Psychology Today Therapist Finder**: https://www.psychologytoday.com/
+
+### **Professional Support:**
+If you're experiencing persistent mental health symptoms, please consult:
+- Licensed therapist or counselor
+- Psychiatrist or psychologist
+- Primary care physician
+- Mental health crisis center
+- Hospital emergency department
 
 ---
 
-## 🌟 Screenshots & Demo
+## 👥 Team & Acknowledgments
 
-### **Home Page**
-![Home Page](https://via.placeholder.com/800x400/f59e0b/ffffff?text=MindEase+Home+Page)
-*Clean, welcoming interface with easy navigation*
+### **Author**
+**Harsh Gajera** - [GitHub](https://github.com/harshgajera101)
+- Full-Stack Developer
+- AI/ML Enthusiast
 
-### **Relaxation Suite**
-![Relaxation Page](https://via.placeholder.com/800x400/3b82f6/ffffff?text=Guided+Breathing+%26+Healing+Sounds)
-*Interactive breathing exercises and healing audio library*
+### **Special Thanks**
+- 🙏 Open-source community for incredible libraries and tools
+- 🙏 Beta testers who provided invaluable feedback
+- 🙏 Mental health organizations promoting awareness globally
+- 🙏 Everyone working to destigmatize mental health conversations
 
-### **AI Chatbot**
-![Chat Interface](https://via.placeholder.com/800x400/10b981/ffffff?text=AI+Mental+Wellness+Companion)
-*Supportive AI conversations in a secure environment*
+### **Built With**
+- ❤️ **Compassion** - Empathy-driven design and development
+- 🧠 **Research** - Evidence-based mental health practices
+- 🤖 **Innovation** - Cutting-edge AI technology (Mistral-7B-v0.1)
+- 🌍 **Community** - Collaboration and shared learning
+- 🎯 **Purpose** - Making mental wellness accessible to everyone
 
 ---
 
-**Made with ❤️ for mental wellness by the MindEase Team**
+## 💬 Get in Touch
 
-*Remember: Taking care of your mental health is not a luxury—it's a necessity. You deserve support, understanding, and healing.*
+We'd love to hear from you!
+
+- 🐦 **Twitter**: [@HarshGajera5349](https://www.linkedin.com/in/gajera-harsh/)
+- 💼 **LinkedIn**: [Harsh Gajera](https://www.linkedin.com/in/gajera-harsh/)
+- 💻 **GitHub**: [@harshgajera91](https://github.com/harshgajera101)
+
+---
+
+## 📊 Project Statistics
+
+![GitHub repo size](https://img.shields.io/github/repo-size/harshgajera101/MindEase)
+![GitHub stars](https://img.shields.io/github/stars/harshgajera101/MindEase?style=social)
+![GitHub forks](https://img.shields.io/github/forks/harshgajera101/MindEase?style=social)
+![GitHub issues](https://img.shields.io/github/issues/harshgajera101/MindEase)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/harshgajera101/MindEase)
+
+---
+
+## 🔗 Links & Resources
+
+- **Live Demo**: [https://coruscating-mochi-9eb4d7.netlify.app/](https://coruscating-mochi-9eb4d7.netlify.app/)
+- **GitHub Repository**: [https://github.com/harshgajera101/MindEase](https://github.com/harshgajera101/MindEase)
+- **Issue Tracker**: [https://github.com/harshgajera101/MindEase/issues](https://github.com/harshgajera101/MindEase/issues)
+
+---
+
+
+<div align="center">
+
+### **Made with ❤️ for mental wellness**
+
+*"Healing is not linear. It's okay to take your time, seek help, and prioritize your mental health. You are not alone."*
+
+**🌿 MindEase - Because your mental health matters 🌿**
+
+</div>
